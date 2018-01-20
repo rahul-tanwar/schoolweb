@@ -10,8 +10,8 @@ import { ForgotPasswordComponent } from './account/forgot-password/forgot-passwo
 
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { routing } from './app.routing';
 import { SchoolInfoComponent } from './account/school-info/school-info.component';
+import { AppRoutingModule } from './app.routing';
  
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { SchoolInfoComponent } from './account/school-info/school-info.component
     BrowserModule,
     DashboardModule,
     FormsModule,
-    routing
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
