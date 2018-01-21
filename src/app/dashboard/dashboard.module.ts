@@ -12,6 +12,16 @@ import { StaffComponent } from './staff/staff.component';
 import { ReportComponent } from './report/report.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
 import { DashboardRoutingModule } from "./dashboard-routing";
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -24,12 +34,21 @@ import { DashboardRoutingModule } from "./dashboard-routing";
     CalenderComponent,
     StaffComponent,
     ReportComponent,
-    DashboardMainComponent
+    DashboardMainComponent,
   ],
   imports: [
     BrowserModule,
-    DashboardRoutingModule
-
+    DashboardRoutingModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatListModule,
+    MatCardModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatFormFieldModule
   ],
   exports:[DashboardComponent],
   providers: []
