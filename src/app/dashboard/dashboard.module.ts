@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
 import { SchoolComponent } from './school/school.component';
@@ -22,6 +22,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import { StudentDetailsComponent } from './student/student-details/student-details.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { ParentDetailsComponent } from './parent/parent-details/parent-details.component';
+import {AddParentComponent  } from "./parent/add-parent/add-parent.component";
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,11 +40,14 @@ import {MatButtonModule} from '@angular/material/button';
     StaffComponent,
     ReportComponent,
     DashboardMainComponent,
+    StudentDetailsComponent,
+    ParentDetailsComponent,
+    AddParentComponent
   ],
   imports: [
     BrowserModule,
-    DashboardRoutingModule,
     BrowserAnimationsModule,
+    RouterModule,
     MatTableModule,
     MatListModule,
     MatCardModule,
@@ -48,7 +56,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTabsModule,
+    MatDialogModule
   ],
   exports:[DashboardComponent],
   providers: []

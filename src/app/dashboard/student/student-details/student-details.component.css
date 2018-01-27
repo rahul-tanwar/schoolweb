@@ -8,9 +8,7 @@
   min-height: 64px;
   padding: 8px 24px 0;
 }
-mat-header-row{
-    display: none;
-}
+
 .mat-elevation-z8{
     background: white !important;
 
@@ -37,12 +35,19 @@ mat-header-row{
   padding-left: 5px;
 
 }
-.example-header button{
+.studentprofileform button{
   background-color: #29b8bb;
   color: white;
-  margin-top: 11px;
   line-height: 29px;
+  margin-top: 22px;
+  margin-left: 8px;
 }
 .header-select{
     margin-right: 30px;
+}
+.studentprofileform{
+  padding: 50px 20px;
+}
+.parent-container{
+  padding: 50px 0px;
 }

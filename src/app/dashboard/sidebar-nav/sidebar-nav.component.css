@@ -1,0 +1,13 @@
+.sidebar[data-active-color="danger"] .nav li.active > a, .off-canvas-sidebar[data-active-color="danger"] .nav li.active > a{
+color: rgba(41, 184, 187, 1) !important}
+
+.sidebar .nav i.fa-male,
+    .off-canvas-sidebar .nav i.fa-male {
+      margin-right: 0px !important;
+      width: 16px;
+    }
+
+    .sidebar .nav i.fa-female,
+    .off-canvas-sidebar .nav i.fa-female {
+        width: 17px;
+    }

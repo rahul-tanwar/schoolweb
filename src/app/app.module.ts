@@ -12,14 +12,16 @@ import { ForgotPasswordComponent } from './account/forgot-password/forgot-passwo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SchoolInfoComponent } from './account/school-info/school-info.component';
 import { AppRoutingModule } from './app.routing';
- 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    SchoolInfoComponent
+    SchoolInfoComponent,
   ],
   imports: [
     BrowserModule,
