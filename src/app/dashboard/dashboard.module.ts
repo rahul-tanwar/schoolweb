@@ -12,21 +12,86 @@ import { StaffComponent } from './staff/staff.component';
 import { ReportComponent } from './report/report.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
 import { DashboardRoutingModule } from "./dashboard-routing";
-import {MatListModule} from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button';
 import { StudentDetailsComponent } from './student/student-details/student-details.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import { ParentDetailsComponent } from './parent/parent-details/parent-details.component';
+import { ParentDetailsComponent} from './parent/parent-details/parent-details.component';
 import {AddParentComponent  } from "./parent/add-parent/add-parent.component";
-import {MatDialogModule} from '@angular/material/dialog';
+import { StudentActivityComponent } from './student/student-activity/student-activity.component';
+
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatFormFieldModule
+} from '@angular/material';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+/**
+ * NgModule that includes all Material modules that are required to serve 
+ * the Plunker.
+ */
+@NgModule({
+  exports: [
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+  
+ ]
+})
+export class MaterialModule {}
 
 @NgModule({
   declarations: [
@@ -42,23 +107,16 @@ import {MatDialogModule} from '@angular/material/dialog';
     DashboardMainComponent,
     StudentDetailsComponent,
     ParentDetailsComponent,
-    AddParentComponent
+    AddParentComponent,
+    StudentActivityComponent
   ],
+  entryComponents: [AddParentComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
-    MatTableModule,
-    MatListModule,
-    MatCardModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatTabsModule,
-    MatDialogModule
+    MaterialModule
+    
   ],
   exports:[DashboardComponent],
   providers: []

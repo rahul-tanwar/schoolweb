@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 
 @Component({

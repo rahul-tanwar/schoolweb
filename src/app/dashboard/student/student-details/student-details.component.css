@@ -14,7 +14,7 @@
 
 }
 
-.mat-form-field {
+.studentprofileform .mat-form-field {
   font-size: 14px;
   width: 100%;
 }
@@ -35,7 +35,7 @@
   padding-left: 5px;
 
 }
-.studentprofileform button{
+button{
   background-color: #29b8bb;
   color: white;
   line-height: 29px;
@@ -51,3 +51,9 @@
 .parent-container{
   padding: 50px 0px;
 }
+
+.panel-body {
+  padding: 30px;
+}
+
+

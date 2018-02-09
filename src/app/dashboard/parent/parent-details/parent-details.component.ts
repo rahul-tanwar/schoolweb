@@ -18,8 +18,7 @@ export class ParentDetailsComponent implements OnInit {
 
   openDialog(): void {
     let dialogRef = this.dialog.open(AddParentComponent, {
-      height: '400px',
-      width: '600px',
+      width: '500px',
       data: { name: this.name, animal: this.animal }
     });
 

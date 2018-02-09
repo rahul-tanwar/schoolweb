@@ -1,0 +1,49 @@
+
+  <div class="activityfilter">
+      <mat-form-field>
+          <input matInput [matDatepicker]="fromdate" placeholder="date from">
+          <mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
+          <mat-datepicker #fromdate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="todate" placeholder="date to">
+            <mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+            <mat-datepicker #todate></mat-datepicker>
+          </mat-form-field>
+          <!-- <mat-form-field>
+                  <span matPrefix><i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+              <input matInput placeholder="Name">
+          </mat-form-field> -->
+          <button class="" mat-raised-button color="basic">Search</button>
+  </div> 
+
+      <hr class="width-100per">
+      <mat-table #table [dataSource]="dataSource">
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                  <mat-list>
+                      <mat-list-item>
+                          <img matListAvatar src="assets/img/new_logo.png" alt="...">
+                          <h3 matLine>
+                            <a  [routerLink]="['/dashboard/student-details', element.name]">{{element.name}}</a>
+                            <a class="activity-time">11:30</a>
+                          </h3>
+                          <p matLine>
+                              <span> {{element.name}} </span>
+                              <span class="demo-2"> {{element.name}} </span>
+                          </p>
+              
+                      </mat-list-item>
+                  </mat-list>
+              </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+      </mat-paginator>
+
+
+ 
