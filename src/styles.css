@@ -23,6 +23,10 @@
  .align-center{
      text-align: center;
  }
+
+ .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color:rgba(41, 184, 187, 1);;
+}
 /* 
 .header-select .mat-select-arrow{
     color: rgba(255, 255, 255, 1);
