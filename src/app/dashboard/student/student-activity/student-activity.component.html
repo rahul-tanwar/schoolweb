@@ -1,5 +1,5 @@
 
-  <div class="activityfilter">
+  <div class="header-section">
       <mat-form-field>
           <input matInput [matDatepicker]="fromdate" placeholder="date from">
           <mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
@@ -16,9 +16,8 @@
           </mat-form-field> -->
           <button class="" mat-raised-button color="basic">Search</button>
   </div> 
-
-      <hr class="width-100per">
-      <mat-table #table [dataSource]="dataSource">
+  <div class="body-section">
+  <mat-table #table [dataSource]="dataSource">
           <!-- Name Column -->
           <ng-container matColumnDef="name">
               <mat-header-cell *matHeaderCellDef> </mat-header-cell>
@@ -44,6 +43,8 @@
       </mat-table>
       <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
       </mat-paginator>
+
+    </div>
 
 
  

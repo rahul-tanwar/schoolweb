@@ -1,87 +1,28 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-  }
-  
-  .example-header {
-    min-height: 64px;
-    padding: 8px 24px 0;
-  }
-  
-  .mat-elevation-z8{
-      background: white !important;
-  
-  }
-  
-  .studentprofileform .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  .mat-table {
-    overflow: auto;
-    max-height: 500px;
-  }
-
-  mat-header-row{
+mat-header-row{
     display: none;
 }
-  .class-select{
-      width: 132px !important;
-  }
-  .title{
-    flex: 1;
-    margin: 12px 0 10px !important;
-    color: white;
-    font-weight: 600;
-    font-size: 1.8em !important;
-    padding-left: 5px;
-  
-  }
-  button{
-    background-color: #29b8bb;
-    color: white;
-    line-height: 29px;
-    margin-top: 22px;
-    margin-left: 8px;
-  }
-  .header-select{
-      margin-right: 30px;
-  }
-  .studentprofileform{
-    padding: 50px 20px;
-  }
-  .parent-container{
-    padding: 50px 0px;
-  }
-  
-  .panel-body {
-    padding: 30px;
+
+.body-section{
+      padding:5px 15px !important;
   }
     
-.activityfilter .mat-form-field {
+.header-section .mat-form-field {
     margin-left: 13px;
   }
-  
-  .activityfilter {
-    padding-top: 25px !important;
-  }
-
- .mat-row{
-      padding: 0px !important;
-  }
-
-  .activityfilter button{
+  .header-section button{
     float: right;
     margin-top: 11px;
     margin-right: 15px;
+    background-color: #29b8bb;
+    color: white;
+    line-height: 29px;
+    margin-left: 8px;
   }
-  
-  
-  .activityfilter .mat-form-field-infix {
+.header-section .mat-form-field-infix {
     width: 150px !important;
+    
   }
+
 
 .activity-time {
     float: right;
