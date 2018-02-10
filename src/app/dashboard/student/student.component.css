@@ -1,48 +1,13 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-}
-
-.example-header {
-  min-height: 64px;
-  padding: 8px 24px 0;
-}
 mat-header-row{
     display: none;
 }
-.mat-elevation-z8{
-    background: white !important;
-
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-.mat-table {
-  overflow: auto;
-  max-height: 500px;
-}
-.class-select{
-    width: 132px !important;
-}
-.title{
-  flex: 1;
-  margin: 12px 0 10px !important;
-  color: white;
-  font-weight: 600;
-  font-size: 1.8em !important;
-  padding-left: 5px;
-
-}
-.example-header button{
-  background-color: #29b8bb;
-  color: white;
+ button{
   margin-top: 11px;
   line-height: 29px;
 }
-.header-select{
+.select-box{
     margin-right: 30px;
+}
+.select-box mat-form-field{
+  width: 132px !important;
 }

@@ -24,7 +24,6 @@
                 </div>
             </nav>
     
-    
             <div class="content">
                 <div class="container-fluid">
     
@@ -32,18 +31,19 @@
     
                         <div class="col-md-12">
     
-                            <div class="example-container mat-elevation-z8">
-                                    <div class="cart-container">
-                                    </div>
-                                <div class="example-header">
+                            <div class="page-container">
+
+                                <div class="header-section">
                                     <div class="col-md-7">
                                             <mat-form-field>
+                                                    <span matPrefix>
+                                                    <i class="fa fa-search" aria-hidden="true"></i> &nbsp;</span>
                                                     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                                                </mat-form-field>
+                                            </mat-form-field>
                                     </div>
                                     <div class="col-md-5">
-                                            <button class="float-right" mat-raised-button color="basic" >Primary</button>
-                                            <div class="header-select float-right">
+                                            <button class="float-right" mat-raised-button color="basic" >Filter</button>
+                                            <div class="select-box float-right">
                                                     <mat-form-field class="class-select">
                                                         <mat-select placeholder="Class" >
                                                             <mat-option *ngFor="let food of foods" [value]="food.value">
@@ -55,7 +55,8 @@
                                     </div>
                                    
                                 </div>
-                                <hr class="width-100per">
+                                <!-- <hr class="width-100per"> -->
+                                <div class="body-section">
                                 <mat-table #table [dataSource]="dataSource">
                                     <!-- Name Column -->
                                     <ng-container matColumnDef="name">
@@ -78,6 +79,7 @@
                                 </mat-table>
                                 <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
                                 </mat-paginator>
+                                 </div>
                             </div>
     
                         </div>

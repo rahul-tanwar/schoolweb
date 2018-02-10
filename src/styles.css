@@ -2,18 +2,58 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
-.cart-container {
-    display: flex !important;
-    background-color: rgba(41, 184, 187, 1);
-    height: 6px;
-    margin-bottom: 17px;
-    /* box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12); */
-}
-.mat-elevation-z8{
+  /* use below classes for each new page or component to follow theme styling*/
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px; 
+    border-top: 6px solid rgba(41, 184, 187, 1);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     background: white !important;
     min-height: 70vh;
 }
 
+.page-container .header-section {
+    min-height: 64px;
+    padding: 25px 25px 15px;
+    border-bottom: 1px solid lightgrey;
+  }
+
+  .page-container .body-section{
+    padding: 10px 30px;
+  }
+
+
+
+  /* material css overwrite according to requirement */
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  .mat-row{
+    padding: 0px !important;
+  }
+
+  .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color:rgba(41, 184, 187, 1);;
+}
+
+
+/* created some custom classes used by all over project */
+
+button{
+    background-color: #29b8bb !important;
+    color: white !important;
+}
 .float-right{
     float: right;
 }
@@ -23,37 +63,3 @@
  .align-center{
      text-align: center;
  }
-
- .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
-    background-color:rgba(41, 184, 187, 1);;
-}
-/* 
-.header-select .mat-select-arrow{
-    color: rgba(255, 255, 255, 1);
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid;
-    margin: 0 2px;
-}
-
-.header-select  .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
-    color: rgba(255, 255, 255, 1);
-}
-
-.header-select .mat-form-field-label{
-    color: rgba(255, 255, 255, 1);
-    font-weight: 600;
-}
-
-.header-select .mat-form-field-underline{
-  background-color:  rgba(255, 255, 255, 1);  
-}
-
-.header-select  .mat-form-field-ripple{
-    background-color:  rgba(255, 255, 255, 1);
-}
-
-.header-select  .mat-select-value-text{
-    color: rgba(255, 255, 255, 1);
-    font-weight: 600;
-} */
