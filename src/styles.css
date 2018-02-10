@@ -29,11 +29,6 @@
 
   /* material css overwrite according to requirement */
 
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-
   .mat-table {
     overflow: auto;
     max-height: 500px;
@@ -50,10 +45,7 @@
 
 /* created some custom classes used by all over project */
 
-button{
-    background-color: #29b8bb !important;
-    color: white !important;
-}
+
 .float-right{
     float: right;
 }

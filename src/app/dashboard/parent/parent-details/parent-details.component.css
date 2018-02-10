@@ -1,3 +1,6 @@
+.parent-container{
+    padding: 50px 0px;
+  }
 .mat-cell, .mat-header-cell{
     text-align: center!important;
 }

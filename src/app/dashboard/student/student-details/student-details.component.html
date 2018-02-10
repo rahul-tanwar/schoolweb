@@ -1,10 +1,3 @@
-<!--
-      Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-      Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-    -->
-
-
-
 <div class="main-panel">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -31,7 +24,6 @@
         </div>
     </nav>
 
-
     <div class="content">
         <div class="container-fluid">
 
@@ -39,87 +31,23 @@
 
                 <div class="col-md-12">
 
-                    <div class="example-container mat-elevation-z8">
-                        <div class="cart-header-line"> </div>
-                       <div class="col-md-10 col-md-offset-1">
-                          
+                    <div class="page-container">
+                        <div class="body-section">
                                 <mat-tab-group>
                                     <mat-tab label="Profile">
-                                           
-
-                                        <form class="studentprofileform">
-
-                                                <div class="panel panel-default">
-                                                        <div class="panel-body">
-
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                        <mat-form-field>
-                                                                                <span matPrefix><i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                                                                            <input matInput placeholder="Name">
-                                                                        </mat-form-field>
-                                                                </div>
-                                                                <div class="col-md-6">     <mat-form-field>
-                                                                        <span matPrefix><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>  
-                                                                    <input matInput placeholder="DOB">
-                                                                </mat-form-field></div>
-                                                                <div class="col-md-6">  <mat-form-field>
-                                                                        <span matPrefix><i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>  
-                                                                    <input matInput placeholder="Aadhar">
-                                                                </mat-form-field></div>
-                                                                <div class="col-md-6"> <mat-form-field>
-                                                                        <span matPrefix><i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>  
-                                                                    <mat-select placeholder="Class">
-                                                                        <mat-option value="option">1</mat-option>
-                                                                        <mat-option value="option">2</mat-option>
-                                                                        <mat-option value="option">3</mat-option>
-                                                                    </mat-select>
-                                                                </mat-form-field></div>
-                                                                <div class="col-md-6">  <mat-form-field>
-                                                                        <span matPrefix><i class="fa fa-id-badge" aria-hidden="true"></i> &nbsp;</span>  
-                                                                        <input matInput placeholder="Student ID">
-                                                                    </mat-form-field></div>
-                                                              
-                                                            </div>
-                                                               
-                    
-                                                           
-                    
-                                                              
-                    
-                                                               
-                                                              
-                                                               <div class="align-center">
-                                                                    <button class="" mat-raised-button color="basic">Save</button>
-                                                                    <button class="" mat-raised-button color="basic">Reset</button>
-                                                                </div>
-
-
-                                                        </div>
-                                                      </div>
-
-                                          
-                                        </form>
+                                      <app-student-profile></app-student-profile>
                                     </mat-tab>
                                     <mat-tab label="Parent">
-                                      <div class="parent-container">
-                                        <app-parent-details></app-parent-details>
-                                    </div>
+                                      <app-parent-details></app-parent-details>
                                     </mat-tab>
                                     <mat-tab label="Activities">
-
                                         <app-student-activity></app-student-activity>
-
                                     </mat-tab>
                                 </mat-tab-group>
                             </div>
                     </div>
-
                 </div>
-
             </div>
-
-
         </div>
     </div>
 
