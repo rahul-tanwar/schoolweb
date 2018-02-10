@@ -12,11 +12,13 @@
             </mat-form-field>
           </div>
           <div class="col-md-6">
-            <mat-form-field>
-              <span matPrefix>
-                <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-              <input matInput placeholder="DOB">
-            </mat-form-field>
+              <mat-form-field>
+               <span matPrefix>
+                  <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                <input matInput [matDatepicker]="DOB" placeholder="DOB">
+                <mat-datepicker-toggle matSuffix [for]="DOB"></mat-datepicker-toggle>
+                <mat-datepicker #DOB></mat-datepicker>
+              </mat-form-field>
           </div>
           <div class="col-md-6">
             <mat-form-field>
