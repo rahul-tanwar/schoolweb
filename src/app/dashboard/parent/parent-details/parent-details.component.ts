@@ -9,8 +9,8 @@ import { AddParentComponent } from "./../add-parent/add-parent.component";
   styleUrls: ['./parent-details.component.css']
 })
 export class ParentDetailsComponent implements OnInit {
-  displayedColumns = ['name','position','weight','symbol'];
-  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+  displayedColumns = ['fname','email','mobile','sign-up'];
+  dataSource = new MatTableDataSource<Parent>(PARENT_DATA);
   animal: string;
   name: string;
 
@@ -32,14 +32,15 @@ export class ParentDetailsComponent implements OnInit {
 
 }
 
-export interface Element {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface Parent {
+  fname: string;
+  lname: string;
+  email: string;
+  mobile:string;
+  phone2?: string;
 }
 
-const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'}
+const PARENT_DATA: Parent[] = [
+  {fname: 'Rohan', lname: 'sharma', email:'rohansharma@gmail.com',mobile:'77897345654' },
+  {fname: 'Diya', lname: 'sharma', email:'diyasharma@gmail.com',mobile:'77897345654' },
 ];

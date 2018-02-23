@@ -58,6 +58,7 @@ import { StudentProfileComponent } from './student/student-profile/student-profi
  */
 @NgModule({
   exports: [
+   
     MatNativeDateModule,
     MatAutocompleteModule,
     MatButtonModule,
@@ -88,7 +89,8 @@ import { StudentProfileComponent } from './student/student-profile/student-profi
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    
  ]
 })
 export class MaterialModule {}
@@ -111,7 +113,7 @@ export class MaterialModule {}
     StudentActivityComponent,
     StudentProfileComponent
   ],
-  entryComponents: [AddParentComponent],
+  entryComponents: [AddParentComponent,StudentProfileComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,6 +1,8 @@
 import { OnInit } from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { StudentProfileComponent } from "./student-profile/student-profile.component";
 
 @Component({
   selector: 'app-student',
@@ -12,7 +14,7 @@ export class StudentComponent implements OnInit {
 
 
   displayedColumns = ['name'];
-  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Student>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -25,12 +27,27 @@ export class StudentComponent implements OnInit {
   }
 
   foods = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    {value: 'steak-0', viewValue: 'Class 1'},
+    {value: 'pizza-1', viewValue: 'Class 2'},
+    {value: 'tacos-2', viewValue: 'Class 3'},
+    {value: 'steak-0', viewValue: 'Class 4'},
+    {value: 'pizza-1', viewValue: 'Class 5'},
+    {value: 'tacos-2', viewValue: 'Class 6'}
   ];
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(StudentProfileComponent, {
+      width: '500px'
+     // data: { name: this.name, animal: this.animal }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    //  this.animal = result;
+    });
+  }
 
   ngOnInit() {
   }
@@ -44,32 +61,25 @@ export class StudentComponent implements OnInit {
 }
 
 
-export interface Element {
+export interface Student {
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  age: number;
+  class: number;
+  aadhar: string;
 }
 
-const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+const ELEMENT_DATA: Student[] = [
+  { age: 2, name: 'Rohan Sharma', class: 4, aadhar: 'He'},
+  {age: 3, name: 'Nilesh Tanwar', class: 6, aadhar: 'Li'},
+  {age: 4, name: 'Rahul Sharma', class: 9, aadhar: 'Be'},
+  {age: 5, name: 'Pankaj Tak', class: 1, aadhar: 'B'},
+  {age: 1, name: 'Jai Soni', class: 1, aadhar: 'H'},
+  {age: 6, name: 'Mohit Tanwar', class: 12, aadhar: 'C'},
+  {age: 7, name: 'Avinash Sharma', class: 1, aadhar: 'N'},
+  {age: 8, name: 'Pratik soni', class: 1, aadhar: 'O'},
+  {age: 9, name: 'Shriram Sharma', class: 1, aadhar: 'F'},
+  {age: 10, name: 'Tejeswani Soni', class: 2, aadhar: 'Ne'},
+  {age: 11, name: 'Gautham Sharma', class: 2, aadhar: 'Na'},
+  {age: 12, name: 'Aniket Tanwar', class: 2, aadhar: 'Mg'},
+  {age: 13, name: 'Avishak Tanwar', class: 2, aadhar: 'Al'},
 ];

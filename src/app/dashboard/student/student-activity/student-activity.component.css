@@ -7,7 +7,7 @@ mat-header-row{
   }
     
 .header-section .mat-form-field {
-    margin-left: 13px;
+    margin-left: 25px;
   }
   .header-section button{
     float: right;
@@ -18,13 +18,97 @@ mat-header-row{
     line-height: 29px;
     margin-left: 8px;
   }
+  
 .header-section .mat-form-field-infix {
     width: 150px !important;
     
   }
-.activity-time {
-    float: right;
-    color: lightgray;
-    font-size: 12px;
+
+.activity-header-image {
+ 
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+
 }
+.mat-card{
+  margin-bottom:12px; 
+}
+
+.mat-card-image{
+  width: 100% !important;
+  margin:0px !important;
+}
+.activity-group{
+  padding: 20px;
+}
+.activity-date{
+  text-align: center;
+  color: #d2d2d2;
+  padding-bottom: 10px;
+}
+
+.mat-card-image:first-child {
+margin-top: 0px !important; 
+}
+
+.mat-card-header-text{
+  order: 1 !important;
+}
+
+.activity-icon{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  margin-left: -17px;
+  margin-right: 10px;
+}
+
+.activity-icon i{
+  position: absolute;
+  top: 15px;
+  left: 14px;
+  color: white;
+  font-size: 20px;
+}
+
+
+.activity-icon-photo {
+  background-color: #29b8bb;;
+}
+
+.activity-icon-note{
+  background-color:#47507e;
+}
+
+.activity-icon-food {
+  background-color:#70b78a;
+}
+
+.activity-header-title{
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 3px;
+}
+.activity-header-subtitle{
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: rgba(0,0,0,.54);
+  margin-top: -8px;
+}
+
+.activity-time {
+  font-size: 12px;
+  color: rgba(0,0,0,.54);
+  padding-top: 4px;
+}
+
+
+
+
+
 

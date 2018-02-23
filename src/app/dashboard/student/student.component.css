@@ -18,3 +18,19 @@ mat-header-row{
   width: 132px !important;
 }
 
+.mat-list .mat-list-item p.mat-line{
+  font-size: 11px !important;
+  color: darkgray !important;
+}
+
+.add-student{
+  position: fixed;
+    right: 6%;
+    bottom: 6%;
+    z-index: 999;
+}
+.add-student i {
+  font-size: 20px !important;
+}
+
+

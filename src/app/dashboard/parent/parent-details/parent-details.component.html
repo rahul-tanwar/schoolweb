@@ -2,37 +2,37 @@
 
     <mat-table #table [dataSource]="dataSource">
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="fname">
             <mat-header-cell *matHeaderCellDef>Name </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <mat-list>
                     <mat-list-item>
                         <img matListAvatar src="assets/img/new_logo.png" alt="...">
                         <h3 matLine>
-                            <a (click)="openDialog()">{{element.name}}</a>
+                            <a class="cursor-pointer" (click)="openDialog()">{{element.fname}} {{element.lname}}</a>
                         </h3>
                     </mat-list-item>
                 </mat-list>
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="position">
-            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
         </ng-container>
 
         <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-            <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+        <ng-container matColumnDef="mobile">
+            <mat-header-cell *matHeaderCellDef> Mobile No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.mobile}} </mat-cell>
         </ng-container>
 
 
 
         <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        <ng-container matColumnDef="sign-up">
+            <mat-header-cell *matHeaderCellDef> Sign Up </mat-header-cell>
+            <mat-cell *matCellDef="let element"><button mat-raised-button color="warn" class="remind-button"><i class="fa fa-bell"></i>Remind</button></mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

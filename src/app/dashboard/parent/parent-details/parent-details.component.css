@@ -3,4 +3,14 @@
   }
 .mat-cell, .mat-header-cell{
     text-align: center!important;
+ 
+    
+}
+.remind-button{
+    background-color:#ffdd00 !important;
+    line-height: 30px !important;    
+}
+.mat-cell, .mat-header-cell{
+  color: rgba(121, 121, 121, 0.87);
+  font-size: 13px;
 }

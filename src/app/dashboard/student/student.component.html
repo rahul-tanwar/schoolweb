@@ -34,6 +34,9 @@
                     <div class="page-container">
 
                         <div class="header-section">
+                            <div class="col-md-12">
+                                    <button mat-fab color="basic" class="add-student" (click)="openDialog()">  <i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </div>
                             <div class="col-md-7">
                                 <mat-form-field>
                                     <span matPrefix>
@@ -68,8 +71,8 @@
                                                     <a [routerLink]="['/dashboard/student-details', element.name]">{{element.name}}</a>
                                                 </h3>
                                                 <p matLine>
-                                                    <span> {{element.name}} </span>
-                                                    <span class="demo-2"> {{element.name}} </span>
+                                                    <span> Class - </span>
+                                                    <span class="demo-2"> {{element.class}} </span>
                                                 </p>
                                             </mat-list-item>
                                         </mat-list>
@@ -96,29 +99,26 @@
         <div class="container-fluid">
             <nav class="pull-left">
                 <ul>
-
+  
                     <li>
-                        <a href="http://www.creative-tim.com">
-                            Creative Tim
+                        <a href="#">
+                            Udaipur
                         </a>
                     </li>
                     <li>
-                        <a href="http://blog.creative-tim.com">
-                            Blog
+                        <a href="#">
+                           Blog
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.creative-tim.com/license">
+                        <a href="#">
                             Licenses
                         </a>
                     </li>
                 </ul>
             </nav>
             <div class="copyright pull-right">
-                &copy;
-                <script>document.write(new Date().getFullYear())</script>, made with
-                <i class="fa fa-heart heart"></i> by
-                <a href="http://www.creative-tim.com">Creative Tim</a>
+                &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="#">Udaipur Team</a>
             </div>
         </div>
     </footer>
