@@ -1,3 +1,4 @@
+
 .parent-container{
     padding: 50px 0px;
   }
@@ -7,10 +8,14 @@
     
 }
 .remind-button{
-    background-color:#ffdd00 !important;
+    background-color:#fba32a !important;
     line-height: 30px !important;    
 }
 .mat-cell, .mat-header-cell{
   color: rgba(121, 121, 121, 0.87);
   font-size: 13px;
 }
+
+
+
+

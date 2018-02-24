@@ -1,0 +1,60 @@
+mat-table{
+    max-height: 550px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.header-section button{
+  background-color: #29b8bb !important;
+  color: white !important;
+  margin-top: 11px;
+}
+.select-box{
+    margin-right: 30px;
+}
+.select-box mat-form-field{
+  width: 132px !important;
+}
+
+.mat-list .mat-list-item p.mat-line{
+  font-size: 11px !important;
+  color: darkgray !important;
+}
+
+.add-student{
+  position: fixed;
+    right: 6%;
+    bottom: 6%;
+    z-index: 999;
+}
+.add-student i {
+  font-size: 20px !important;
+}
+
+
+.parent-container{
+    padding: 50px 0px;
+  }
+.mat-cell, .mat-header-cell{
+    text-align: center!important;
+ 
+    
+}
+.invite-button{
+    background-color: #fba32a !important;   
+}
+.remind-button{
+    color: #fba32a; 
+    }
+.mat-cell, .mat-header-cell{
+  color: rgba(121, 121, 121, 0.87);
+  font-size: 13px;
+}
+/* .parent-list mat-list-item .mat-list-avatar{
+height: 35px !important;
+width: 35px !important;
+} */
+
+

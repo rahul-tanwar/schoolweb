@@ -1,0 +1,46 @@
+mat-table {
+  overflow: auto;
+  max-height: none;
+}
+
+mat-header-row{
+    display: none;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+ button{
+  background-color: #29b8bb !important;
+  color: white !important;
+  margin-top: 11px;
+  line-height: 29px;
+}
+.select-box{
+    margin-right: 30px;
+}
+.select-box mat-form-field{
+  width: 132px !important;
+}
+
+.mat-list .mat-list-item p.mat-line{
+  font-size: 11px !important;
+  color: darkgray !important;
+}
+
+.add-student{
+  position: fixed;
+    right: 6%;
+    bottom: 6%;
+    z-index: 999;
+}
+.add-student i {
+  font-size: 20px !important;
+}
+.body-section h4{
+    font-size: 1.3em;
+    color: #cacaca;
+}
+.mat-list .mat-list-item h3{
+margin-right: 60px;
+}
