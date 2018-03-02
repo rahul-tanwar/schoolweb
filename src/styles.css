@@ -52,6 +52,15 @@
 }
 
 
+/*  School info line component css overwrite   */
+
+.schoolinfoform .mat-form-field-infix{
+  width: auto !important ;
+}
+.schoolinfoform mat-checkbox label{
+  font-weight: 500 !important;
+}
+
 /* created some custom classes used by all over project */
 
 
