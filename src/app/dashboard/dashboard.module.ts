@@ -54,6 +54,7 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 import { AddStaffComponent } from './staff/add-staff/add-staff.component';
 import { AddClassComponent } from './class/add-class/add-class.component';
+import { GenerateStudentAppCodeComponent } from './student/generate-student-app-code/generate-student-app-code.component';
 /**
  * NgModule that includes all Material modules that are required to serve 
  * the Plunker.
@@ -68,7 +69,6 @@ import { AddClassComponent } from './class/add-class/add-class.component';
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
-
     MatDatepickerModule,
     MatDialogModule,
     MatExpansionModule,
@@ -92,9 +92,7 @@ import { AddClassComponent } from './class/add-class/add-class.component';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    
- ],
-  declarations: []
+ ]
 })
 export class MaterialModule {}
 
@@ -116,7 +114,8 @@ export class MaterialModule {}
     StudentActivityComponent,
     StudentProfileComponent,
     AddStaffComponent,
-    AddClassComponent
+    AddClassComponent,
+    GenerateStudentAppCodeComponent,
   ],
   entryComponents: [
     AddParentComponent,
