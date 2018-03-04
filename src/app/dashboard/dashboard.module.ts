@@ -56,6 +56,10 @@ import { AddStaffComponent } from './staff/add-staff/add-staff.component';
 import { AddClassComponent } from './class/add-class/add-class.component';
 import { GenerateStudentAppCodeComponent } from './student/generate-student-app-code/generate-student-app-code.component';
 import { SchoolInfoComponent } from './school/school-info/school-info.component';
+import { SchoolDetailsComponent } from './school/school-details/school-details.component';
+import { SchoolOtherInfoComponent } from './school/school-other-info/school-other-info.component';
+import { SchoolAdminComponent } from './school/school-admin/school-admin.component';
+import { SchoolSettingsComponent } from './school/school-settings/school-settings.component';
 /**
  * NgModule that includes all Material modules that are required to serve 
  * the Plunker.
@@ -119,7 +123,11 @@ export class MaterialModule {}
     AddStaffComponent,
     AddClassComponent,
     GenerateStudentAppCodeComponent,
-    SchoolInfoComponent
+    SchoolInfoComponent,
+    SchoolDetailsComponent, 
+    SchoolOtherInfoComponent, 
+    SchoolAdminComponent, 
+    SchoolSettingsComponent
   ],
   entryComponents: [
     AddParentComponent,
