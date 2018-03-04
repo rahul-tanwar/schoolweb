@@ -56,6 +56,12 @@ import { AddStaffComponent } from './staff/add-staff/add-staff.component';
 import { AddClassComponent } from './class/add-class/add-class.component';
 import { ClassDetailsComponent } from './class/class-details/class-details.component';
 import { ClassStudentsComponent } from './class/class-students/class-students.component';
+import { GenerateStudentAppCodeComponent } from './student/generate-student-app-code/generate-student-app-code.component';
+import { SchoolInfoComponent } from './school/school-info/school-info.component';
+import { SchoolDetailsComponent } from './school/school-details/school-details.component';
+import { SchoolOtherInfoComponent } from './school/school-other-info/school-other-info.component';
+import { SchoolAdminComponent } from './school/school-admin/school-admin.component';
+import { SchoolSettingsComponent } from './school/school-settings/school-settings.component';
 /**
  * NgModule that includes all Material modules that are required to serve 
  * the Plunker.
@@ -70,7 +76,6 @@ import { ClassStudentsComponent } from './class/class-students/class-students.co
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
-
     MatDatepickerModule,
     MatDialogModule,
     MatExpansionModule,
@@ -93,8 +98,8 @@ import { ClassStudentsComponent } from './class/class-students/class-students.co
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatFormFieldModule,
-    
+    MatFormFieldModule
+   
  ],
   declarations: [ClassStudentsComponent]
  
@@ -120,13 +125,20 @@ export class MaterialModule {}
     StudentProfileComponent,
     AddStaffComponent,
     AddClassComponent,
-    ClassDetailsComponent
+    ClassDetailsComponent,
+    GenerateStudentAppCodeComponent,
+    SchoolInfoComponent,
+    SchoolDetailsComponent, 
+    SchoolOtherInfoComponent, 
+    SchoolAdminComponent, 
+    SchoolSettingsComponent
   ],
   entryComponents: [
     AddParentComponent,
     StudentProfileComponent,
     AddStaffComponent,
-    AddClassComponent
+    AddClassComponent,
+    SchoolInfoComponent
   ],
   imports: [
     BrowserModule,

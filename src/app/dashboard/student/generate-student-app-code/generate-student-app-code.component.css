@@ -1,0 +1,37 @@
+.studentprofileform{
+    padding: 50px 20px;
+  }
+
+  .title{
+    flex: 1;
+    margin: 12px 0 10px !important;
+    color: white;
+    font-weight: 600;
+    font-size: 1.8em !important;
+    padding-left: 5px;
+  }
+
+  label {
+    font-weight: normal;
+    padding-top: 9px;
+  }
+  h5{
+    line-height: 0.6;
+    color: rgba(41, 184, 187, 1);
+  }
+
+  .panel-body {
+    padding: 30px;
+  }
+
+  .form-control{
+
+  }
+
+ button {
+        background-color: #29b8bb;
+        color: white;
+        line-height: 29px;
+        margin-top: 22px;
+        margin-left: 8px;
+      }
