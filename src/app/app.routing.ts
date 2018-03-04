@@ -14,6 +14,7 @@ import { StudentComponent } from './dashboard/student/student.component';
 import { ReportComponent } from "./dashboard/report/report.component";
 import { SchoolComponent } from "./dashboard/school/school.component";
 import { StudentDetailsComponent } from "./dashboard/student/student-details/student-details.component";
+import { ClassDetailsComponent } from "./dashboard/class/class-details/class-details.component";
 
 
 
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
         { path: 'student-list', component:StudentComponent },
         { path: 'student-details/:id', component:StudentDetailsComponent },
         { path: 'report', component: ReportComponent },
-        { path: 'school', component:SchoolComponent }  
+        { path: 'school', component:SchoolComponent },
+         { path: 'class-details/:id', component:ClassDetailsComponent }  
     ] },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
