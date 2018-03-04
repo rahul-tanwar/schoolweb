@@ -1,0 +1,45 @@
+/* Structure */
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  .mat-header-cell {
+    display:flex;
+   justify-content:flex-start;
+   font-weight: bolder;
+   color: black;
+   
+  }
+  button{
+    background-color: #29b8bb !important;
+    color: white !important;
+    margin-top: 11px;
+    line-height: 29px;
+  }
+  
+  .add-student{
+    position: fixed;
+      right: 6%;
+      bottom: 6%;
+      z-index: 999;
+  }
+  .add-student i {
+    font-size: 20px !important;
+  }
