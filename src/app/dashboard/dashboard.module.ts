@@ -56,6 +56,8 @@ import { AddStaffComponent } from './staff/add-staff/add-staff.component';
 import { AddClassComponent } from './class/add-class/add-class.component';
 import { GenerateStudentAppCodeComponent } from './student/generate-student-app-code/generate-student-app-code.component';
 import { SchoolInfoComponent } from './school/school-info/school-info.component';
+import { StaffDetailsComponent } from './staff/staff-details/staff-details.component';
+import { StaffOtherInfoComponent } from './staff/staff-other-info/staff-other-info.component';
 /**
  * NgModule that includes all Material modules that are required to serve 
  * the Plunker.
@@ -95,7 +97,7 @@ import { SchoolInfoComponent } from './school/school-info/school-info.component'
     MatFormFieldModule
    
  ],
-  declarations: []
+  declarations: [StaffOtherInfoComponent]
 })
 export class MaterialModule {}
 
@@ -119,7 +121,8 @@ export class MaterialModule {}
     AddStaffComponent,
     AddClassComponent,
     GenerateStudentAppCodeComponent,
-    SchoolInfoComponent
+    SchoolInfoComponent,
+    StaffDetailsComponent
   ],
   entryComponents: [
     AddParentComponent,

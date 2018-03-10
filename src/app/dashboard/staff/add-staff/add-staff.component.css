@@ -1,4 +1,4 @@
-.add-parent-container button{
+.add-staff-container button{
     background-color: #29b8bb;
     color: white;
     line-height: 29px;
@@ -10,4 +10,8 @@
     font-size: 14px;
     width: 100%;
   }
-  
+
+  .panel-body {
+    padding: 30px;
+  }
+

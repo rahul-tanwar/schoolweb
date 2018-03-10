@@ -14,7 +14,7 @@ import { StudentComponent } from './dashboard/student/student.component';
 import { ReportComponent } from "./dashboard/report/report.component";
 import { SchoolComponent } from "./dashboard/school/school.component";
 import { StudentDetailsComponent } from "./dashboard/student/student-details/student-details.component";
-
+import { StaffDetailsComponent } from './dashboard/staff/staff-details/staff-details.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +30,7 @@ const appRoutes: Routes = [
         { path: 'class', component: ClassComponent },
         { path: 'parent', component: ParentComponent },
         { path: 'staff', component: StaffComponent },
+        { path: 'staff-details/:id', component: StaffDetailsComponent },
         { path: 'callender', component: CalenderComponent },
         { path: 'student-list', component:StudentComponent },
         { path: 'student-details/:id', component:StudentDetailsComponent },

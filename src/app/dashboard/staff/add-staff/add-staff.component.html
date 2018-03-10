@@ -1,28 +1,136 @@
-<form class="add-parent-container">
-   
+<form class="add-staff-container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput disabled placeholder="Child Code" value="2323">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
                         <input matInput placeholder="First Name">
                     </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
                         <input matInput placeholder="Last Name">
                     </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
                         <input matInput placeholder="Email">
                     </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                        <mat-form-field>
+                            <span matPrefix>
+                                <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                            <input matInput placeholder="Mobile No.">
+                        </mat-form-field>
+                        </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Staff Type">
+                            <mat-option value="option">Management</mat-option>
+                            <mat-option value="option">Technical</mat-option>
+                            <mat-option value="option">Clerical</mat-option>
+                            <mat-option value="option">Supporting</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Staff Subtype">
+                            <mat-option value="option">Management</mat-option>
+                            <mat-option value="option">Technical</mat-option>
+                            <mat-option value="option">Clerical</mat-option>
+                            <mat-option value="option">Supporting</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                        <mat-form-field>
+                            <span matPrefix>
+                                <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                            <input matInput placeholder="Specify Others">
+                        </mat-form-field>
+                    </div>
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Address">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                        <mat-form-field>
+                            <span matPrefix>
+                                <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                            <mat-select placeholder="Maritial Status ">
+                                <mat-option value="option">Male</mat-option>
+                                <mat-option value="option">Female</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Maritial Status ">
+                            <mat-option value="option">Single</mat-option>
+                            <mat-option value="option">Married</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-                        <input matInput placeholder="Mobile No.">
+                        <input matInput [matDatepicker]="DOB" placeholder="DOB">
+                        <mat-datepicker-toggle matSuffix [for]="DOB"></mat-datepicker-toggle>
+                        <mat-datepicker #DOB></mat-datepicker>
                     </mat-form-field>
-            <div class="align-center">
-                <button class="" mat-raised-button color="basic">Save</button>
-                <button class="" mat-raised-button color="basic">Reset</button>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput [matDatepicker]="DOJ" placeholder="DOJ">
+                        <mat-datepicker-toggle matSuffix [for]="DOJ"></mat-datepicker-toggle>
+                        <mat-datepicker #DOJ></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput [matDatepicker]="DOL" placeholder="DOL">
+                        <mat-datepicker-toggle matSuffix [for]="DOL"></mat-datepicker-toggle>
+                        <mat-datepicker #DOL></mat-datepicker>
+                    </mat-form-field>
+                </div>
+               
+
+                <div class="align-center">
+                    <button class="" mat-raised-button color="basic">Save</button>
+                    <button class="" mat-raised-button color="basic">Reset</button>
+                </div>
             </div>
-   
+        </div>
+    </div>
 </form>
