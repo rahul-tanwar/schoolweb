@@ -54,10 +54,16 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 import { AddStaffComponent } from './staff/add-staff/add-staff.component';
 import { AddClassComponent } from './class/add-class/add-class.component';
+import { ClassDetailsComponent } from './class/class-details/class-details.component';
+import { ClassStudentsComponent } from './class/class-students/class-students.component';
 import { GenerateStudentAppCodeComponent } from './student/generate-student-app-code/generate-student-app-code.component';
 import { SchoolInfoComponent } from './school/school-info/school-info.component';
 import { StaffDetailsComponent } from './staff/staff-details/staff-details.component';
 import { StaffOtherInfoComponent } from './staff/staff-other-info/staff-other-info.component';
+import { SchoolDetailsComponent } from './school/school-details/school-details.component';
+import { SchoolOtherInfoComponent } from './school/school-other-info/school-other-info.component';
+import { SchoolAdminComponent } from './school/school-admin/school-admin.component';
+import { SchoolSettingsComponent } from './school/school-settings/school-settings.component';
 /**
  * NgModule that includes all Material modules that are required to serve 
  * the Plunker.
@@ -96,8 +102,8 @@ import { StaffOtherInfoComponent } from './staff/staff-other-info/staff-other-in
     MatPaginatorModule,
     MatFormFieldModule
    
- ],
-  declarations: [StaffOtherInfoComponent]
+ ]
+ 
 })
 export class MaterialModule {}
 
@@ -120,9 +126,14 @@ export class MaterialModule {}
     StudentProfileComponent,
     AddStaffComponent,
     AddClassComponent,
+    ClassDetailsComponent,
     GenerateStudentAppCodeComponent,
     SchoolInfoComponent,
-    StaffDetailsComponent
+    StaffDetailsComponent,
+    SchoolDetailsComponent, 
+    SchoolOtherInfoComponent, 
+    SchoolAdminComponent, 
+    SchoolSettingsComponent
   ],
   entryComponents: [
     AddParentComponent,

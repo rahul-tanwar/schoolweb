@@ -1,0 +1,56 @@
+<div class="main-panel">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
+                <a class="navbar-brand" href="#">Class Details</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">
+                            <i class="ti-settings"></i>
+                            <p>Settings</p>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="page-container">
+                        <div class="body-section">
+                                <mat-tab-group>
+                                    <mat-tab label="Profile">
+                                      <app-student-profile></app-student-profile>
+                                    </mat-tab>
+                                    <mat-tab label="Parent">
+                                      <app-parent-details></app-parent-details>
+                                    </mat-tab>
+                                    <mat-tab label="Activities">
+                                        <app-student-activity></app-student-activity>
+                                    </mat-tab>
+                                </mat-tab-group>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   
+</div>

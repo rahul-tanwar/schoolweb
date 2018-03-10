@@ -52,16 +52,12 @@
                                         <mat-cell *matCellDef="let element">
                                             <mat-list>
                                                 <mat-list-item>
-                                                   <h3 matLine class="width-fit-content">
-                                                        <a >{{element.name}}</a></h3>
-
-                                                    <div class="display-inline"> 
-                                                    <img matListAvatar src="assets/img/new_logo.png" alt="...">
-                                                    <img matListAvatar src="assets/img/new_logo.png" alt="...">
-                                                    <img matListAvatar src="assets/img/new_logo.png" alt="...">
-                                                    <img matListAvatar src="assets/img/new_logo.png" alt="...">
-                                                    <img matListAvatar src="assets/img/new_logo.png" alt="...">
-                                                </div>
+                                                      <div class="col-md-10">
+                                                          <h6 matLine class="width-fit-content">
+                                                         <a [routerLink]="['/dashboard/class-details', element.name]">{{element.name}}</a>
+                                                          </h6>    
+                                                        </div>  
+                                                         <div class="col-md-2 text-right"> <span class="badge badge-primary">10</span></div>
                                                 </mat-list-item>
                                             </mat-list>
                                         </mat-cell>

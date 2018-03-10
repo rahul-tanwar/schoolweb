@@ -14,7 +14,13 @@ import { StudentComponent } from './dashboard/student/student.component';
 import { ReportComponent } from "./dashboard/report/report.component";
 import { SchoolComponent } from "./dashboard/school/school.component";
 import { StudentDetailsComponent } from "./dashboard/student/student-details/student-details.component";
+<<<<<<< HEAD
 import { StaffDetailsComponent } from './dashboard/staff/staff-details/staff-details.component';
+=======
+import { ClassDetailsComponent } from "./dashboard/class/class-details/class-details.component";
+
+import { SchoolDetailsComponent } from "./dashboard/school/school-details/school-details.component";
+>>>>>>> a98716cd8ffd7dad366e4fa64d2539b21cbd440a
 
 
 const appRoutes: Routes = [
@@ -35,7 +41,9 @@ const appRoutes: Routes = [
         { path: 'student-list', component:StudentComponent },
         { path: 'student-details/:id', component:StudentDetailsComponent },
         { path: 'report', component: ReportComponent },
-        { path: 'school', component:SchoolComponent }  
+        { path: 'school', component:SchoolComponent },
+         { path: 'class-details/:id', component:ClassDetailsComponent },  
+        { path: 'school-details/:id', component:SchoolDetailsComponent },
     ] },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
