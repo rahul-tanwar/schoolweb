@@ -1,0 +1,42 @@
+
+.panel-body {
+    padding: 30px;
+  }
+
+.student-list-container{
+    padding: 50px 15px;
+  }
+
+  .add-student-btn {
+    background-color: #29b8bb !important;
+    color: white !important;
+    margin-top: 11px;
+    line-height: 29px;
+    position: absolute;
+    right: 40px;
+    bottom: 90px;
+    z-index: 5;
+  }
+
+  mat-header-row{
+    display: none;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+.mat-list .mat-list-item p.mat-line{
+  font-size: 11px !important;
+  color: darkgray !important;
+}
+
+.add-student i {
+  font-size: 20px !important;
+}
+
+
+
+

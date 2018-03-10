@@ -50,6 +50,18 @@
   width: 30px !important;
   height: 30px !important;
 }
+.mat-list-text{
+  order: 3 !important;
+}
+.mat-checkbox-inner-container{
+  height: 18px !important;
+width: 18px !important;
+}
+
+.mat-checkbox-inner-container-no-side-margin{
+  margin-top: 10px !important;
+  margin-right: 4px !important;
+}
 
 
 /*  School info line component css overwrite   */
@@ -85,4 +97,13 @@
 .display-inline {
   display: inline-flex;
 }
+.order-1{
+  order: 1 !important;
+}
+.order-2{
+  order: 2 !important;
+}
+
+
+
 
