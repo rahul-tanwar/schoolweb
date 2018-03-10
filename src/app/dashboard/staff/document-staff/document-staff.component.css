@@ -1,0 +1,49 @@
+
+.parent-container{
+    padding: 50px 0px;
+  }
+
+.mat-cell, .mat-header-cell{
+    text-align: center!important;  
+}
+
+.remind-button{
+    background-color:#fba32a !important;
+    line-height: 30px !important;    
+}
+.mat-header-cell{
+    color: rgba(4, 4, 4, 0.87);
+    font-size: 13px;
+}
+
+.mat-cell{
+  color: rgba(121, 121, 121, 0.87);
+  font-size: 13px;
+}
+
+.document-img {
+    margin: 7px;
+    width: 75px;
+}
+
+.panel-body {
+    padding: 30px;
+  }
+
+.setting-staff-container{
+    padding: 50px 15px;
+  }
+
+  a{
+    background-color: #29b8bb !important;
+    color: white !important;
+    margin-top: 11px;
+    line-height: 29px;
+    position: absolute;
+    right: 40px;
+    bottom: 90px;
+  }
+
+
+
+

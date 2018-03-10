@@ -1,0 +1,42 @@
+<form class="setting-staff-container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <a href="javascript:void(0)"  mat-fab color="basic" (click)="openDialog()" ><i class="fa fa-plus" aria-hidden="true"></i></a>
+      <mat-table #table [dataSource]="dataSource">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Document Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef>Value </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="attachemnt">
+            <mat-header-cell *matHeaderCellDef>Attachment</mat-header-cell>
+            <mat-cell *matCellDef="let element"> <img class="document-img" src="{{element.attachment}}"> </mat-cell>
+        </ng-container>
+
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="manualVerification">
+            <mat-header-cell *matHeaderCellDef>Manual Verification?</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.manualVerification}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="verifiedBy">
+          <mat-header-cell *matHeaderCellDef>Verified By</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.verifiedBy}} </mat-cell>
+      </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
+</div>
+</form>
