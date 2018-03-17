@@ -1,0 +1,32 @@
+panel-body {
+    padding: 30px;
+  }
+
+.student-list-container{
+    padding: 50px 15px;
+  }
+
+.mat-cell, .mat-header-cell{
+    text-align: center!important;
+ 
+    
+}
+.invite-button{
+    background-color: #fba32a !important;   
+}
+.remind-button{
+    color: #fba32a; 
+    }
+.mat-cell, .mat-header-cell{
+  color: rgba(121, 121, 121, 0.87);
+  font-size: 13px;
+}
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  mat-table{
+    max-height: 550px;
+}
+
+  

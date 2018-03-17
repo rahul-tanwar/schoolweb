@@ -68,6 +68,8 @@ import { SettingStaffComponent } from './staff/setting-staff/setting-staff.compo
 import { DocumentStaffComponent } from './staff/document-staff/document-staff.component';
 import { AddDocumentComponent } from './staff/document-staff/add-document/add-document.component';
 import { StudentListComponent } from './class/student-list/student-list.component';
+import { AddStudentClassComponent } from './class/add-student-class/add-student-class.component';
+import { ParentListComponent } from './class/parent-list/parent-list.component';
 /**
  * NgModule that includes all Material modules that are required to serve 
  * the Plunker.
@@ -142,7 +144,9 @@ export class MaterialModule {}
     SettingStaffComponent,
     DocumentStaffComponent,
     AddDocumentComponent,
-    StudentListComponent
+    StudentListComponent,
+    AddStudentClassComponent,
+    ParentListComponent
   ],
   entryComponents: [
     AddParentComponent,
@@ -151,7 +155,8 @@ export class MaterialModule {}
     AddClassComponent,
     SchoolInfoComponent,
     AddDocumentComponent,
-    StudentListComponent
+    StudentListComponent,
+    AddStudentClassComponent
   ],
   imports: [
     BrowserModule,

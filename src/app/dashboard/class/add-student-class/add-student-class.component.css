@@ -1,0 +1,45 @@
+
+.panel-body {
+    padding: 20px;
+  }
+
+.class-student-add-container{
+    padding: 10px 0px 0px 0px;
+  }
+
+
+  mat-header-row{
+    display: none;
+}
+
+
+.mat-list .mat-list-item p.mat-line{
+  font-size: 11px !important;
+  color: darkgray !important;
+}
+
+.mat-cell, .mat-header-cell {
+  flex: inherit !important;
+}
+
+.mat-list .mat-list-item.mat-2-line, .mat-list .mat-list-option.mat-2-line, .mat-nav-list .mat-list-item.mat-2-line, .mat-nav-list .mat-list-option.mat-2-line, .mat-selection-list .mat-list-item.mat-2-line, .mat-selection-list .mat-list-option.mat-2-line{
+  height: 50px !important;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+.class-student-add-container button{
+  background-color: #29b8bb;
+  color: white;
+  line-height: 29px;
+  margin-top: 22px;
+  margin-left: 8px;
+}
+
+.mat-table {
+  max-height: 350px !important;
+}

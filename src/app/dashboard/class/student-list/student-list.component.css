@@ -3,7 +3,7 @@
     padding: 30px;
   }
 
-.student-list-container{
+.student-list-container {
     padding: 50px 15px;
   }
 
@@ -18,7 +18,7 @@
     z-index: 5;
   }
 
-  mat-header-row{
+  mat-header-row {
     display: none;
 }
 
@@ -28,7 +28,7 @@
 }
 
 
-.mat-list .mat-list-item p.mat-line{
+.mat-list .mat-list-item p.mat-line {
   font-size: 11px !important;
   color: darkgray !important;
 }

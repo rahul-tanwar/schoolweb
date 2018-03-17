@@ -1,18 +1,14 @@
-
 import { OnInit } from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { AddParentComponent } from "./add-parent/add-parent.component";
 
 @Component({
-  selector: 'app-parent',
-  templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.css']
+  selector: 'app-parent-list',
+  templateUrl: './parent-list.component.html',
+  styleUrls: ['./parent-list.component.css']
 })
-export class ParentComponent implements OnInit {
-
+export class ParentListComponent implements OnInit {
 
 
   displayedColumns = ['STUDENT','PARENTS','SIGN UP','CHECK-IN CODE'];
@@ -27,31 +23,9 @@ export class ParentComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-
-  foods = [
-    {value: 'steak-0', viewValue: 'Class 1'},
-    {value: 'pizza-1', viewValue: 'Class 2'},
-    {value: 'tacos-2', viewValue: 'Class 3'},
-    {value: 'steak-0', viewValue: 'Class 4'},
-    {value: 'pizza-1', viewValue: 'Class 5'},
-    {value: 'tacos-2', viewValue: 'Class 6'}
-  ];
-
-  constructor(public dialog: MatDialog) {}
-
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  openDialog(): void {
-    let dialogRef = this.dialog.open(AddParentComponent, {
-      width: '500px',
-      data: {  }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
 
   applyFilter(filterValue: string) {
@@ -61,7 +35,8 @@ export class ParentComponent implements OnInit {
   }
 
 }
- interface Parent {
+
+interface Parent {
   name: string;
 
 }
@@ -90,4 +65,3 @@ const ELEMENT_DATA: Student[] = [
   {age: 12, name: 'Aniket Tanwar', class: 2, aadhar: 'Mg'},
   {age: 13, name: 'Avishak Tanwar', class: 2, aadhar: 'Al'},
 ];
-

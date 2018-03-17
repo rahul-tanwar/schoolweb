@@ -79,13 +79,13 @@
                                         <mat-list-item>
                                             <img matListAvatar src="assets/img/parent.jpg" alt="...">
                                             <h3 matLine>
-                                                <a >{{element.parents[0].name}}</a>
+                                                <a class="cursor-pointer" (click)="openDialog()">{{element.parents[0].name}}</a>
                                             </h3>
                                         </mat-list-item>
                                         <mat-list-item>
                                             <img matListAvatar src="assets/img/mother.jpg" alt="...">
                                             <h3 matLine>
-                                                <a >{{element.parents[1].name}}</a>
+                                                <a class="cursor-pointer" (click)="openDialog()">{{element.parents[1].name}}</a>
                                             </h3>
                                         </mat-list-item>
                                     </mat-list>
