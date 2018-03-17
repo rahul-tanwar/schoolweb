@@ -37,6 +37,8 @@
   font-size: 20px !important;
 }
 
-
+.mat-cell, .mat-header-cell{
+  flex: inherit !important;
+}
 
 

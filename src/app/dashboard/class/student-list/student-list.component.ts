@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-student-list',
@@ -13,8 +14,9 @@ export class StudentListComponent implements OnInit {
 
 
 
-  displayedColumns = ['name'];
+  displayedColumns = ['select','name'];
   dataSource = new MatTableDataSource<Student>(ELEMENT_DATA);
+  selection = new SelectionModel<Student>(true, []);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -49,6 +51,20 @@ export class StudentListComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
 }
