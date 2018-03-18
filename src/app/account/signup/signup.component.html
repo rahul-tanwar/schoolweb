@@ -5,7 +5,7 @@
       <div class="signup-form-container">
       
            <!-- form start -->
-           <form role="form" id="register-form" autocomplete="off">
+           <form (ngSubmit)="onSignUp()" role="form" id="register-form" autocomplete="off">
            
            <div class="form-header">
             <h3 class="form-title"><i class="fa fa-user"></i> Sign Up</h3>
@@ -15,49 +15,31 @@
            </div>
                         
            </div>
-           
-           <div class="form-body">
+           <p *ngIf="error.message.length > 0" class="text-danger">
+            {{error.message}}</p>    
+           <div class="form-body" >
                         
-              <!-- <div class="form-group">
-                     <div class="input-group">
-                     <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                     <input name="name" type="text" class="form-control" placeholder="Username">
-                     </div>
-                     <span class="help-block" id="error"></span>
-                </div> -->
-                          
+              
                 <div class="form-group">
                      <div class="input-group">
                      <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                     <input name="email" type="text" class="form-control" placeholder="Enter valid email address">
+                     <input id="email" name="email" required [(ngModel)]="email" type="text" class="form-control" placeholder="Enter valid email address">
                      </div> 
-                     <span class="help-block" id="error"></span>                     
-                </div>
-                          
-                 
+                                     
+                </div> 
                           <div class="input-group">
                           <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                          <input name="password" id="password" type="password" class="form-control" placeholder="Enter password">
+                          <input name="password" id="password" type="password" required [(ngModel)]="password" class="form-control" placeholder="Enter password">
                           </div>  
-                          <span class="help-block" id="error"></span>                    
-                      
-                          <div class="input-group">
-                          <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                          <input name="cpassword" type="password" class="form-control" placeholder="Retype Password">
-                          </div>  
-                          <span class="help-block" id="error"></span>                    
-                    
-                          
-                          
+                          <span class="help-block" id="error"></span>    
               </div>
               
               <div class="form-footer">
                   <div class="row">
                       <div class="form-group col-lg-4">
                    <button type="submit" class="btn btn-info">
-                      <i class="fa fa-user-plus" aria-hidden="true"></i>
-                   <a routerLink="/school-info" style="text-decoration:none;color:#ffffff;">
-                   Sign Me Up !</a>
+                      <i class="fa fa-user-plus" aria-hidden="true"></i> 
+                   Sign Me Up ! 
                    </button>
                       </div>
                       <div class="form-group col-lg-6">

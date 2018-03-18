@@ -70,6 +70,7 @@ import { AddDocumentComponent } from './staff/document-staff/add-document/add-do
 import { StudentListComponent } from './class/student-list/student-list.component';
 import { AddStudentClassComponent } from './class/add-student-class/add-student-class.component';
 import { ParentListComponent } from './class/parent-list/parent-list.component';
+import { HeaderComponent } from './header/header.component';
 /**
  * NgModule that includes all Material modules that are required to serve 
  * the Plunker.
@@ -108,7 +109,8 @@ import { ParentListComponent } from './class/parent-list/parent-list.component';
     MatPaginatorModule,
     MatFormFieldModule
    
- ]
+ ],
+  declarations: []
  
 })
 export class MaterialModule {}
@@ -146,7 +148,8 @@ export class MaterialModule {}
     AddDocumentComponent,
     StudentListComponent,
     AddStudentClassComponent,
-    ParentListComponent
+    ParentListComponent,
+    HeaderComponent
   ],
   entryComponents: [
     AddParentComponent,

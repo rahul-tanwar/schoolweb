@@ -1,11 +1,11 @@
 <body>
   
    <div class="container">
-  
+        
       <div class="signup-form-container">
-      
+           
            <!-- form start -->
-           <form role="form" id="register-form" autocomplete="off">
+           <form role="form" (ngSubmit)="onLoginEmail()" id="login-form" autocomplete="off">
            
            <div class="form-header">
             <h3 class="form-title"><i class="fa fa-sign-in" aria-hidden="true"></i>
@@ -22,9 +22,9 @@
                 <div class="form-group">
                      <div class="input-group">
                      <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                     <input name="email" type="text" class="form-control" placeholder="Enter valid email address">
+                     <input id="email" name="email" required [(ngModel)]="email" type="text" class="form-control" placeholder="Enter valid email address">
                      </div> 
-                     <span class="help-block" id="error"></span>                     
+                                   
                 </div>
                           
                  
@@ -32,12 +32,14 @@
                      <div class="form-group">
                           <div class="input-group">
                           <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                          <input name="password" id="password" type="password" class="form-control" placeholder="Enter password">
+                          <input id="password" name="password" required [(ngModel)]="password" type="password" class="form-control" placeholder="Enter password">
                           </div>  
-                          <span class="help-block" id="error"></span>                    
+                                        
                      </div>
                               
-                     
+                     <p *ngIf="errorMessage.length > 0" class="text-danger">
+                            {{errorMessage}}
+                        </p>   
               
                           
                           
@@ -45,14 +47,15 @@
               
               <div class="form-footer">
                   <div class="row">
-                      <div class="form-group col-lg-2">
+                      <div class="form-group col-lg-3">
                       <button type="submit" class="btn btn-info">
-                      <span class="glyphicon glyphicon-log-in"></span> <a routerlink="/dashboard"> Login </a>
+                      <span class="glyphicon glyphicon-log-in"></span>  Login  
                       </button>
                       </div>
-                      <div class="form-group col-lg-4"><a routerLink="/forgot-password" routerLinkActive="active" class="btn btn-link btn-block m-t-1" >Forgot Password</a></div>
+                      <div class="form-group col-lg-4">
+                          <a routerLink="/forgot-password" routerLinkActive="active" class="btn btn-link btn-block m-t-1" >Forgot Password</a></div>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <div class="form-group col-lg-12">
                           <div>
                               Don't have an account! 
@@ -61,7 +64,7 @@
                           </a>
                           </div>
                       </div>
-                  </div>    
+                  </div>     -->
               </div>
              
   
