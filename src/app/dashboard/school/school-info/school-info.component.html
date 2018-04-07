@@ -1,4 +1,4 @@
-<form class="schoolinfoform" novalidate (ngSubmit)="save(signupForm)" #signupForm="ngForm">
+<form class="schoolinfoform" novalidate (ngSubmit)="save()" #signupForm="ngForm">
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -45,10 +45,10 @@
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
                         <mat-select placeholder="School Type" name="schoolyypeidlist" [(ngModel)]="schoolBasicInfo.SchoolTypeIdList" multiple required>
-                            <mat-option value='1'>Preschool</mat-option>
-                            <mat-option value='2'>I to IV</mat-option>
-                            <mat-option value='3'>V to X</mat-option>
-                            <mat-option value='4'>XI to XII</mat-option>
+                            <mat-option [value]=1>Preschool</mat-option>
+                            <mat-option [value]=2>I to IV</mat-option>
+                            <mat-option [value]=3>V to X</mat-option>
+                            <mat-option [value]=4>XI to XII</mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -57,11 +57,11 @@
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                        <mat-select placeholder="Board" name="selected" [(ngModel)]="schoolBasicInfo.BoardTypeIdStr" required>
-                            <mat-option value='1'>CBSE</mat-option>
-                            <mat-option value='2'>State Board</mat-option>
-                            <mat-option value='3'>ICSE</mat-option>
-                            <mat-option value='4'>IB</mat-option>
+                        <mat-select placeholder="Board" name="selected" [(ngModel)]="schoolBasicInfo.BoardTypeId" required>
+                            <mat-option [value]=1>CBSE</mat-option>
+                            <mat-option [value]=2>State Board</mat-option>
+                            <mat-option [value]=3>ICSE</mat-option>
+                            <mat-option [value]=4>IB</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -78,7 +78,7 @@
                 <button type="submit" mat-raised-button color="basic" [disabled]="!signupForm.form.valid">
                     Save
                 </button>
-                <button type="reset" (click)="reset()" mat-raised-button color="basic">
+                <button type="reset" mat-raised-button color="basic">
                     Reset
                 </button>
             </div>

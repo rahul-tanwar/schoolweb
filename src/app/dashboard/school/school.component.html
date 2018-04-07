@@ -54,17 +54,17 @@
                                 <!-- schoolType Column -->
                                 <ng-container matColumnDef="schoolType">
                                     <mat-header-cell *matHeaderCellDef>SCHOOl TYPE</mat-header-cell>
-                                    <mat-cell *matCellDef="let school"> {{school.SchoolTypeId}} </mat-cell>
+                                    <mat-cell *matCellDef="let school"> {{school.SchoolTypeIdList}} </mat-cell>
                                 </ng-container>
 
                                 <!-- status Column -->
                                 <ng-container matColumnDef="status">
                                     <mat-header-cell *matHeaderCellDef>STATUS</mat-header-cell>
                                     <mat-cell *matCellDef="let school">
-                                        <div *ngIf="school.status == true">
+                                        <div *ngIf="school.IsActive == true">
                                             Active
                                         </div>
-                                        <div *ngIf="school.status == false">
+                                        <div *ngIf="school.IsActive == false">
                                             In active
                                         </div>
                                     </mat-cell>

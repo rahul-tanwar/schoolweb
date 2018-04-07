@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../shared/service/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-username: string;
-  constructor() { }
+    username: string;
+    constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit() {
-  // this.username= this.authService.currentUser();
-   //alert(this.authService.currentUser());
-  }
-  logout() {
-   // this.authService.signOut();
-  }
+    ngOnInit() {
+        this.username = this.userService.currentUser.userName;
+    }
+
+    public logout(): void {
+        this.userService.clearUser();
+        this.router.navigate(['']);
+    }
 
 }

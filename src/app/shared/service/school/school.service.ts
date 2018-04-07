@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscriber, ReplaySubject } from 'rxjs/Rx';
 import { SchoolBasicInfo, SchoolOtherInfo, SchoolInfo } from '../../model/school';
-import { SchoolServiceApi } from '../../school-api/school/school.service';
+import { SchoolServiceApi } from '../../school-api/school/school-api.service';
 
 @Injectable()
 export class SchoolService {
@@ -106,7 +106,13 @@ export class SchoolService {
                 if (!!result) {
                     const schoolInfo = new SchoolInfo();
                     schoolInfo.schoolBasicInfo = result[0] as SchoolBasicInfo;
-                    schoolInfo.schoolOtherInfo = !!result[1] ? result[1] as SchoolOtherInfo : new SchoolOtherInfo();
+                    if (!!result[1]) {
+                        schoolInfo.schoolOtherInfo = result[1] as SchoolOtherInfo;
+                    } else {
+                        const school = new SchoolOtherInfo();
+                        school.SchoolInfoId = result[0].SchoolInfoId;
+                        schoolInfo.schoolOtherInfo = school;
+                    }
                     subscriber.next(schoolInfo);
                 } else {
                     subscriber.next(null);

@@ -9,11 +9,13 @@ import { SchoolService } from '../../../shared/service/school/school.service';
 })
 export class SchoolOtherInfoComponent implements OnInit {
 
-    @Input() public schoolOtherInfo: SchoolOtherInfo;
+    @Input() public schoolOtherInfo: SchoolOtherInfo = new SchoolOtherInfo();
 
     constructor(private schoolService: SchoolService) { }
 
     ngOnInit() {
+        console.log(this.schoolOtherInfo);
+
     }
 
 

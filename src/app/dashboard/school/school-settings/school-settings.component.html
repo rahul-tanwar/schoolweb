@@ -9,8 +9,8 @@
                         <span matPrefix>
                             <i class="fa fa-play" aria-hidden="true"></i> &nbsp;</span>
                         <mat-select name="allowvideo" [(ngModel)]="schoolOtherInfo.AllowVideo" placeholder="Video">
-                            <mat-option value="true">Yes</mat-option>
-                            <mat-option value="false">No</mat-option>
+                            <mat-option [value]=true>Yes</mat-option>
+                            <mat-option [value]=false>No</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -19,8 +19,8 @@
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
                         <mat-select name="allowbranding" [(ngModel)]="schoolOtherInfo.AllowBranding" placeholder="Branding">
-                            <mat-option value=1>Yes</mat-option>
-                            <mat-option value=0>No</mat-option>
+                            <mat-option [value]=true>Yes</mat-option>
+                            <mat-option [value]=false>No</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -38,9 +38,9 @@
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-book" aria-hidden="true"></i> &nbsp;</span>
-                        <mat-select name="allowbranding" [(ngModel)]="schoolOtherInfo.AllowBranding" placeholder="Staff Documents">
-                            <mat-option value=1>Yes</mat-option>
-                            <mat-option value=0>No</mat-option>
+                        <mat-select name="allowbranding" [(ngModel)]="schoolOtherInfo.AllowDocument" placeholder="Staff Documents">
+                            <mat-option [value]=true>Yes</mat-option>
+                            <mat-option [value]=false>No</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -50,15 +50,15 @@
                         <span matPrefix>
                             <i class="fa fa-check-circle" aria-hidden="true"></i> &nbsp;</span>
                         <mat-select name="isactive" [(ngModel)]="schoolOtherInfo.IsActive" placeholder="Status">
-                            <mat-option value=1>Active</mat-option>
-                            <mat-option value=0>In Active</mat-option>
+                            <mat-option [value]=true>Yes</mat-option>
+                            <mat-option [value]=false>No</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
             </div>
             <div class="align-center">
                 <button type="submit" mat-raised-button color="basic" [disabled]="!signupForm.form.valid">Save</button>
-                <button type="reset" (click)="reset()" mat-raised-button color="basic">Reset</button>
+                <button type="reset" mat-raised-button color="basic">Reset</button>
             </div>
         </div>
     </div>

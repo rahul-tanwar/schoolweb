@@ -25,7 +25,7 @@ export class SchoolInfoComponent implements OnInit {
 
     public save(): void {
         this.schoolService.saveBasicInfo(this.schoolBasicInfo).subscribe((result) => {
-            this.schoolService.getSchoolList();
+            alert('successfully save');
         });
     }
 

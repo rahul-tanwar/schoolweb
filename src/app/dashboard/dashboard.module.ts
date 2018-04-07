@@ -154,7 +154,8 @@ export class MaterialModule { }
         ParentListComponent,
         HeaderComponent,
         ExperienceCertificateInfoComponent,
-        AddSchoolComponent
+        AddSchoolComponent,
+        ClassStudentsComponent
     ],
     entryComponents: [
         AddParentComponent,

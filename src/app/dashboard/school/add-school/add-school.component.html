@@ -44,10 +44,10 @@
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
                         <mat-select placeholder="School Type" name="schooltypeIdlist" [(ngModel)]="schoolBasicInfo.SchoolTypeIdList" multiple required>
-                            <mat-option value='1'>Preschool</mat-option>
-                            <mat-option value='2'>I to IV</mat-option>
-                            <mat-option value='3'>V to X</mat-option>
-                            <mat-option value='4'>XI to XII</mat-option>
+                            <mat-option [value]=1>Preschool</mat-option>
+                            <mat-option [value]=2>I to IV</mat-option>
+                            <mat-option [value]=3>V to X</mat-option>
+                            <mat-option [value]=4>XI to XII</mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -56,11 +56,11 @@
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                        <mat-select placeholder="Board" name="board" [(ngModel)]="schoolBasicInfo.BoardTypeIdStr" required>
-                            <mat-option value='1'>CBSE</mat-option>
-                            <mat-option value='2'>State Board</mat-option>
-                            <mat-option value='3'>ICSE</mat-option>
-                            <mat-option value='4'>IB</mat-option>
+                        <mat-select placeholder="Board" name="board" [(ngModel)]="schoolBasicInfo.BoardTypeId" required>
+                            <mat-option [value]=1>CBSE</mat-option>
+                            <mat-option [value]=2>State Board</mat-option>
+                            <mat-option [value]=3>ICSE</mat-option>
+                            <mat-option [value]=4>IB</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>

@@ -15,14 +15,14 @@ export class SchoolBasicInfo {
     Email: string;
     ContactNumber: string;
     Address: string;
-    CityCity: string;
-    BoardTypeId: string;
+    City: string;
+    BoardTypeId: number;
     SchoolUniqueId: string;
     UpdateDate: moment.Moment;
     UpdatedEmail: string;
-    SchoolTypeIdList: Array<string>;
-    IsActive: boolean;
-    BoardTypeIdStr: string;
+    SchoolTypeIdList: Array<number>;
+    IsActive = true;
+    UserId: number;
 }
 
 export class SchoolOtherInfo {
@@ -40,5 +40,5 @@ export class SchoolOtherInfo {
     AllowDocument: boolean;
     UpdateDate: moment.Moment;
     UpdatedEmail: string;
-    IsActive: boolean;
+    IsActive = true;
 }

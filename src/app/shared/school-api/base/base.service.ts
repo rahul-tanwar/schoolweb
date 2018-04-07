@@ -10,21 +10,20 @@ export class BaseServiceApi {
 
     protected httpOptions: any;
 
-    protected baseUrl: string;
+    protected baseUrl = 'http://schoolapi.anaghaenterprises.in/api/';
 
     protected httpParams: HttpParams;
 
     constructor(protected httpClient: HttpClient) {
-        this.initilizeBaseApi();
     }
 
-    public initilizeBaseApi(): void {
+    public initilizeBaseApi(token: string): void {
 
-        this.baseUrl = 'http://schoolapi.anaghaenterprises.in/api/';
         this.httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': this.token
+                'Access-Control-Allow-Origin': '*',
+                'Authorization': 'Bearer ' + token
             })
         };
     }

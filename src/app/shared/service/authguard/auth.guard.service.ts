@@ -1,31 +1,37 @@
-// import { Injectable } from '@angular/core';
-// import { CanActivate, CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-// import { AccountService } from '../account/account.service';
+import { Injectable } from '@angular/core';
+import { CanActivate, CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { UserService } from '../user/user.service';
+import { User } from '../../model/user';
 
-// @Injectable()
-// export class AuthGuardService implements CanActivate, CanActivateChild {
+@Injectable()
+export class AuthGuardService implements CanActivate, CanActivateChild {
 
-//     constructor(private accountService: AccountService, private router: Router) {
+    constructor(private userService: UserService, private router: Router) {
 
-//     }
+    }
 
-//     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-//         //     let url: string = state.url;
-//         //   console.log('Url:'+ url);
-//         if (this.accountService.isUserLoggedIn()) {
-//             return true;
-//         }
-//         // this.authService.setRedirectUrl(url);
-//         // this.router.navigate([ this.authService.getLoginUrl() ]);
-//         return false;
-//     }
-//     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-//         const loggedInUser = this.accountService.getLoggedInUser();
-//         if (loggedInUser.role === 'ADMIN') {
-//             return true;
-//         } else {
-//             console.log('Unauthorized to open link: ' + state.url);
-//             return false;
-//         }
-//     }
-// }
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        debugger;
+        if (this.userService.isUserLoggedIn()) {
+            return true;
+        } else {
+            const user: User = JSON.parse(localStorage.getItem('user-access'));
+            if (!!user) {
+                this.userService.initilizeCurrentUser(user);
+                return true;
+            } else {
+                this.router.navigate(['']);
+            }
+        }
+        return false;
+    }
+    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        const loggedInUser = this.userService.getLoggedInUser();
+        if (loggedInUser.role === 'ADMIN') {
+            return true;
+        } else {
+            console.log('Unauthorized to open link: ' + state.url);
+            return false;
+        }
+    }
+}

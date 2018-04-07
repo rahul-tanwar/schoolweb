@@ -26,13 +26,12 @@ export class SchoolServiceApi extends BaseServiceApi {
     }
 
     public getAllSchoolList(): Observable<object> {
-
-        return this.httpClient.get<object>(this.baseUrl + 'school/getallschoollist')
+        return this.httpClient.get<object>(this.baseUrl + 'school/getallschoollist', this.httpOptions)
             .pipe(catchError(this.handleError));
     }
 
     public saveBasicInfo(schoolInfo: object): Observable<object> {
-        return this.httpClient.post(this.baseUrl + 'school/insertupdateschool', schoolInfo)
+        return this.httpClient.post(this.baseUrl + 'school/insertupdateschool', schoolInfo, this.httpOptions)
             .pipe(catchError(this.handleError));
     }
 

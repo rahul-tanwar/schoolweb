@@ -18,7 +18,7 @@ import { StaffDetailsComponent } from './dashboard/staff/staff-details/staff-det
 import { ClassDetailsComponent } from './dashboard/class/class-details/class-details.component';
 
 import { SchoolDetailsComponent } from './dashboard/school/school-details/school-details.component';
-// import { AuthGuardService } from './shared/service/authguard/auth.guard.service';
+import { AuthGuardService } from './shared/service/authguard/auth.guard.service';
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent },
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'school-info', component: SchoolInfoComponent },
     {
-        path: 'dashboard', component: DashboardComponent,
+        path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService],
         children: [
             { path: '', redirectTo: 'dashboardmain', pathMatch: 'full' },
             { path: 'dashboardmain', component: DashboardMainComponent },

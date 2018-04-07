@@ -22,6 +22,7 @@ export class AddSchoolComponent implements OnInit {
         this.schoolService.saveBasicInfo(this.schoolBasicInfo).subscribe((result) => {
             this.schoolService.getSchoolList();
             this.dialogRef.close('successfully');
+            alert('successfully save');
         });
     }
 

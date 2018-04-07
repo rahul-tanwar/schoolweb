@@ -1,4 +1,4 @@
-import { OnInit, AfterViewInit } from '@angular/core';
+import { OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -17,7 +17,7 @@ export class SchoolComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(public dialog: MatDialog, private schoolService: SchoolService) { }
+    constructor(public dialog: MatDialog, private schoolService: SchoolService, private changeDetectorRef: ChangeDetectorRef) { }
 
     ngOnInit() {
         this.subscribeSchoolData();
@@ -42,6 +42,8 @@ export class SchoolComponent implements OnInit {
         this.schoolService.schoolData.subscribe((result) => {
             this.dataSource = new MatTableDataSource<SchoolBasicInfo>(result.reverse());
             this.dataSource.paginator = this.paginator;
+            //  this.changeDetectorRef.detectChanges();
+            this.changeDetectorRef.markForCheck();
         });
 
 
