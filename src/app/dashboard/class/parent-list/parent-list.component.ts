@@ -11,7 +11,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 export class ParentListComponent implements OnInit {
 
 
-  displayedColumns = ['STUDENT','PARENTS','SIGN UP','CHECK-IN CODE'];
+  displayedColumns = ['STUDENT', 'PARENTS', 'SIGN UP', 'CHECK-IN CODE'];
   dataSource = new MatTableDataSource<Student>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -51,12 +51,12 @@ export interface Student {
 }
 
 const ELEMENT_DATA: Student[] = [
-  { age: 2, name: 'Rohan Sharma', class: 4, aadhar: 'He', parents: [ { name:'Rahul Sharma'}, {name:'Rani Sharma'} ] },
-  {age: 3, name: 'Nilesh Tanwar', class: 6, aadhar: 'Li', parents: [ { name:'Ronak Tanwar'}, {name:'Shalini Tanwar'} ] },
+  { age: 2, name: 'Rohan Sharma', class: 4, aadhar: 'He', parents: [ { name: 'Rahul Sharma'}, {name: 'Rani Sharma'} ] },
+  {age: 3, name: 'Nilesh Tanwar', class: 6, aadhar: 'Li', parents: [ { name: 'Ronak Tanwar'}, {name: 'Shalini Tanwar'} ] },
   {age: 4, name: 'Rahul Sharma', class: 9, aadhar: 'Be'},
   {age: 5, name: 'Pankaj Tak', class: 1, aadhar: 'B'},
-  {age: 1, name: 'Jai Soni', class: 1, aadhar: 'H', parents: [ { name:'Mike Soni'}, {name:'Soniya Soni'} ] },
-  {age: 6, name: 'Mohit Tanwar', class: 12, aadhar: 'C' , parents: [ { name:'Rahul Tanwar'}, {name:'Rani Tanwar'} ] },
+  {age: 1, name: 'Jai Soni', class: 1, aadhar: 'H', parents: [ { name: 'Mike Soni'}, {name: 'Soniya Soni'} ] },
+  {age: 6, name: 'Mohit Tanwar', class: 12, aadhar: 'C' , parents: [ { name: 'Rahul Tanwar'}, {name: 'Rani Tanwar'} ] },
   {age: 7, name: 'Avinash Sharma', class: 1, aadhar: 'N'},
   {age: 8, name: 'Pratik soni', class: 1, aadhar: 'O'},
   {age: 9, name: 'Shriram Sharma', class: 1, aadhar: 'F'},

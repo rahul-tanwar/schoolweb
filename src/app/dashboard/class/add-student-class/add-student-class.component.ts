@@ -12,7 +12,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 })
 export class AddStudentClassComponent implements OnInit {
 
-  displayedColumns = ['select','name'];
+  displayedColumns = ['select', 'name'];
   dataSource = new MatTableDataSource<Student>(ELEMENT_DATA);
   selection = new SelectionModel<Student>(true, []);
 

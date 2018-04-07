@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
@@ -11,46 +12,46 @@ import { CalenderComponent } from './calender/calender.component';
 import { StaffComponent } from './staff/staff.component';
 import { ReportComponent } from './report/report.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
-import { DashboardRoutingModule } from "./dashboard-routing";
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DashboardRoutingModule } from './dashboard-routing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentDetailsComponent } from './student/student-details/student-details.component';
-import { ParentDetailsComponent} from './parent/parent-details/parent-details.component';
-import {AddParentComponent  } from "./parent/add-parent/add-parent.component";
+import { ParentDetailsComponent } from './parent/parent-details/parent-details.component';
+import { AddParentComponent } from './parent/add-parent/add-parent.component';
 import { StudentActivityComponent } from './student/student-activity/student-activity.component';
 
 import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatFormFieldModule
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule
 } from '@angular/material';
-import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 import { AddStaffComponent } from './staff/add-staff/add-staff.component';
 import { AddClassComponent } from './class/add-class/add-class.component';
@@ -71,104 +72,108 @@ import { StudentListComponent } from './class/student-list/student-list.componen
 import { AddStudentClassComponent } from './class/add-student-class/add-student-class.component';
 import { ParentListComponent } from './class/parent-list/parent-list.component';
 import { HeaderComponent } from './header/header.component';
+import { ExperienceCertificateInfoComponent } from './staff/experience-certificate-info/experience-certificate-info.component';
+import { AddSchoolComponent } from './school/add-school/add-school.component';
 /**
- * NgModule that includes all Material modules that are required to serve 
+ * NgModule that includes all Material modules that are required to serve
  * the Plunker.
  */
 @NgModule({
-  exports: [
-   
-    MatNativeDateModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSlideToggleModule,
-    MatSliderModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule
-   
- ],
-  declarations: []
- 
+    exports: [
+
+        MatNativeDateModule,
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatExpansionModule,
+        MatGridListModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
+        MatRadioModule,
+        MatRippleModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatSlideToggleModule,
+        MatSliderModule,
+        MatSnackBarModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatFormFieldModule
+
+    ],
+    declarations: []
+
 })
-export class MaterialModule {}
+export class MaterialModule { }
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    SidebarNavComponent,
-    SchoolComponent,
-    StudentComponent,
-    ClassComponent,
-    ParentComponent,
-    CalenderComponent,
-    StaffComponent,
-    ReportComponent,
-    DashboardMainComponent,
-    StudentDetailsComponent,
-    ParentDetailsComponent,
-    AddParentComponent,
-    StudentActivityComponent,
-    StudentProfileComponent,
-    AddStaffComponent,
-    AddClassComponent,
-    ClassDetailsComponent,
-    GenerateStudentAppCodeComponent,
-    SchoolInfoComponent,
-    StaffDetailsComponent,
-    SchoolDetailsComponent, 
-    SchoolOtherInfoComponent, 
-    SchoolAdminComponent, 
-    SchoolSettingsComponent,
-    StaffOtherInfoComponent,
-    SettingStaffComponent,
-    DocumentStaffComponent,
-    AddDocumentComponent,
-    StudentListComponent,
-    AddStudentClassComponent,
-    ParentListComponent,
-    HeaderComponent
-  ],
-  entryComponents: [
-    AddParentComponent,
-    StudentProfileComponent,
-    AddStaffComponent,
-    AddClassComponent,
-    SchoolInfoComponent,
-    AddDocumentComponent,
-    StudentListComponent,
-    AddStudentClassComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule,
-    MaterialModule
-    
-  ],
-  exports:[DashboardComponent],
-  providers: []
+    declarations: [
+        DashboardComponent,
+        SidebarNavComponent,
+        SchoolComponent,
+        StudentComponent,
+        ClassComponent,
+        ParentComponent,
+        CalenderComponent,
+        StaffComponent,
+        ReportComponent,
+        DashboardMainComponent,
+        StudentDetailsComponent,
+        ParentDetailsComponent,
+        AddParentComponent,
+        StudentActivityComponent,
+        StudentProfileComponent,
+        AddStaffComponent,
+        AddClassComponent,
+        ClassDetailsComponent,
+        GenerateStudentAppCodeComponent,
+        SchoolInfoComponent,
+        StaffDetailsComponent,
+        SchoolDetailsComponent,
+        SchoolOtherInfoComponent,
+        SchoolAdminComponent,
+        SchoolSettingsComponent,
+        StaffOtherInfoComponent,
+        SettingStaffComponent,
+        DocumentStaffComponent,
+        AddDocumentComponent,
+        StudentListComponent,
+        AddStudentClassComponent,
+        ParentListComponent,
+        HeaderComponent,
+        ExperienceCertificateInfoComponent,
+        AddSchoolComponent
+    ],
+    entryComponents: [
+        AddParentComponent,
+        StudentProfileComponent,
+        AddStaffComponent,
+        AddClassComponent,
+        AddDocumentComponent,
+        StudentListComponent,
+        AddStudentClassComponent,
+        AddSchoolComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule,
+        MaterialModule,
+        FormsModule
+    ],
+    exports: [DashboardComponent],
+    providers: []
 })
 export class DashboardModule { }

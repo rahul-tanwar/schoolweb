@@ -1,25 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
-
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { SchoolService } from '../../../shared/service/school/school.service';
+import { SchoolBasicInfo, SchoolOtherInfo, SchoolInfo } from '../../../shared/model/school';
 @Component({
-  selector: 'app-school-details',
-  templateUrl: './school-details.component.html',
-  styleUrls: ['./school-details.component.css']
+    selector: 'app-school-details',
+    templateUrl: './school-details.component.html',
+    styleUrls: ['./school-details.component.css']
 })
 export class SchoolDetailsComponent implements OnInit {
-  id: string;
-  private sub: any;
-  constructor(private route: ActivatedRoute) { }
+    public schoolUniqueId: string;
+    public schoolBasicInfo: SchoolBasicInfo = new SchoolBasicInfo();
+    public schoolOtherInfo: SchoolOtherInfo = new SchoolOtherInfo();
 
-  ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-       this.id = params['id']; // (+) converts string 'id' to a number
+    constructor(private route: ActivatedRoute, private schoolService: SchoolService, private changeDetectorRef: ChangeDetectorRef) { }
 
-       // In a real app: dispatch action to load the details here.
-    });
-  }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+    ngOnInit() {
+        this.subscribeRouteParams().then(() => {
+            this.getSchoolInfo();
+        });
+
+    }
+
+    private subscribeRouteParams(): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            this.route.params.subscribe(params => {
+                this.schoolUniqueId = params['id'];
+                resolve(true);
+            }, (error) => {
+                reject(false);
+            }
+            );
+        });
+    }
+
+    private getSchoolInfo() {
+        this.schoolService.getSchoolInfo(this.schoolUniqueId).subscribe((result: SchoolInfo) => {
+            if (!!result) {
+                this.schoolBasicInfo = result.schoolBasicInfo;
+                this.schoolOtherInfo = result.schoolOtherInfo;
+                this.changeDetectorRef.detectChanges();
+            }
+        });
+    }
+
+
 }

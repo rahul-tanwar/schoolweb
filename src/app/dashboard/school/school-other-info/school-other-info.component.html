@@ -1,56 +1,56 @@
-<form class="school-other-info-form">
+<form class="school-other-info-form" novalidate (ngSubmit)="save()" #signupForm="ngForm">
 
     <div class="panel panel-default">
-      <div class="panel-body">
-  
-        <div class="row">
-          <div class="col-md-6 col-xs-12">
-            <mat-form-field>
-              <span matPrefix>
-                <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-              <input matInput placeholder="Other Contact Name">
-            </mat-form-field>
-          </div>
-          <div class="col-md-6 col-xs-12">
-              <mat-form-field>
-               <span matPrefix>
-                  <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                <input matInput  placeholder="Designation">
-              </mat-form-field>
-          </div>
-          <div class="col-md-6 col-xs-12">
-            <mat-form-field>
-              <span matPrefix>
-                <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;</span>
-              <input matInput placeholder="Other Email">
-            </mat-form-field>
-          </div>
-          <div class="col-md-6 col-xs-12">
-            <mat-form-field>
-              <span matPrefix>
-                <i class="fa fa-mobile" aria-hidden="true"></i> &nbsp;</span>
-              <input matInput placeholder="Alternate Contact Number">
-            </mat-form-field>
-          </div>
-          <div class="col-md-6 col-xs-12">
-            <mat-form-field class="width-100per">
-              <span matPrefix>
-                <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-              <input matInput placeholder="School Tagline">
-            </mat-form-field>
-          </div>
-          <div class="col-md-6 col-xs-12">
-              <span matPrefix>
-                  <i class="fa fa-upload" aria-hidden="true"></i> &nbsp;</span>
-                  Upload school logo
-                  <button mat-raised-button color="primary">Primary</button>
-              
-            </div> 
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput name="othercontactname" [(ngModel)]="schoolOtherInfo.OtherContactName" placeholder="Other Contact Name">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput name="designation" [(ngModel)]="schoolOtherInfo.Designation" placeholder="Designation">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput name="otheremail" [(ngModel)]="schoolOtherInfo.OtherEmail" placeholder="Other Email">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-mobile" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput name="othercontacnumber" [(ngModel)]="schoolOtherInfo.OtherContacNumber" placeholder="Alternate Contact Number">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput name="tagline" [(ngModel)]="schoolOtherInfo.Tagline" placeholder="School Tagline">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <span matPrefix>
+                        <i class="fa fa-upload" aria-hidden="true"></i> &nbsp;</span>
+                    Upload school logo
+                    <button mat-raised-button color="primary">Primary</button>
+
+                </div>
+            </div>
+            <div class="align-center">
+                <button type="submit" mat-raised-button color="basic" [disabled]="!signupForm.form.valid">Save</button>
+                <button type="reset" (click)="reset()" mat-raised-button color="basic">Reset</button>
+            </div>
         </div>
-        <div class="align-center">
-          <button class="" mat-raised-button color="basic">Save</button>
-          <button class="" mat-raised-button color="basic">Reset</button>
-        </div>
-      </div>
     </div>
-  </form>
+</form>

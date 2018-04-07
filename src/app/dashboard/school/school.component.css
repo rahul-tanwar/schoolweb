@@ -21,12 +21,15 @@
   }
 
   .mat-header-cell {
-    display:flex;
+    display:block;
    justify-content:flex-start;
    font-weight: bolder;
    color: black;
-   
   }
+  .mat-cell, .mat-header-cell{
+      text-align: center;
+  }
+
   button{
     background-color: #29b8bb !important;
     color: white !important;
@@ -42,4 +45,8 @@
   }
   .add-student i {
     font-size: 20px !important;
+  }
+
+  .mat-header-row, .mat-row {
+padding: 0px;
   }

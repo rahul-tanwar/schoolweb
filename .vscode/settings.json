@@ -1,0 +1,7 @@
+{
+    "typescript.format.enable": true,
+    "editor.autoIndent": true,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "tslint.autoFixOnSave": true
+}

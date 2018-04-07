@@ -1,116 +1,124 @@
-
-  <div class="header-section">
-      <mat-form-field>
-          <input matInput [matDatepicker]="fromdate" placeholder="Date From">
-          <mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
-          <mat-datepicker #fromdate></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput [matDatepicker]="todate" placeholder="Date To">
-            <mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
-            <mat-datepicker #todate></mat-datepicker>
-          </mat-form-field>
-          <!-- <mat-form-field>
+<div class="header-section">
+    <mat-form-field>
+        <input matInput [matDatepicker]="fromdate" placeholder="Date From">
+        <mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
+        <mat-datepicker #fromdate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="todate" placeholder="Date To">
+        <mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+        <mat-datepicker #todate></mat-datepicker>
+    </mat-form-field>
+    <!-- <mat-form-field>
                   <span matPrefix><i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
               <input matInput placeholder="Name">
           </mat-form-field> -->
-          <button class="" mat-raised-button color="basic">Search</button>
-  </div> 
-  <div class="body-section">
+    <button class="" mat-raised-button color="basic">Search</button>
+</div>
+<div class="body-section">
     <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                    <div class="activity-group">
-                            <div class="activity-date">Today</div>
-                            <div class="activity-list">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="activity-group">
+                <div class="activity-date">Today</div>
+                <div class="activity-list">
 
-                                    <mat-card class="activity-card">
-                                            <mat-card-header>
-                                               <div class="activity-icon activity-icon-note"><i class="fa fa-sticky-note" aria-hidden="true"></i> </div>
-                                              <div style="flex:1">
-                                                    <h3 class="activity-header-title">Note</h3>
-                                                    <p class="activity-header-subtitle">student activity</p>
-                                              </div>
-                                              <div class="align-right">
-                                                   <p class="activity-time">11:20AM</p>
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                              </div>
-                                            </mat-card-header>
-                                            <mat-card-content>
-                                              <p>
-                                                    All your student activity will show up here in their feed. When you add parents to brightwheel, they can login to see the feed of just their child
-                                              </p>
-                                            </mat-card-content>
-                                          </mat-card>
+                    <mat-card class="activity-card">
+                        <mat-card-header>
+                            <div class="activity-icon activity-icon-note">
+                                <i class="fa fa-sticky-note" aria-hidden="true"></i>
+                            </div>
+                            <div style="flex:1">
+                                <h3 class="activity-header-title">Note</h3>
+                                <p class="activity-header-subtitle">student activity</p>
+                            </div>
+                            <div class="align-right">
+                                <p class="activity-time">11:20AM</p>
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>
+                                All your student activity will show up here in their feed. When you add parents to brightwheel, they can login to see the
+                                feed of just their child
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
 
 
-                                    <mat-card class="activity-card">
-                                            <mat-card-header>
-                                               <div class="activity-icon activity-icon-photo"><i class="fa fa-camera" aria-hidden="true"></i> </div>
-                                              <div style="flex:1">
-                                                    <h3 class="activity-header-title">Photo</h3>
-                                                    <p class="activity-header-subtitle">Playing games</p>
-                                              </div>
-                                              <div class="align-right">
-                                                   <p class="activity-time">11:20AM</p>
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                              </div>
-                                            </mat-card-header>
-                                            <mat-card-content>
-                                            <img mat-card-image src="https://cdn-ap-ec.yottaa.net/561457440b53443818001134/www.highlights.com/v~22.b2/sites/default/files/public/styles/panopoly_image_original/public/6_7.png?itok=sirI3GKM&yocs=_&yoloc=ap" alt="Photo of a Shiba Inu">
-                                            </mat-card-content>
-                                            <!-- <mat-card-actions>
+                    <mat-card class="activity-card">
+                        <mat-card-header>
+                            <div class="activity-icon activity-icon-photo">
+                                <i class="fa fa-camera" aria-hidden="true"></i>
+                            </div>
+                            <div style="flex:1">
+                                <h3 class="activity-header-title">Photo</h3>
+                                <p class="activity-header-subtitle">Playing games</p>
+                            </div>
+                            <div class="align-right">
+                                <p class="activity-time">11:20AM</p>
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <img mat-card-image src="https://cdn-ap-ec.yottaa.net/561457440b53443818001134/www.highlights.com/v~22.b2/sites/default/files/public/styles/panopoly_image_original/public/6_7.png?itok=sirI3GKM&yocs=_&yoloc=ap"
+                                alt="Photo of a Shiba Inu">
+                        </mat-card-content>
+                        <!-- <mat-card-actions>
                                               <button mat-button>LIKE</button>
                                               <button mat-button>SHARE</button>
                                             </mat-card-actions> -->
-                                          </mat-card>
+                    </mat-card>
 
-                                          <mat-card class="activity-card">
-                                                <mat-card-header>
-                                                   <div class="activity-icon activity-icon-food"><i class="fa fa-apple" aria-hidden="true"></i> </div>
-                                                  <div style="flex:1">
-                                                        <h3 class="activity-header-title">Food</h3>
-                                                        <p class="activity-header-subtitle">Lunch | All</p>
-                                                  </div>
-                                                  <div class="align-right">
-                                                       <p class="activity-time">11:20AM</p>
-                                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                                  </div>
-                                                </mat-card-header>
-                                                <mat-card-content>
-                                                  <p>
-                                                        Bananas and carrots
-                                                  </p>
-                                                </mat-card-content>
-                                              </mat-card>
+                    <mat-card class="activity-card">
+                        <mat-card-header>
+                            <div class="activity-icon activity-icon-food">
+                                <i class="fa fa-apple" aria-hidden="true"></i>
+                            </div>
+                            <div style="flex:1">
+                                <h3 class="activity-header-title">Food</h3>
+                                <p class="activity-header-subtitle">Lunch | All</p>
+                            </div>
+                            <div class="align-right">
+                                <p class="activity-time">11:20AM</p>
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>
+                                Bananas and carrots
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
 
-                                              <mat-card class="activity-card">
-                                                    <mat-card-header>
-                                                       <div class="activity-icon activity-icon-photo"><i class="fa fa-camera" aria-hidden="true"></i> </div>
-                                                      <div style="flex:1">
-                                                            <h3 class="activity-header-title">Photo</h3>
-                                                            <p class="activity-header-subtitle">Eating Food</p>
-                                                      </div>
-                                                      <div class="align-right">
-                                                           <p class="activity-time">11:20AM</p>
-                                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                                      </div>
-                                                    </mat-card-header>
-                                                    <mat-card-content>
-                                                    <img mat-card-image src="https://www.beinghappymom.com/wp-content/uploads/2016/04/shutterstock_258419378-copy-1-1024x731.jpg" alt="Photo of a Shiba Inu">
-                                                    </mat-card-content>
-                                                    <!-- <mat-card-actions>
+                    <mat-card class="activity-card">
+                        <mat-card-header>
+                            <div class="activity-icon activity-icon-photo">
+                                <i class="fa fa-camera" aria-hidden="true"></i>
+                            </div>
+                            <div style="flex:1">
+                                <h3 class="activity-header-title">Photo</h3>
+                                <p class="activity-header-subtitle">Eating Food</p>
+                            </div>
+                            <div class="align-right">
+                                <p class="activity-time">11:20AM</p>
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <img mat-card-image src="https://www.beinghappymom.com/wp-content/uploads/2016/04/shutterstock_258419378-copy-1-1024x731.jpg"
+                                alt="Photo of a Shiba Inu">
+                        </mat-card-content>
+                        <!-- <mat-card-actions>
                                                       <button mat-button>LIKE</button>
                                                       <button mat-button>SHARE</button>
                                                     </mat-card-actions> -->
-                                                  </mat-card>
-    
-                              
-                                        </div>
-                        </div>
+                    </mat-card>
+
+
                 </div>
+            </div>
+        </div>
     </div>
-        
-                
-   </div>
- 
- 
+
+
+</div>

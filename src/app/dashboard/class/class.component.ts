@@ -1,7 +1,7 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { AddClassComponent } from "./add-class/add-class.component";
+import { AddClassComponent } from './add-class/add-class.component';
 
 @Component({
   selector: 'app-class',
@@ -9,7 +9,7 @@ import { AddClassComponent } from "./add-class/add-class.component";
   styleUrls: ['./class.component.css']
 })
 export class ClassComponent implements OnInit {
- 
+
   displayedColumns = ['name'];
   dataSource = new MatTableDataSource<Class>(ELEMENT_DATA);
 
@@ -35,7 +35,7 @@ export class ClassComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddClassComponent, {
+    const dialogRef = this.dialog.open(AddClassComponent, {
       width: '500px'
      // data: { name: this.name, animal: this.animal }
     });

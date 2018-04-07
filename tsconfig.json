@@ -14,6 +14,11 @@
     "lib": [
       "es2016",
       "dom"
-    ]
-  }
+    ],
+  },
+  "indent": [
+    true,
+    "spaces",
+    4
+  ]
 }

@@ -1,29 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 
 @Component({
-  selector: 'app-student-details',
-  templateUrl: './student-details.component.html',
-  styleUrls: ['./student-details.component.css']
+    selector: 'app-student-details',
+    templateUrl: './student-details.component.html',
+    styleUrls: ['./student-details.component.css']
 })
-export class StudentDetailsComponent implements OnInit {
-  id: number;
-  private sub: any;
+export class StudentDetailsComponent implements OnInit, OnDestroy {
+    id: number;
+    private sub: any;
 
-  constructor(private route: ActivatedRoute) {}
+    constructor(private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-       this.id = +params['id']; // (+) converts string 'id' to a number
+    ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            this.id = +params['id']; // (+) converts string 'id' to a number
 
-       // In a real app: dispatch action to load the details here.
-    });
-  }
+            // In a real app: dispatch action to load the details here.
+        });
+    }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
 
 }

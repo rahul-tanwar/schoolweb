@@ -15,7 +15,7 @@ export class StudentListComponent implements OnInit {
 
 
 
-  displayedColumns = ['select','name'];
+  displayedColumns = ['select', 'name'];
   dataSource = new MatTableDataSource<Student>(ELEMENT_DATA);
   selection = new SelectionModel<Student>(true, []);
 
@@ -34,7 +34,7 @@ export class StudentListComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddStudentClassComponent, {
+    const dialogRef = this.dialog.open(AddStudentClassComponent, {
       width: '500px'
      // data: { name: this.name, animal: this.animal }
     });

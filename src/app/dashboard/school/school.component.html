@@ -1,123 +1,115 @@
- 
-  
 <div class="main-panel">
-   <app-header></app-header>
-
-  <div class="content">
-    <div class="container-fluid">
-
-        <div class="row">
-
-            <div class="col-md-12">
-
-                <div class="page-container">
-
-                    <div class="header-section">
+    <app-header></app-header>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-container">
+                        <div class="header-section">
                             <div class="col-md-12">
-                                    <button mat-fab color="basic" class="add-student" (click)="openDialog()">  <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                <button mat-fab color="basic" class="add-student" (click)="openDialog()">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button>
                             </div>
-                        <div >
-                            <div class="example-header">
-                              <mat-form-field>
-                                    <span matPrefix>
+                            <div>
+                                <div class="example-header">
+                                    <mat-form-field>
+                                        <span matPrefix>
                                             <i class="fa fa-search" aria-hidden="true"></i> &nbsp;
                                         </span>
-                                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                              </mat-form-field>
+                                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="body-section">
-                        <mat-table #table [dataSource]="dataSource">
-                             <!-- School Id column-->
-                            <ng-container matColumnDef="schoolId">
-                                <mat-header-cell *matHeaderCellDef class="header">SCHOOL ID</mat-header-cell>
-                                <mat-cell *matCellDef="let element"> 
-                                        <a [routerLink]="['/dashboard/school-details', element.schoolName]">{{element.schoolId}}</a>
-                                </mat-cell>
-                            </ng-container>
-
-                             <!-- School Name Column -->
-                            <ng-container matColumnDef="schoolName">
-                                <mat-header-cell *matHeaderCellDef>SCHOOL NAME </mat-header-cell>
-                                <mat-cell *matCellDef="let element">
-                                       {{element.schoolName}} 
+                        <div class="body-section">
+                            <mat-table #table [dataSource]="dataSource">
+                                <!-- School Id column-->
+                                <ng-container matColumnDef="schoolId">
+                                    <mat-header-cell *matHeaderCellDef class="header">SCHOOL ID</mat-header-cell>
+                                    <mat-cell *matCellDef="let school">
+                                        <a [routerLink]="['/dashboard/school-details', school.SchoolUniqueId]">{{school.SchoolUniqueId}}</a>
                                     </mat-cell>
-                            </ng-container>
-  
-                             <!-- City Column -->
-                            <ng-container matColumnDef="city">
-                                <mat-header-cell *matHeaderCellDef>CITY</mat-header-cell>
-                                <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
-                            </ng-container>
+                                </ng-container>
 
-                             <!-- board Column -->
-                            <ng-container matColumnDef="board">
-                                <mat-header-cell *matHeaderCellDef>BOARD</mat-header-cell>
-                                <mat-cell *matCellDef="let element"> {{element.board}} </mat-cell>
-                            </ng-container>
-                            <!-- schoolType Column -->
-                            <ng-container matColumnDef="schoolType">
-                                <mat-header-cell *matHeaderCellDef>SCHOOl TYPE</mat-header-cell>
-                                <mat-cell *matCellDef="let element"> {{element.schoolType}} </mat-cell>
-                            </ng-container> 
+                                <!-- School Name Column -->
+                                <ng-container matColumnDef="schoolName">
+                                    <mat-header-cell *matHeaderCellDef>SCHOOL NAME </mat-header-cell>
+                                    <mat-cell *matCellDef="let school">
+                                        {{school.Name}}
+                                    </mat-cell>
+                                </ng-container>
 
-                            <!-- status Column -->
-                            <ng-container matColumnDef="status">
-                                <mat-header-cell *matHeaderCellDef>STATUS</mat-header-cell>
-                                <mat-cell *matCellDef="let element">
-                                        <div *ngIf="element.status == true">
+                                <!-- City Column -->
+                                <ng-container matColumnDef="city">
+                                    <mat-header-cell *matHeaderCellDef>CITY</mat-header-cell>
+                                    <mat-cell *matCellDef="let school"> {{school.City}} </mat-cell>
+                                </ng-container>
+
+                                <!-- board Column -->
+                                <ng-container matColumnDef="board">
+                                    <mat-header-cell *matHeaderCellDef>BOARD</mat-header-cell>
+                                    <mat-cell *matCellDef="let school"> {{school.BoardTypeId}} </mat-cell>
+                                </ng-container>
+                                <!-- schoolType Column -->
+                                <ng-container matColumnDef="schoolType">
+                                    <mat-header-cell *matHeaderCellDef>SCHOOl TYPE</mat-header-cell>
+                                    <mat-cell *matCellDef="let school"> {{school.SchoolTypeId}} </mat-cell>
+                                </ng-container>
+
+                                <!-- status Column -->
+                                <ng-container matColumnDef="status">
+                                    <mat-header-cell *matHeaderCellDef>STATUS</mat-header-cell>
+                                    <mat-cell *matCellDef="let school">
+                                        <div *ngIf="school.status == true">
                                             Active
                                         </div>
-                                        <div *ngIf="element.status == false">
-                                                In active
-                                            </div>
-                                     </mat-cell>
-                            </ng-container>
+                                        <div *ngIf="school.status == false">
+                                            In active
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
 
-                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                        </mat-table>
-                        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
-                        </mat-paginator>
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                            </mat-table>
+                            <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+                            </mat-paginator>
+                        </div>
                     </div>
                 </div>
-
             </div>
+        </div>
 
-             
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
 
+                        <li>
+                            <a href="http://www.creative-tim.com">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.creative-tim.com/license">
+                                Licenses
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>, made with
+                    <i class="fa fa-heart heart"></i> by
+                    <a href="http://www.creative-tim.com">Creative Tim</a>
+                </div>
+            </div>
+        </footer>
 
     </div>
-</div>
-
-  <footer class="footer">
-      <div class="container-fluid">
-          <nav class="pull-left">
-              <ul>
-
-                  <li>
-                      <a href="http://www.creative-tim.com">
-                          Creative Tim
-                      </a>
-                  </li>
-                  <li>
-                      <a href="http://blog.creative-tim.com">
-                         Blog
-                      </a>
-                  </li>
-                  <li>
-                      <a href="http://www.creative-tim.com/license">
-                          Licenses
-                      </a>
-                  </li>
-              </ul>
-          </nav>
-          <div class="copyright pull-right">
-              &copy; <script>document.write(new Date().getFullYear())</script>, made with 
-              <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-          </div>
-      </div>
-  </footer>
-
-</div>
