@@ -27,6 +27,13 @@
   width: 100%;
 }
 
+.fa-trash
+{
+    color: darkred;
+    font-size: 18px;
+    cursor: pointer;
+}
+
 
 .mat-list .mat-list-item p.mat-line {
   font-size: 11px !important;

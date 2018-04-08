@@ -5,6 +5,7 @@ import { Observable, Subscriber, ReplaySubject } from 'rxjs/Rx';
 import { User } from '../../model/user';
 import { error } from 'protractor';
 import { BaseServiceApi } from '../../school-api/base/base.service';
+import { Context } from '../../../shared/context';
 
 @Injectable()
 export class UserService {
@@ -22,6 +23,7 @@ export class UserService {
         this.baseServiceApi.initilizeBaseApi(result.access_token);
         this.currentUser = result;
         this.isLoginUser = true;
+        Context.setContext(result);
     }
 
     public clearUser(): void {
@@ -34,7 +36,6 @@ export class UserService {
         return new Observable((subscriber: Subscriber<any>) => {
             this.userServiceApi.getToken(user).subscribe((result: User) => {
                 if (!!result) {
-                    debugger;
                     localStorage.setItem('user-access', JSON.stringify(result));
                     this.initilizeCurrentUser(result);
                     subscriber.next(true);

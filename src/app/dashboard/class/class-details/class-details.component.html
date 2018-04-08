@@ -33,18 +33,18 @@
 
                     <div class="page-container">
                         <div class="body-section">
-                                <mat-tab-group>
-                                    <mat-tab label="Student">
-                                      <app-student-list></app-student-list>
-                                    </mat-tab>
-                                    <mat-tab label="Parent">
-                                      <app-parent-list></app-parent-list>
-                                    </mat-tab>
-                                    <mat-tab label="Activities">
-                                        <app-student-activity></app-student-activity>
-                                    </mat-tab>
-                                </mat-tab-group>
-                            </div>
+                            <mat-tab-group>
+                                <mat-tab label="Student">
+                                    <app-student-list [classId]="classId"></app-student-list>
+                                </mat-tab>
+                                <mat-tab label="Parent">
+                                    <app-parent-list [classId]="classId"></app-parent-list>
+                                </mat-tab>
+                                <mat-tab label="Activities">
+                                    <app-student-activity></app-student-activity>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,5 +52,5 @@
     </div>
 
 
-   
+
 </div>

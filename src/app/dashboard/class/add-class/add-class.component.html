@@ -1,19 +1,23 @@
-<form class="add-parent-container">
+<form class="add-parent-container" novalidate (ngSubmit)="save()" #classForm="ngForm">
 
-    
-      
-            
-                  <mat-form-field>
-                      <span matPrefix>
-                          <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                      <input matInput placeholder="Name of class">
-                  </mat-form-field>
-              
-          <div class="align-center">
-              <button mat-raised-button color="basic">Save</button>
-              <button mat-raised-button color="basic">Cancel</button>
-          </div>
-    
-  
+
+
+
+    <mat-form-field>
+        <span matPrefix>
+            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+        <input matInput name="name" [(ngModel)]="classModel.className" placeholder="Name of class" required>
+    </mat-form-field>
+
+    <div class="align-center">
+        <button type="submit" mat-raised-button color="basic" [disabled]="!classForm.form.valid">
+            Save
+        </button>
+        <button type="reset" (click)="reset()" mat-raised-button color="basic">
+            Reset
+        </button>
+    </div>
+
+
 
 </form>

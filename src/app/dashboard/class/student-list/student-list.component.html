@@ -1,64 +1,63 @@
 <div class="student-list-container">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <a href="javascript:void(0)"  class="add-student-btn" mat-fab color="basic" (click)="openDialog()" ><i class="fa fa-plus" aria-hidden="true"></i></a>
-      <div class="row">
-        <div class="col-md-12">
-          <mat-form-field>
-              <span matPrefix>
-                  <i class="fa fa-search" aria-hidden="true"></i> &nbsp;</span>
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-          </mat-form-field>
-      </div>
-      <div class="col-md-12">
-      <mat-table #table [dataSource]="dataSource">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <a href="javascript:void(0)" class="add-student-btn" mat-fab color="basic" (click)="openDialog()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-search" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <!-- <mat-icon (click)="removeStudents()">home</mat-icon> -->
+                    <i class="fa fa-trash" *ngIf="isRemoveButtonVisible" (click)="removeStudents()"></i>
+                    <!-- <button mat-raised-button color="basic" (click)="removeStudents()">Delete</button> -->
+                    <mat-table #table [dataSource]="dataSource">
 
 
-        <!-- Checkbox Column -->
-    <ng-container matColumnDef="select">
-            <mat-header-cell *matHeaderCellDef>
-              <!-- <mat-checkbox (change)="$event ? masterToggle() : null"
+                        <!-- Checkbox Column -->
+                        <ng-container matColumnDef="select">
+                            <mat-header-cell *matHeaderCellDef>
+                                <!-- <mat-checkbox (change)="$event ? masterToggle() : null"
                             [checked]="selection.hasValue() && isAllSelected()"
                             [indeterminate]="selection.hasValue() && !isAllSelected()">
               </mat-checkbox> -->
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? selection.toggle(row) : null"
-                            [checked]="selection.isSelected(row)">
-              </mat-checkbox>
-            </mat-cell>
-          </ng-container>
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <mat-checkbox [(ngModel)]="element.isSelected" (ngModelChange)="onSelect()">
+                                </mat-checkbox>
+                            </mat-cell>
+                        </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-            <mat-cell *matCellDef="let element">
-                <mat-list>
-                    <mat-list-item>
-                        <!-- <mat-checkbox class="order-1"></mat-checkbox> -->
-                     <!-- <input type="checkbox" >  -->
-                        <img matListAvatar src="assets/img/new_logo.png" alt="..." > 
-                        <h3 matLine>
-                            <a >{{element.name}}</a>
-                        </h3>
-                        <p matLine>
-                            <span> Class - </span>
-                            <span class="demo-2"> {{element.class}} </span>
-                        </p>
-                    </mat-list-item>
-                </mat-list>
-            </mat-cell>
-        </ng-container>
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-    </mat-paginator>
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <mat-list>
+                                    <mat-list-item>
+                                        <!-- <mat-checkbox class="order-1"></mat-checkbox> -->
+                                        <!-- <input type="checkbox" >  -->
+                                        <img matListAvatar src="assets/img/new_logo.png" alt="...">
+                                        <h3 matLine>
+                                            <a>{{element.Name}}</a>
+                                        </h3>
+                                    </mat-list-item>
+                                </mat-list>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+                    </mat-paginator>
 
-  </div>
+                </div>
 
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
 </div>

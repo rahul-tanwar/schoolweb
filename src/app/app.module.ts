@@ -32,13 +32,17 @@ import * as Service from './shared/service';
         HttpClientModule
     ],
     providers: [
-        Service.AuthGuardService,
         ServiceAPI.BaseServiceApi,
         ServiceAPI.SchoolServiceApi,
         ServiceAPI.ClassServiceApi,
         ServiceAPI.UserServiceApi,
+        ServiceAPI.StudentApiService,
+        ServiceAPI.ClassServiceApi,
+        Service.AuthGuardService,
         Service.SchoolService,
-        Service.UserService
+        Service.UserService,
+        Service.ClassService,
+        Service.StudentService
     ],
     bootstrap: [AppComponent]
 })
