@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SpinnerService } from '../shared/service/spinner/spinner.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -8,10 +7,10 @@ import { SpinnerService } from '../shared/service/spinner/spinner.service';
 })
 export class DashboardComponent implements OnInit {
 
-    constructor(private spinnerService: SpinnerService) { }
+    constructor() { }
 
     ngOnInit() {
-        this.spinnerService.hide();
+
     }
 
 }
