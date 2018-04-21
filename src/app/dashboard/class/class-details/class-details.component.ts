@@ -16,7 +16,7 @@ export class ClassDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.classId = params['id'];
+            this.classId = +params['id'];
         });
 
     }

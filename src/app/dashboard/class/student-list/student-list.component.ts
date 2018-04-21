@@ -25,6 +25,7 @@ export class StudentListComponent implements OnInit {
     dataSource: MatTableDataSource<Student>;
     selection = new SelectionModel<Student>(true, []);
     studentList: Array<Student>;
+
     isRemoveButtonVisible = false;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 

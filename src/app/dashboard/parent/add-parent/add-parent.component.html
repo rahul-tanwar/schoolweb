@@ -1,34 +1,34 @@
-<form class="add-parent-container">
-            
-                  
-                        <mat-form-field>
-                            <span matPrefix>
-                                <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                            <input matInput placeholder="First Name">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <span matPrefix>
-                                <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                            <input matInput placeholder="Last Name">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <span matPrefix>
-                                <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                            <input matInput placeholder="Email">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <span matPrefix>
-                                <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-                            <input matInput placeholder="Mobile No.">
-                        </mat-form-field>
-                        <mat-form-field>
-                                <span matPrefix>
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-                                <input matInput placeholder="Phone No.">
-                            </mat-form-field>
-                <div class="align-center">
-                    <button class="" mat-raised-button color="basic">Save</button>
-                    <button class="" mat-raised-button color="basic">Reset</button>
-                </div>
-   
-    </form>
+<form class="add-parent-container" novalidate #addparentform="ngForm" (ngSubmit)="save()">
+
+
+    <mat-form-field>
+        <span matPrefix>
+            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+        <input matInput placeholder="First Name" name="FirstName" [(ngModel)]="parent.FirstName" required>
+    </mat-form-field>
+    <mat-form-field>
+        <span matPrefix>
+            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+        <input matInput placeholder="Last Name" name="LastName" [(ngModel)]="parent.LastName" required>
+    </mat-form-field>
+    <mat-form-field>
+        <span matPrefix>
+            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+        <input matInput placeholder="Email" name="Email" [(ngModel)]="parent.Email" required>
+    </mat-form-field>
+    <mat-form-field>
+        <span matPrefix>
+            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+        <input matInput placeholder="Mobile No." name="MobileNumber" [(ngModel)]="parent.MobileNumber" required>
+    </mat-form-field>
+    <mat-form-field>
+        <span matPrefix>
+            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+        <input matInput placeholder="Phone No." name="ContactNumber" [(ngModel)]="parent.ContactNumber">
+    </mat-form-field>
+    <div class="align-center">
+        <button type="submit" mat-raised-button color="basic" [disabled]="!addparentform.form.valid">Save</button>
+        <button mat-raised-button [disabled]="true" color="basic">Reset</button>
+    </div>
+
+</form>

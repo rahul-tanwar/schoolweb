@@ -42,7 +42,8 @@ import * as Service from './shared/service';
         Service.SchoolService,
         Service.UserService,
         Service.ClassService,
-        Service.StudentService
+        Service.StudentService,
+        Service.SpinnerService
     ],
     bootstrap: [AppComponent]
 })

@@ -4,3 +4,4 @@ export { UserService } from '../service/user/user.service';
 export { AuthGuardService } from '../service/authguard/auth.guard.service';
 export { ClassService } from '../service/class/class.service';
 export { StudentService } from '../service/student/student.service';
+export { SpinnerService } from '../service/spinner/spinner.service';

@@ -10,11 +10,11 @@
                     <div class="page-container">
 
                         <div class="header-section">
-                          <div class="col-md-7">
+                            <div class="col-md-7">
                                 <mat-form-field>
                                     <span matPrefix>
                                         <i class="fa fa-search" aria-hidden="true"></i> &nbsp;</span>
-                                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                                    <input matInput [(ngModel)]="filter" placeholder="Filter">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-5">
@@ -32,58 +32,7 @@
 
                         </div>
                         <div class="body-section">
-                            <mat-table #table [dataSource]="dataSource">
-                                <!-- Name Column -->
-                                <ng-container matColumnDef="STUDENT">
-                                    <mat-header-cell *matHeaderCellDef>STUDENT </mat-header-cell>
-                                    <mat-cell *matCellDef="let element">
-                                        <mat-list>
-                                            <mat-list-item>
-                                                <img matListAvatar src="assets/img/child.jpg" alt="...">
-                                                <h3 matLine>
-                                                    <a [routerLink]="['/dashboard/student-details', element.name]">{{element.name}}</a>
-                                                </h3>
-                                            </mat-list-item>
-                                        </mat-list>
-                                    </mat-cell>
-                                </ng-container>
-
-                                <ng-container matColumnDef="PARENTS">
-                                    <mat-header-cell *matHeaderCellDef>PARENTS</mat-header-cell>
-                                    <mat-cell *matCellDef="let element">
-                                    <mat-list *ngIf="element.parents !== undefined" class="parent-list">
-                                        <mat-list-item>
-                                            <img matListAvatar src="assets/img/parent.jpg" alt="...">
-                                            <h3 matLine>
-                                                <a class="cursor-pointer" (click)="openDialog()">{{element.parents[0].name}}</a>
-                                            </h3>
-                                        </mat-list-item>
-                                        <mat-list-item>
-                                            <img matListAvatar src="assets/img/mother.jpg" alt="...">
-                                            <h3 matLine>
-                                                <a class="cursor-pointer" (click)="openDialog()">{{element.parents[1].name}}</a>
-                                            </h3>
-                                        </mat-list-item>
-                                    </mat-list>
-                                    <button *ngIf="element.parents === undefined" mat-raised-button color="warn" class="invite-button"><i class="fa fa-user-plus"></i>Invite Parent</button>
-                                </mat-cell>                 
-                                </ng-container>
-
-                                <ng-container matColumnDef="SIGN UP">
-                                    <mat-header-cell *matHeaderCellDef>SIGN UP</mat-header-cell>
-                                    <mat-cell *matCellDef="let element"><button *ngIf="element.parents !== undefined" mat-button color="warn" class="remind-button"><i class="fa fa-bell"></i>Remind</button></mat-cell>
-                                </ng-container>
-
-                                <ng-container matColumnDef="CHECK-IN CODE">
-                                    <mat-header-cell *matHeaderCellDef>CHECK-IN CODE</mat-header-cell>
-                                    <mat-cell *matCellDef="let element"><button *ngIf="element.parents !== undefined" mat-button color="warn"><i class="fa fa-eye"></i>Reveal</button></mat-cell>
-                                </ng-container>
-
-                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                            </mat-table>
-                            <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-                            </mat-paginator>
+                            <app-parent-list [type]="listType.All" [filter]="filter"></app-parent-list>
                         </div>
                     </div>
 
@@ -100,7 +49,7 @@
         <div class="container-fluid">
             <nav class="pull-left">
                 <ul>
-  
+
                     <li>
                         <a href="#">
                             Udaipur
@@ -108,7 +57,7 @@
                     </li>
                     <li>
                         <a href="#">
-                           Blog
+                            Blog
                         </a>
                     </li>
                     <li>
@@ -119,7 +68,10 @@
                 </ul>
             </nav>
             <div class="copyright pull-right">
-                &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="#">Udaipur Team</a>
+                &copy;
+                <script>document.write(new Date().getFullYear())</script>, made with
+                <i class="fa fa-heart heart"></i> by
+                <a href="#">Udaipur Team</a>
             </div>
         </div>
     </footer>

@@ -3,7 +3,7 @@ import * as moment from 'moment';
 export class Class {
     ClassId: number;
     SchoolInfoId: number;
-    className: string;
+    ClassName: string;
     IsActive: boolean;
     UpdateDate: moment.Moment;
     UpdatedEmail: string;

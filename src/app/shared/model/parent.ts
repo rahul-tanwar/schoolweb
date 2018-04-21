@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+import { Student } from './student';
 
 export class Parent {
     StudentParentId: number;
@@ -13,4 +14,15 @@ export class Parent {
     IsAppSignUp: true;
     UpdateDate: moment.Moment;
     UpdatedEmail: string;
+}
+
+export class StudentParents {
+    StudentProfile: Student;
+    ParentProfile: Array<Parent>;
+}
+
+export enum ListType {
+    All,
+    Class,
+    Student
 }

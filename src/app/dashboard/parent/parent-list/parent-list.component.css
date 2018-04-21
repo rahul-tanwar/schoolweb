@@ -28,5 +28,13 @@ panel-body {
   mat-table{
     max-height: 550px;
 }
+.more-parent{
+    float: left;
+    margin-left: 26px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: #fba32a;
+    cursor: pointer;
+}
 
   

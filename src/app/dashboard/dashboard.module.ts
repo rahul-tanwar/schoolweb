@@ -15,10 +15,10 @@ import { DashboardMainComponent } from './dashboard-main/dashboard-main.componen
 import { DashboardRoutingModule } from './dashboard-routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentDetailsComponent } from './student/student-details/student-details.component';
-import { ParentDetailsComponent } from './parent/parent-details/parent-details.component';
+import { ParentDetailsComponent } from './student/parent-details/parent-details.component';
 import { AddParentComponent } from './parent/add-parent/add-parent.component';
 import { StudentActivityComponent } from './student/student-activity/student-activity.component';
-
+import { SpinnerComponent } from './../shared/component/spinner/spinner.component';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -70,10 +70,12 @@ import { DocumentStaffComponent } from './staff/document-staff/document-staff.co
 import { AddDocumentComponent } from './staff/document-staff/add-document/add-document.component';
 import { StudentListComponent } from './class/student-list/student-list.component';
 import { AddStudentClassComponent } from './class/add-student-class/add-student-class.component';
-import { ParentListComponent } from './class/parent-list/parent-list.component';
+import { ParentListComponent } from './parent/parent-list/parent-list.component';
 import { HeaderComponent } from './header/header.component';
 import { ExperienceCertificateInfoComponent } from './staff/experience-certificate-info/experience-certificate-info.component';
 import { AddSchoolComponent } from './school/add-school/add-school.component';
+import { AddStudentComponent } from './student/add-student/add-student.component';
+import { ClassParentsComponent } from './class/class-parents/class-parents.component';
 /**
  * NgModule that includes all Material modules that are required to serve
  * the Plunker.
@@ -122,6 +124,7 @@ export class MaterialModule { }
     declarations: [
         DashboardComponent,
         SidebarNavComponent,
+        SpinnerComponent,
         SchoolComponent,
         StudentComponent,
         ClassComponent,
@@ -155,7 +158,10 @@ export class MaterialModule { }
         HeaderComponent,
         ExperienceCertificateInfoComponent,
         AddSchoolComponent,
-        ClassStudentsComponent
+        ClassStudentsComponent,
+        AddStudentComponent,
+        ClassParentsComponent
+
     ],
     entryComponents: [
         AddParentComponent,
@@ -165,7 +171,8 @@ export class MaterialModule { }
         AddDocumentComponent,
         StudentListComponent,
         AddStudentClassComponent,
-        AddSchoolComponent
+        AddSchoolComponent,
+        AddStudentComponent
     ],
     imports: [
         BrowserModule,

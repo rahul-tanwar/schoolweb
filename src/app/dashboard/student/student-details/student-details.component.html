@@ -35,16 +35,16 @@
                         <div class="body-section">
                             <mat-tab-group>
                                 <mat-tab label="Profile">
-                                    <app-student-profile></app-student-profile>
+                                    <app-student-profile [studentId]="studentId"></app-student-profile>
                                 </mat-tab>
                                 <mat-tab label="Parent">
-                                    <app-parent-details></app-parent-details>
+                                    <app-parent-details [studentId]="studentId"></app-parent-details>
                                 </mat-tab>
                                 <mat-tab label="Generate App Code">
-                                    <app-generate-student-app-code></app-generate-student-app-code>
+                                    <app-generate-student-app-code [studentId]="studentId"></app-generate-student-app-code>
                                 </mat-tab>
                                 <mat-tab label="Activities">
-                                    <app-student-activity></app-student-activity>
+                                    <app-student-activity [studentId]="studentId"></app-student-activity>
                                 </mat-tab>
                             </mat-tab-group>
                         </div>

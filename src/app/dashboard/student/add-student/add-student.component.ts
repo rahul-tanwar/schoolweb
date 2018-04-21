@@ -1,28 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { StudentService } from '../../../shared/service/student/student.service';
 import { Student } from '../../../shared/model/student';
 import { Class } from '../../../shared/model/class';
 import { ClassService } from '../../../shared/service/class/class.service';
 
 @Component({
-    selector: 'app-student-profile',
-    templateUrl: './student-profile.component.html',
-    styleUrls: ['./student-profile.component.css']
+    selector: 'app-add-student',
+    templateUrl: './add-student.component.html',
+    styleUrls: ['./add-student.component.css']
 })
-export class StudentProfileComponent implements OnInit {
+export class AddStudentComponent implements OnInit {
 
-    @Input() studentId: number;
     public student = new Student();
     public classList: Array<Class>;
 
-    constructor(public studentService: StudentService,
-        public classService: ClassService,
+    constructor(public dialogRef: MatDialogRef<AddStudentComponent>,
+        private studentService: StudentService,
+        private classService: ClassService
     ) { }
 
     ngOnInit() {
-        this.getStudent();
         this.subscribeClassData();
-        this.classService.getAllClasses();
     }
 
     private subscribeClassData(): void {
@@ -31,22 +30,16 @@ export class StudentProfileComponent implements OnInit {
         });
     }
 
-    getStudent(): void {
-        this.studentService.getStudentById(this.studentId).subscribe((result) => {
-            this.student = result;
-        });
-    }
-
     public save(): void {
         this.studentService.saveStudent(this.student).subscribe((result) => {
             this.studentService.getStudentsBySchoolId();
-            alert('successfully saved');
+            this.dialogRef.close('successfully');
+            alert('successfully save');
         });
     }
 
     public reset(): void {
         this.student = new Student();
     }
-
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 
@@ -9,7 +9,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 })
 export class StudentActivityComponent implements OnInit, AfterViewInit {
 
-
+    @Input() studentId: number;
 
     public displayedColumns = ['name'];
     public dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);

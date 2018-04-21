@@ -17,12 +17,8 @@ export class Student {
     isSelected = false;
 }
 
-export class StudentPatent {
-    student: Student;
-    parents: Parent[];
-}
-
 export class StudentAppCode {
+    StudentUniqueId: string;
     StudentId: number;
     AppCode: string;
 }

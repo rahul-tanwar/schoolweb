@@ -9,7 +9,7 @@
                     <mat-list-item>
                         <img matListAvatar src="assets/img/new_logo.png" alt="...">
                         <h3 matLine>
-                            <a class="cursor-pointer" (click)="openDialog()">{{element.fname}} {{element.lname}}</a>
+                            <a class="cursor-pointer" (click)="openDialog(element.StudentParentId)">{{element.FirstName }} {{element.LastName}}</a>
                         </h3>
                     </mat-list-item>
                 </mat-list>
@@ -18,13 +18,13 @@
 
         <ng-container matColumnDef="email">
             <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="mobile">
             <mat-header-cell *matHeaderCellDef> Mobile No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.mobile}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.MobileNumber}} </mat-cell>
         </ng-container>
 
 
@@ -32,7 +32,10 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="sign-up">
             <mat-header-cell *matHeaderCellDef> Sign Up </mat-header-cell>
-            <mat-cell *matCellDef="let element"><button mat-raised-button color="warn" class="remind-button"><i class="fa fa-bell"></i>Remind</button></mat-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-raised-button color="warn" class="remind-button">
+                    <i class="fa fa-bell"></i>Remind</button>
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

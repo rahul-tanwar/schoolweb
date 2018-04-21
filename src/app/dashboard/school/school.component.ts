@@ -45,8 +45,6 @@ export class SchoolComponent implements OnInit {
             //  this.changeDetectorRef.detectChanges();
             this.changeDetectorRef.markForCheck();
         });
-
-
     }
 
     public applyFilter(filterValue: string) {

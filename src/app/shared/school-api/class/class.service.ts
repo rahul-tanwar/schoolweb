@@ -32,7 +32,6 @@ export class ClassServiceApi extends BaseServiceApi {
 
 
     public updateStudentClass(studentClassModel: jsObject) {
-        debugger;
         return this.httpClient.post(this.baseUrl + 'class/updatestudentclass', studentClassModel, this.httpOptions)
             .pipe(catchError(this.handleError));
     }

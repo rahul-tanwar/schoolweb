@@ -89,5 +89,9 @@ export class ClassService {
             });
         });
     }
+
+    public getAllParentsByClassId(classId: number) {
+
+    }
 }
 

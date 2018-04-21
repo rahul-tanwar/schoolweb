@@ -42,9 +42,8 @@ export class StudentApiService extends BaseServiceApi {
     }
 
 
-
     public getStudentByid(studentId: string): Observable<jsObject> {
-
+        debugger;
         this.httpParams = new HttpParams()
             .set('studentId', studentId);
         return this.httpClient.get<jsObject>(this.baseUrl + 'student/getstudentbyid', {
