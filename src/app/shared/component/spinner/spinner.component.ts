@@ -8,17 +8,17 @@ import { ISpinnerState, SpinnerService } from '../../service/spinner/spinner.ser
   .overlay{
     position:fixed; width: 100%; height: 100%;background:rgba(0,0,0,0.1); top:0; left:0; z-index: 2;
   }
-  .fa-spinner {
+  .spinner-position {
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 2;
-    font-size: 40px;
+    margin-top: -50px;
+    margin-left: -50px;
   }
 
   `],
     template: `<div *ngIf="visible" class="overlay">
-  <i class="fa fa-spinner fa-spin"></i>
+    <mat-spinner class="spinner-position"></mat-spinner>
   </div>`
 })
 
