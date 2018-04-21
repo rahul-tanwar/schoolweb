@@ -3,17 +3,15 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    <mat-form-field>
+                    <mat-form-field class="width-100per">
                         <span matPrefix>
                             <i class="fa fa-search" aria-hidden="true"></i> &nbsp;</span>
                         <input matInput [(ngModel)]="filter" placeholder="Filter">
                     </mat-form-field>
                 </div>
                 <div class="col-md-12">
-
                     <app-parent-list [type]="listType.Class" [filter]="filter" [id]="classId"></app-parent-list>
                 </div>
-
             </div>
         </div>
     </div>

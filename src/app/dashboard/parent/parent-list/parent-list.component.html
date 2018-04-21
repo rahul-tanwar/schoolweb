@@ -6,7 +6,7 @@
             <mat-list>
                 <mat-list-item>
                     <img matListAvatar src="assets/img/child.jpg" alt="...">
-                    <h3 matLine>
+                    <h3 matLine class="align-left">
                         <a [routerLink]="['/dashboard/student-details', element.StudentProfile.StudentId]">{{element.StudentProfile.Name}}</a>
                     </h3>
                 </mat-list-item>
@@ -20,7 +20,7 @@
             <mat-list *ngIf="element.ParentProfile.length > 0" class="parent-list">
                 <mat-list-item *ngFor="let parent of element.ParentProfile">
                     <img matListAvatar src="assets/img/parent.jpg" alt="...">
-                    <h3 matLine>
+                    <h3 matLine class="align-left">
                         <a class="cursor-pointer" (click)="openParentDialog(element.StudentProfile.StudentId,parent)">{{ parent.FirstName + ' ' + parent.LastName }}</a>
                     </h3>
                 </mat-list-item>

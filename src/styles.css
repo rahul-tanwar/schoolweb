@@ -34,6 +34,14 @@
     max-height: 500px;
   }
 
+  .student-list-container .mat-table {
+overflow: visible;
+  } 
+
+  .student-list-container  .mat-cell, .mat-header-cell{
+      overflow: visible;
+  }
+
   .mat-row{
     padding: 0px !important;
   }
@@ -66,6 +74,9 @@ width: 18px !important;
 .mat-progress-spinner circle, .mat-spinner circle{
     stroke: rgba(41, 184, 187, 1) !important;
 }
+.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+    background-color: #29b8bb !important;
+}
 
 
 /*  School info line component css overwrite   */
@@ -92,12 +103,17 @@ width: 18px !important;
  .align-center{
      text-align: center;
  }
+ .align-right{
+    text-align: right;
+  }
+  .align-left{
+    text-align: left;
+  }
+
  .cursor-pointer{
    cursor: pointer;
  }
- .align-right{
-  text-align: right;
-}
+
 .display-inline {
   display: inline-flex;
 }
@@ -108,6 +124,19 @@ width: 18px !important;
   order: 2 !important;
 }
 
+
+-webkit-scrollbar {
+    width: 5px;
+}
+ 
+-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+-webkit-scrollbar-thumb {
+  background-color: #29b8bb;
+  outline: 1px solid slategrey;
+}
 
 
 

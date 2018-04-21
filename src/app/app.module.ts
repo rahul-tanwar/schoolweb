@@ -43,7 +43,8 @@ import * as Service from './shared/service';
         Service.UserService,
         Service.ClassService,
         Service.StudentService,
-        Service.SpinnerService
+        Service.SpinnerService,
+        Service.NotificationService
     ],
     bootstrap: [AppComponent]
 })
