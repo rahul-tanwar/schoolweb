@@ -2,17 +2,17 @@ import { Component, ChangeDetectorRef, Injector, ReflectiveInjector } from '@ang
 import * as Services from '../../shared/service/index';
 
 interface IService {
-    spinnerService: any;
-    classService: any;
-    notificationService: any;
-    studentService: any;
+    spinnerService: Services.SpinnerService;
+    classService: Services.ClassService;
+    notificationService: Services.NotificationService;
+    studentService: Services.StudentService;
     staffService?: any;
 }
 
 export class BaseComponent {
 
     protected services: IService;
-    protected detectChange: ChangeDetectorRef;
+    protected changeDetector: ChangeDetectorRef;
 
     constructor(injector: Injector) {
 
@@ -22,12 +22,12 @@ export class BaseComponent {
             notificationService: injector.get(Services.NotificationService),
             studentService: injector.get(Services.StudentService)
         };
-        this.detectChange = injector.get(ChangeDetectorRef);
+        this.changeDetector = injector.get(ChangeDetectorRef);
     }
 
     protected detectChanges() {
-        this.detectChange.markForCheck();
-        this.detectChange.detectChanges();
+        this.changeDetector.markForCheck();
+        this.changeDetector.detectChanges();
     }
 
 }

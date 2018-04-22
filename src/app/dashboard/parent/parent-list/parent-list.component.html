@@ -7,7 +7,7 @@
                 <mat-list-item>
                     <img matListAvatar src="assets/img/child.jpg" alt="...">
                     <h3 matLine class="align-left">
-                        <a [routerLink]="['/dashboard/student-details', element.StudentProfile.StudentId]">{{element.StudentProfile.Name}}</a>
+                        <a [routerLink]="['/dashboard/student-details', element.StudentId]">{{element.Name}}</a>
                     </h3>
                 </mat-list-item>
             </mat-list>
@@ -21,13 +21,13 @@
                 <mat-list-item *ngFor="let parent of element.ParentProfile">
                     <img matListAvatar src="assets/img/parent.jpg" alt="...">
                     <h3 matLine class="align-left">
-                        <a class="cursor-pointer" (click)="openParentDialog(element.StudentProfile.StudentId,parent)">{{ parent.FirstName + ' ' + parent.LastName }}</a>
+                        <a class="cursor-pointer" (click)="openParentDialog(element.StudentId,parent)">{{ parent.FirstName + ' ' + parent.LastName }}</a>
                     </h3>
                 </mat-list-item>
             </mat-list>
-            <i class="fa fa-user-plus more-parent" *ngIf="element.ParentProfile.length == 1" (click)="openParentDialog(element.StudentProfile.StudentId)"></i>
-            <button *ngIf="element.ParentProfile.length == 0" (click)="openParentDialog(element.StudentProfile.StudentId)" mat-raised-button
-                color="warn" class="invite-button">
+            <i class="fa fa-user-plus more-parent" *ngIf="element.ParentProfile.length == 1" (click)="openParentDialog(element.StudentId)"></i>
+            <button *ngIf="element.ParentProfile.length == 0" (click)="openParentDialog(element.StudentId)" mat-raised-button color="warn"
+                class="invite-button">
                 <i class="fa fa-user-plus"></i>Invite Parent</button>
         </mat-cell>
     </ng-container>

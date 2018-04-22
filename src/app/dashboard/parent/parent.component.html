@@ -14,16 +14,17 @@
                                 <mat-form-field>
                                     <span matPrefix>
                                         <i class="fa fa-search" aria-hidden="true"></i> &nbsp;</span>
-                                    <input matInput [(ngModel)]="filter" placeholder="Filter">
+                                    <input matInput [(ngModel)]="filter.serachKeyword" (ngModelChange)="filterData(false)" placeholder="Filter">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-5">
-                                <button class="float-right" mat-raised-button color="basic">Filter</button>
+                                <button class="float-right" mat-raised-button color="basic" (click)="filterData(true)">Filter</button>
                                 <div class="select-box float-right">
                                     <mat-form-field class="class-select">
-                                        <mat-select placeholder="Class">
-                                            <mat-option *ngFor="let food of foods" [value]="food.value">
-                                                {{ food.viewValue }}
+                                        <mat-select placeholder="Class" [(ngModel)]="filter.classId">
+                                            <mat-option> All </mat-option>
+                                            <mat-option *ngFor="let class of classList" [value]="class.ClassId">
+                                                {{ class.ClassName }}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -32,7 +33,7 @@
 
                         </div>
                         <div class="body-section">
-                            <app-parent-list [type]="listType.All" [filter]="filter"></app-parent-list>
+                            <app-parent-list [type]="listType.All" (filterEvent)="filterData2($event)"></app-parent-list>
                         </div>
                     </div>
 

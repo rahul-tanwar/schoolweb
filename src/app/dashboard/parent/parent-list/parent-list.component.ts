@@ -1,48 +1,48 @@
-import { OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { OnInit, Input, Output, EventEmitter, Injector } from '@angular/core';
 import { Component, ViewChild } from '@angular/core';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatPaginator, MatTableDataSource } from '@angular/material';
 import { AddParentComponent } from '../add-parent/add-parent.component';
 import { StudentService } from '../../../shared/service/student/student.service';
-import { StudentParents, Parent, ListType } from '../../../shared/model/parent';
+import { Parent, ListType } from '../../../shared/model/parent';
+import { Filter } from '../../../shared/model/filter';
+import { Student } from '../../../shared/model/student';
 import { SpinnerService } from '../../../shared/service/spinner/spinner.service';
+import { BaseComponent } from '../../base/base.component';
+
+
 
 @Component({
     selector: 'app-parent-list',
     templateUrl: './parent-list.component.html',
     styleUrls: ['./parent-list.component.css']
 })
-export class ParentListComponent implements OnInit {
+export class ParentListComponent extends BaseComponent implements OnInit {
 
     displayedColumns = ['STUDENT', 'PARENTS', 'SIGN UP', 'CHECK-IN CODE'];
-    dataSource: MatTableDataSource<StudentParents>;
-    studentParents: Array<StudentParents> = [];
+    dataSource: MatTableDataSource<Student>;
+    studentParents: Array<Student> = [];
+
 
     @Input() id = 0;
     @Input() type: ListType;
-    @Input() set filter(filterValue: string) {
 
-        // filterValue = filterValue.trim(); // Remove whitespace
-        // filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-        // this.dataSource.filter = filterValue;
-    }
 
 
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(public dialog: MatDialog,
-        private studentService: StudentService,
-        private changeDetectorRef: ChangeDetectorRef,
-        private spinnerService: SpinnerService) { }
+    constructor(public dialog: MatDialog, public injector: Injector) {
+        super(injector);
+    }
 
     ngOnInit() {
-        this.spinnerService.show();
         this.loadParents();
+        this.subscribeFilter();
     }
 
     private loadParents() {
-        debugger;
+        this.services.spinnerService.show();
         switch (this.type) {
             case ListType.All:
                 this.loadAllParents();
@@ -61,11 +61,11 @@ export class ParentListComponent implements OnInit {
 
     private loadAllParents() {
         this.subscribeAllPatentsData();
-        this.studentService.getAllParents();
+        this.services.studentService.getAllParents();
     }
     private loadClassParents() {
         this.subscribeClassPatentsData();
-        this.studentService.getParentsByClassId(this.id);
+        this.services.studentService.getParentsByClassId(this.id);
     }
 
     private loadstudentParents() {
@@ -76,26 +76,48 @@ export class ParentListComponent implements OnInit {
 
     private subscribeAllPatentsData(): void {
 
-        this.studentService.getAllParentsData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<StudentParents>(result.reverse());
+        this.services.studentService.getAllParentsData.subscribe((result) => {
+            this.dataSource = new MatTableDataSource<Student>(result);
             this.dataSource.paginator = this.paginator;
-            this.studentParents = result.reverse();
-            this.spinnerService.hide();
-            //  this.changeDetectorRef.detectChanges();
-            // this.changeDetectorRef.markForCheck();
+            this.studentParents = result;
+            this.services.spinnerService.hide();
+        });
+    }
+
+    public subscribeFilter() {
+        this.services.studentService.getfilterParents.subscribe((filter: Filter) => {
+            if (!!filter) {
+                debugger;
+                if (!!filter.classId && filter.classId > 0) {
+                    this.dataSource.data = this.studentParents.filter((item) => item.ClassId === filter.classId);
+                    if (!!filter.serachKeyword) {
+                        filter.serachKeyword = filter.serachKeyword.trim().toLowerCase();
+                        this.dataSource.filter = filter.serachKeyword;
+                    } else {
+                        this.dataSource.filter = '';
+                    }
+                } else {
+                    this.dataSource.data = this.studentParents;
+                    if (!!filter.serachKeyword) {
+                        filter.serachKeyword = filter.serachKeyword.trim().toLowerCase(); // Remove whitespace
+                        this.dataSource.filter = filter.serachKeyword;
+                    } else {
+                        this.dataSource.filter = '';
+                    }
+                }
+                this.services.spinnerService.hide();
+            }
         });
     }
 
 
     private subscribeClassPatentsData(): void {
 
-        this.studentService.getClassParentsData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<StudentParents>(result.reverse());
+        this.services.studentService.getClassParentsData.subscribe((result) => {
+            this.dataSource = new MatTableDataSource<Student>(result);
             this.dataSource.paginator = this.paginator;
-            this.studentParents = result.reverse();
-            this.spinnerService.hide();
-            //  this.changeDetectorRef.detectChanges();
-            this.changeDetectorRef.markForCheck();
+            this.studentParents = result;
+            this.services.spinnerService.hide();
         });
     }
 
@@ -113,7 +135,6 @@ export class ParentListComponent implements OnInit {
             if (!!result) {
                 this.loadParents();
             }
-            console.log('The dialog was closed');
         });
     }
 
@@ -122,5 +143,6 @@ export class ParentListComponent implements OnInit {
         filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
         this.dataSource.filter = filterValue;
     }
+
 
 }

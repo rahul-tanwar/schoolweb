@@ -15,6 +15,7 @@ export class Student {
     AppCode: string;
     ClassName: string;
     isSelected = false;
+    ParentProfile: Array<Parent>;
 }
 
 export class StudentAppCode {

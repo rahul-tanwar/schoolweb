@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscriber, ReplaySubject } from 'rxjs/Rx';
 import { Student, StudentAppCode } from '../../model/student';
-import { Parent, StudentParents } from '../../model/parent';
+import { Parent } from '../../model/parent';
+import { Filter } from '../../model/filter';
 import { StudentApiService } from '../../school-api/student/student-api.service';
 import { Context } from '../../../shared/context';
 
@@ -16,16 +17,25 @@ export class StudentService {
 
     get parentData(): Observable<Array<Parent>> { return this._parentData.asObservable(); }
 
-    private _allParentsData: ReplaySubject<Array<StudentParents>> = new ReplaySubject(1);
+    private _allParentsData: ReplaySubject<Array<Student>> = new ReplaySubject(1);
 
-    get getAllParentsData(): Observable<Array<StudentParents>> { return this._allParentsData.asObservable(); }
+    get getAllParentsData(): Observable<Array<Student>> { return this._allParentsData.asObservable(); }
 
-    private _classParentsData: ReplaySubject<Array<StudentParents>> = new ReplaySubject(1);
+    private _classParentsData: ReplaySubject<Array<Student>> = new ReplaySubject(1);
 
-    get getClassParentsData(): Observable<Array<StudentParents>> { return this._classParentsData.asObservable(); }
+    get getClassParentsData(): Observable<Array<Student>> { return this._classParentsData.asObservable(); }
+
+
+
+    private _filterParents: ReplaySubject<Filter> = new ReplaySubject(1);
+    get getfilterParents(): Observable<Filter> { return this._filterParents.asObservable(); }
 
 
     constructor(private studentApiService: StudentApiService) {
+    }
+
+    public filterParents(filter: Filter) {
+        this._filterParents.next(filter);
     }
 
 
@@ -84,7 +94,7 @@ export class StudentService {
     public getAllParents(): void {
 
         const schoolInfoId = Context.getSchoolId();
-        this.studentApiService.getAllStudentWithParents(schoolInfoId.toString()).subscribe((result: Array<StudentParents>) => {
+        this.studentApiService.getAllStudentWithParents(schoolInfoId.toString()).subscribe((result: Array<Student>) => {
             if (!!result) {
                 this._allParentsData.next(result);
             } else {
@@ -113,10 +123,10 @@ export class StudentService {
     public getParentsByClassId(classId: number): void {
 
         const schoolInfoId = Context.getSchoolId();
-        this.studentApiService.getAllStudentWithParents(schoolInfoId.toString()).subscribe((result: Array<StudentParents>) => {
+        this.studentApiService.getAllStudentWithParents(schoolInfoId.toString()).subscribe((result: Array<Student>) => {
             if (!!result) {
-                result = result.filter((item) => item.StudentProfile.ClassId === classId);
-                this._classParentsData.next(result);
+                result = result.filter((item) => item.ClassId === classId);
+                this._classParentsData.next(result.reverse());
             } else {
                 this._classParentsData.next(null);
             }

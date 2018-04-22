@@ -16,13 +16,9 @@ export class Parent {
     UpdatedEmail: string;
 }
 
-export class StudentParents {
-    StudentProfile: Student;
-    ParentProfile: Array<Parent>;
-}
-
 export enum ListType {
     All,
     Class,
     Student
 }
+

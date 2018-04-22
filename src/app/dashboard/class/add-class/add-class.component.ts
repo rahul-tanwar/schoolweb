@@ -15,8 +15,6 @@ export class AddClassComponent extends BaseComponent implements OnInit {
     public classModel = new Class();
 
     constructor(public dialogRef: MatDialogRef<AddClassComponent>,
-        private classService: ClassService,
-        private matSnackBar: MatSnackBar,
         public injector: Injector) {
         super(injector);
     }
@@ -24,14 +22,12 @@ export class AddClassComponent extends BaseComponent implements OnInit {
     ngOnInit() {
     }
 
-
     public save(): void {
-        debugger;
+        this.services.spinnerService.show();
         this.services.classService.saveClass(this.classModel).subscribe((result) => {
-            this.classService.getAllClasses();
-            this.matSnackBar.open('successfully', '', {
-                duration: 2000
-            });
+            this.services.spinnerService.hide();
+            this.services.notificationService.show('Successfully saved');
+            this.services.classService.getAllClasses();
             this.dialogRef.close('successfully');
         });
     }

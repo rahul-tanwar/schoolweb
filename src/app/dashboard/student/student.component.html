@@ -19,14 +19,15 @@
                                 <mat-form-field>
                                     <span matPrefix>
                                         <i class="fa fa-search" aria-hidden="true"></i> &nbsp;</span>
-                                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                                    <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="filter.serachKeyword" placeholder="Filter">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-5">
-                                <button class="float-right" mat-raised-button color="basic">Filter</button>
+                                <button class="float-right" mat-raised-button color="basic" (click)="filterData()">Filter</button>
                                 <div class="select-box float-right">
                                     <mat-form-field class="class-select">
-                                        <mat-select placeholder="Class">
+                                        <mat-select placeholder="Class" [(ngModel)]="filter.classId">
+                                            <mat-option>All</mat-option>
                                             <mat-option *ngFor="let class of classList" [value]="class.ClassId">
                                                 {{ class.ClassName }}
                                             </mat-option>

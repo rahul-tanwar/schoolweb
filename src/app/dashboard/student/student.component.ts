@@ -1,4 +1,4 @@
-import { OnInit, AfterViewInit } from '@angular/core';
+import { OnInit, AfterViewInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -7,13 +7,15 @@ import { StudentService } from '../../shared/service/student/student.service';
 import { Student } from '../../shared/model/student';
 import { ClassService } from '../../shared/service/class/class.service';
 import { Class } from '../../shared/model/class';
+import { Filter } from '../../shared/model/filter';
+import { BaseComponent } from '../base/base.component';
 
 @Component({
     selector: 'app-student',
     templateUrl: './student.component.html',
     styleUrls: ['./student.component.css']
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent extends BaseComponent implements OnInit {
 
 
 
@@ -21,14 +23,17 @@ export class StudentComponent implements OnInit {
     dataSource: MatTableDataSource<Student>;
     studentList: Array<Student>;
     public classList: Array<Class>;
+    public filter = new Filter();
 
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(public dialog: MatDialog,
-        private studentService: StudentService,
-        private classService: ClassService
-    ) { }
+        private changeDetector: ChangeDetectorRef,
+        private injector: Injector
+    ) {
+        super(injector);
+    }
 
     openDialog(): void {
         const dialogRef = this.dialog.open(AddStudentComponent, {
@@ -45,19 +50,19 @@ export class StudentComponent implements OnInit {
     ngOnInit() {
         this.subscribeStudentData();
         this.subscribeClassData();
-        this.studentService.getStudentsBySchoolId();
-        this.classService.getAllClasses();
+        this.services.studentService.getStudentsBySchoolId();
+        this.services.classService.getAllClasses();
     }
 
     private subscribeClassData(): void {
-        this.classService.classData.subscribe((result: Array<Class>) => {
+        this.services.classService.classData.subscribe((result: Array<Class>) => {
             this.classList = result;
         });
     }
 
     private subscribeStudentData(): void {
 
-        this.studentService.studentData.subscribe((result) => {
+        this.services.studentService.studentData.subscribe((result) => {
             this.dataSource = new MatTableDataSource<Student>(result.reverse());
             this.dataSource.paginator = this.paginator;
             this.studentList = result;
@@ -72,5 +77,22 @@ export class StudentComponent implements OnInit {
         filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
         this.dataSource.filter = filterValue;
     }
+
+    public filterData() {
+        debugger;
+        if (!!this.filter) {
+            this.filter.serachKeyword = '';
+            this.dataSource.filter = '';
+            if (!!this.filter.classId) {
+                this.dataSource.data = this.studentList.filter((item) => item.ClassId === this.filter.classId);
+
+            } else {
+                this.dataSource.data = this.studentList;
+            }
+            this.changeDetector.markForCheck();
+            this.changeDetector.detectChanges();
+        }
+    }
+
 
 }
