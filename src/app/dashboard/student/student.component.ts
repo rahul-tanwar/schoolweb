@@ -29,7 +29,7 @@ export class StudentComponent extends BaseComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(public dialog: MatDialog,
-        private changeDetector: ChangeDetectorRef,
+        private changeDetectorRef: ChangeDetectorRef,
         private injector: Injector
     ) {
         super(injector);
@@ -79,7 +79,6 @@ export class StudentComponent extends BaseComponent implements OnInit {
     }
 
     public filterData() {
-        debugger;
         if (!!this.filter) {
             this.filter.serachKeyword = '';
             this.dataSource.filter = '';
@@ -89,8 +88,8 @@ export class StudentComponent extends BaseComponent implements OnInit {
             } else {
                 this.dataSource.data = this.studentList;
             }
-            this.changeDetector.markForCheck();
-            this.changeDetector.detectChanges();
+            this.changeDetectorRef.markForCheck();
+            this.changeDetectorRef.detectChanges();
         }
     }
 
