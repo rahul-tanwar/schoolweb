@@ -23,6 +23,7 @@ import * as Service from './shared/service';
         SignupComponent,
         ForgotPasswordComponent,
         SchoolInfoComponent
+
     ],
     imports: [
         BrowserModule,
@@ -38,13 +39,15 @@ import * as Service from './shared/service';
         ServiceAPI.UserServiceApi,
         ServiceAPI.StudentApiService,
         ServiceAPI.ClassServiceApi,
+        ServiceAPI.StaffApiService,
         Service.AuthGuardService,
         Service.SchoolService,
         Service.UserService,
         Service.ClassService,
         Service.StudentService,
         Service.SpinnerService,
-        Service.NotificationService
+        Service.NotificationService,
+        Service.StaffService
     ],
     bootstrap: [AppComponent]
 })

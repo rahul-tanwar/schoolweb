@@ -76,6 +76,7 @@ import { ExperienceCertificateInfoComponent } from './staff/experience-certifica
 import { AddSchoolComponent } from './school/add-school/add-school.component';
 import { AddStudentComponent } from './student/add-student/add-student.component';
 import { ClassParentsComponent } from './class/class-parents/class-parents.component';
+import { StaffInfoComponent } from './staff/staff-info/staff-info.component';
 /**
  * NgModule that includes all Material modules that are required to serve
  * the Plunker.
@@ -160,7 +161,8 @@ export class MaterialModule { }
         AddSchoolComponent,
         ClassStudentsComponent,
         AddStudentComponent,
-        ClassParentsComponent
+        ClassParentsComponent,
+        StaffInfoComponent
 
     ],
     entryComponents: [

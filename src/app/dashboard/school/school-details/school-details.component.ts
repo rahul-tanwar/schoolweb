@@ -16,6 +16,7 @@ export class SchoolDetailsComponent implements OnInit {
     constructor(private route: ActivatedRoute, private schoolService: SchoolService, private changeDetectorRef: ChangeDetectorRef) { }
 
     ngOnInit() {
+        debugger
         this.subscribeRouteParams().then(() => {
             this.getSchoolInfo();
         });
@@ -35,6 +36,7 @@ export class SchoolDetailsComponent implements OnInit {
     }
 
     private getSchoolInfo() {
+        debugger
         this.schoolService.getSchoolInfo(this.schoolUniqueId).subscribe((result: SchoolInfo) => {
             if (!!result) {
                 this.schoolBasicInfo = result.schoolBasicInfo;
