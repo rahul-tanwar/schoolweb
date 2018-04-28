@@ -20,7 +20,6 @@ export class AddParentComponent extends BaseComponent implements OnInit {
         private injector: Injector) {
         super(injector);
         this.parent = this.data.parent;
-
     }
 
     onNoClick(): void {
@@ -33,7 +32,6 @@ export class AddParentComponent extends BaseComponent implements OnInit {
     }
 
     public save(): void {
-        debugger;
         this.services.spinnerService.show();
         this.services.studentService.saveParent(this.parent).subscribe((result) => {
             if (result) {

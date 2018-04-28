@@ -1,46 +1,47 @@
-<form class="add-document-container">
+<form class="add-document-container" novalidate (ngSubmit)="save()" #staffDocumentForm="ngForm">
     <div class="panel panel-default">
         <div class="panel-body">
 
             <div class="row">
-               <div class="col-md-12 col-xs-12">
+                <div class="col-md-12 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                        <input matInput placeholder="Document Name">
+                        <input matInput placeholder="Document Name" name="DocumentName" required [(ngModel)]="staffDocument.DocumentName">
                     </mat-form-field>
                 </div>
                 <div class="col-md-12 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                        <input matInput placeholder="Value">
+                        <input matInput placeholder="Value" name="DocumentCode" required [(ngModel)]="staffDocument.DocumentCode">
                     </mat-form-field>
                 </div>
-                
+
                 <div class="col-md-12 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                        <input matInput placeholder="Manual Verification?">
+                        <mat-select placeholder="Manual Verification?" name="Verification" required [(ngModel)]="staffDocument.ManualVerification">
+                            <mat-option [value]='0'>Yes</mat-option>
+                            <mat-option [value]='1'>No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Verified By" name="VerifiedBy" required [(ngModel)]="staffDocument.VerifiedBy">
                     </mat-form-field>
                 </div>
                 <div class="col-md-12 col-xs-12">
-                        <mat-form-field>
-                            <span matPrefix>
-                                <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                            <input matInput placeholder="Verified By">
-                        </mat-form-field>
-                        </div>
-                        <div class="col-md-12 col-xs-12">
-                            <span matPrefix>
-                                   <i class="fa fa-upload" aria-hidden="true"></i> &nbsp;</span>
-                                   Upload Document
-                                   <button mat-raised-button >Upload</button>
-                        </div>
+                    <app-multimedia [item]="staffDocument.MultimediaFile"></app-multimedia>
+                </div>
                 <div class="align-center">
-                    <button class="" mat-raised-button color="basic">Save</button>
-                    <button class="" mat-raised-button color="basic">Reset</button>
+                    <button type="submit" mat-raised-button color="basic" [disabled]="!staffDocumentForm.form.valid">Save</button>
+                    <button (click)="reset()" mat-raised-button color="basic">Cancel</button>
                 </div>
             </div>
         </div>

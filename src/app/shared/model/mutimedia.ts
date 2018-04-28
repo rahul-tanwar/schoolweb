@@ -1,6 +1,6 @@
 export class MultimediaFile {
     data: any;
-    filename: string;
+    fileName: string;
     fileType: string;
     id: string;
     labelName: string;

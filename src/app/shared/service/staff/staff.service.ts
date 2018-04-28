@@ -156,9 +156,11 @@ export class StaffService {
         });
     }
 
-    public saveStaffDocument(Staffdocument: Model.StaffDocument): Observable<boolean> {
+    public saveStaffDocument(staffdocument: Model.StaffDocument): Observable<boolean> {
+        staffdocument.UpdatedEmail = Context.getUserName();
         return new Observable((subscriber: Subscriber<any>) => {
-            this.staffApiService.insertStaffDoc(Staffdocument).subscribe((result: Model.StaffDocument) => {
+            this.staffApiService.insertStaffDoc(staffdocument).subscribe((result: Model.StaffDocument) => {
+                debugger;
                 if (!!result) {
                     subscriber.next(true);
                 } else {

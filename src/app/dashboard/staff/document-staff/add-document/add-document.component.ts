@@ -21,10 +21,20 @@ export class AddDocumentComponent extends BaseComponent implements OnInit {
         this.staffDocument = this.data.staffDocument;
         const file = new MultimediaFile();
         file.id = 'documentId';
+        file.labelName = 'Upload file';
         this.staffDocument.MultimediaFile = file;
     }
 
     ngOnInit() {
     }
+
+    public save(): void {
+        this.services.staffService.saveStaffDocument(this.staffDocument).subscribe((result) => {
+            this.services.staffService.getStaffDocuments(this.staffDocument.StaffInfoId.toString());
+            this.dialogRef.close('successfully');
+            alert('successfully save');
+        });
+    }
+
 
 }

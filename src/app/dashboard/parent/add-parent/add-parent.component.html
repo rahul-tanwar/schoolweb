@@ -26,7 +26,6 @@
             <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
         <input matInput placeholder="Phone No." name="ContactNumber" [(ngModel)]="parent.ContactNumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$">
     </mat-form-field>
-
     <div class="align-center">
         <button type="submit" mat-raised-button color="basic" [disabled]="!addparentform.form.valid">Save</button>
         <button mat-raised-button [disabled]="true" color="basic">Reset</button>

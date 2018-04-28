@@ -26,8 +26,6 @@ export class MultimediaComponent implements OnInit {
 
 
     public ngOnInit(): void {
-        debugger;
-        console.log(this.item);
 
     }
 
@@ -42,11 +40,9 @@ export class MultimediaComponent implements OnInit {
 
         if (filedata) {
             const reader = new FileReader();
-            const mimetype = filedata.type as string;
-            const filename = filedata.name as string;
-
-            // FIXME: WHole file things be replaced with some LAS API service
-            if (!mimetype.startsWith('image/')) {
+            const fileType = filedata.type as string;
+            const fileName = filedata.name as string;
+            if (!fileType.startsWith('application/pdf')) {
                 //   void this.notificationsService.addNotification('TEMP ISSUE: Accepts only images', 'warning');
 
                 // } else if (filedata.size && filedata.size >= 1048576) { // 1 MB
@@ -55,14 +51,14 @@ export class MultimediaComponent implements OnInit {
             } else {
 
                 reader.onerror = () => {
-                    console.warn('Failed to upload file:', filename, mimetype);
+                    console.warn('Failed to upload file:', fileName, fileType);
                     this.clear();
                 };
 
                 reader.onload = () => {
-                    this.item.data = reader.result;
-                    this.item.filename = filename;
-                    this.item.mimetype = mimetype;
+                    this.item.data = reader.result.split(',')[1];
+                    this.item.fileName = fileName;
+                    this.item.fileType = fileType.split('/')[1];
                     this.changeDetectorRef.detectChanges();
                 };
 
@@ -80,8 +76,8 @@ export class MultimediaComponent implements OnInit {
 
     public clear(): void {
         this.item.data = null;
-        this.item.filename = undefined;
-        this.item.mimetype = undefined;
+        this.item.fileName = undefined;
+        this.item.fileType = undefined;
         this.changeDetectorRef.detectChanges();
     }
 }

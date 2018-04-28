@@ -4,12 +4,12 @@
 
     <div class="input-wrapper">
 
-        <label> file upload</label>
-        <a href="javascript:void(0)" *ngIf="item.filename === undefined" mat-fab color="basic" (click)="click()">
+        <label>{{item.labelName}} </label>
+        <a href="javascript:void(0)" *ngIf="item.fileName === undefined" mat-fab color="basic" (click)="click()">
             <i class="fa fa-paperclip" aria-hidden="true"></i>
         </a>
 
-        <div *ngIf="item.filename !== undefined ">
+        <div *ngIf="item.fileName !== undefined ">
             <i class="fa fa-paperclip"></i>
             {{item.filename}}
             <span class="fa fa-trash" placement="left" container="body" (click)="clear()"></span>

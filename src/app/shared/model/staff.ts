@@ -66,7 +66,7 @@ export class StaffDocument {
     StaffInfoId: number;
     DocumentName: string;
     DocumentCode: string;
-    ManualVerification: true;
+    ManualVerification = false;
     DocURL: string;
     VerifiedBy: string;
     UpdateDate: moment.Moment;
