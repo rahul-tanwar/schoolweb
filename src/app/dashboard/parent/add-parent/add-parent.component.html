@@ -14,19 +14,19 @@
     <mat-form-field>
         <span matPrefix>
             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-        <input matInput placeholder="Email" name="Email" [(ngModel)]="parent.Email" required>
+        <input matInput placeholder="Email" name="Email" [(ngModel)]="parent.Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
     </mat-form-field>
     <mat-form-field>
         <span matPrefix>
             <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-        <input matInput placeholder="Mobile No." name="MobileNumber" [(ngModel)]="parent.MobileNumber" required>
+        <input matInput placeholder="Mobile No." name="MobileNumber" [(ngModel)]="parent.MobileNumber" required pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$">
     </mat-form-field>
     <mat-form-field>
         <span matPrefix>
             <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-        <input matInput placeholder="Phone No." name="ContactNumber" [(ngModel)]="parent.ContactNumber">
+        <input matInput placeholder="Phone No." name="ContactNumber" [(ngModel)]="parent.ContactNumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$">
     </mat-form-field>
-    <app-multimedia [item]="parent.profileImage"></app-multimedia>
+
     <div class="align-center">
         <button type="submit" mat-raised-button color="basic" [disabled]="!addparentform.form.valid">Save</button>
         <button mat-raised-button [disabled]="true" color="basic">Reset</button>

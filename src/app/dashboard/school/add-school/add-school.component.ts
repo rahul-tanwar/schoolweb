@@ -26,8 +26,8 @@ export class AddSchoolComponent implements OnInit {
         });
     }
 
-    public reset(): void {
-        this.schoolBasicInfo = new SchoolBasicInfo();
+    public cancel(): void {
+        this.dialogRef.close();
     }
 
 }

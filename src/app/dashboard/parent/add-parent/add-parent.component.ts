@@ -20,9 +20,7 @@ export class AddParentComponent extends BaseComponent implements OnInit {
         private injector: Injector) {
         super(injector);
         this.parent = this.data.parent;
-        const file = new MultimediaFile();
-        file.id = 'parentfileid';
-        this.parent.profileImage = file;
+
     }
 
     onNoClick(): void {

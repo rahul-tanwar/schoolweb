@@ -32,4 +32,9 @@ export class AddClassComponent extends BaseComponent implements OnInit {
         });
     }
 
+    public cancel(): void {
+        this.dialogRef.close();
+    }
+
+
 }

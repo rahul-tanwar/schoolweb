@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SchoolOtherInfo } from '../../../shared/model/school';
 import { SchoolService } from '../../../shared/service/school/school.service';
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-school-settings',
     templateUrl: './school-settings.component.html',
@@ -12,7 +12,7 @@ export class SchoolSettingsComponent implements OnInit {
     @Input() public schoolOtherInfo: SchoolOtherInfo;
 
 
-    constructor(private schoolService: SchoolService) { }
+    constructor(private schoolService: SchoolService, private router: Router) { }
 
     ngOnInit() {
     }
@@ -22,5 +22,9 @@ export class SchoolSettingsComponent implements OnInit {
         this.schoolService.saveOtherInfo(this.schoolOtherInfo).subscribe((result) => {
             alert('successfully saved');
         });
+    }
+
+    public cancel(): void {
+        this.router.navigateByUrl('/dashboard/school');
     }
 }

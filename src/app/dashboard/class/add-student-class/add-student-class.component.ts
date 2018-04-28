@@ -22,7 +22,7 @@ export class AddStudentClassComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+    constructor( @Inject(MAT_DIALOG_DATA) public data: any,
         public dialogRef: MatDialogRef<AddStudentClassComponent>,
         private classService: ClassService,
         private studentService: StudentService) {
@@ -63,5 +63,7 @@ export class AddStudentClassComponent implements OnInit {
             });
         }
     }
-
+    public cancel(): void {
+        this.dialogRef.close();
+    }
 }

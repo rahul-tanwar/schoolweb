@@ -3,54 +3,53 @@
         <div class="logo">
             <a href="http://www.creative-tim.com" class="simple-text">
                 school
-
             </a>
         </div>
 
         <ul class="nav">
-            <li class="active">
+            <li routerLinkActive="active">
                 <a routerLink="dashboardmain">
                     <i class="fa fa-tachometer" aria-hidden="true"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li>
+            <li routerLinkActive="active">
                 <a routerLink="school">
                     <i class="fa fa-building" aria-hidden="true"></i>
                     <p>Schools</p>
                 </a>
             </li>
-            <li>
+            <li routerLinkActive="active">
                 <a routerLink="class" [class.disabled]="isDisable ? true : null">
                     <i class="ti-map"></i>
                     <p>Class</p>
                 </a>
             </li>
-            <li>
+            <li routerLinkActive="active">
                 <a routerLink="staff" [class.disabled]="isDisable ? true : null">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <p>Staff</p>
                 </a>
             </li>
-            <li>
+            <li routerLinkActive="active">
                 <a routerLink="student-list" [class.disabled]="isDisable ? true : null">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <p>Students</p>
                 </a>
             </li>
-            <li>
+            <li routerLinkActive="active">
                 <a routerLink="parent" [class.disabled]="isDisable ? true : null">
                     <i class="fa fa-male" aria-hidden="true"></i>
                     <i class="fa fa-female" aria-hidden="true"></i>
                     <p>Parents</p>
                 </a>
             </li>
-            <li>
+            <!-- <li routerLinkActive="active">
                 <a routerLink="calender" [class.disabled]="isDisable ? true : null">
                     <i class="fa fa-calendar" aria-hidden="true"></i>
                     <p>Calender</p>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

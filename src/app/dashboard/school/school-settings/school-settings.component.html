@@ -50,15 +50,17 @@
                         <span matPrefix>
                             <i class="fa fa-check-circle" aria-hidden="true"></i> &nbsp;</span>
                         <mat-select name="isactive" [(ngModel)]="schoolOtherInfo.IsActive" placeholder="Status">
-                            <mat-option [value]=true>Yes</mat-option>
-                            <mat-option [value]=false>No</mat-option>
+                            <mat-option [value]=true>ACTIVE</mat-option>
+                            <mat-option [value]=false>INACTIVE</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
             </div>
             <div class="align-center">
                 <button type="submit" mat-raised-button color="basic" [disabled]="!signupForm.form.valid">Save</button>
-                <button type="reset" mat-raised-button color="basic">Reset</button>
+                <button type="button" (click)="cancel()" mat-raised-button color="basic">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>

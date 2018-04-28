@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject, ChangeDetectorRef } from '@angular/co
 import { SchoolBasicInfo } from '../../../shared/model/school';
 import { SchoolService } from '../../../shared/service/school/school.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-school-info',
     templateUrl: './school-info.component.html',
@@ -14,7 +14,10 @@ export class SchoolInfoComponent implements OnInit {
 
     @Input() public schoolBasicInfo: SchoolBasicInfo;
 
-    constructor(public schoolService: SchoolService, private changeDetectorRef: ChangeDetectorRef) {
+    constructor(public schoolService: SchoolService,
+        private changeDetectorRef: ChangeDetectorRef,
+        private router: Router
+    ) {
 
 
     }
@@ -27,6 +30,10 @@ export class SchoolInfoComponent implements OnInit {
         this.schoolService.saveBasicInfo(this.schoolBasicInfo).subscribe((result) => {
             alert('successfully save');
         });
+    }
+
+    public cancel(): void {
+        this.router.navigateByUrl('/dashboard/school');
     }
 
 }
