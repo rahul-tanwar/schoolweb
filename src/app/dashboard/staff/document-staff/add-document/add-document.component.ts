@@ -22,6 +22,7 @@ export class AddDocumentComponent extends BaseComponent implements OnInit {
         const file = new MultimediaFile();
         file.id = 'documentId';
         file.labelName = 'Upload file';
+        file.required = true;
         this.staffDocument.MultimediaFile = file;
     }
 

@@ -4,4 +4,5 @@ export class MultimediaFile {
     fileType: string;
     id: string;
     labelName: string;
+    required = false;
 }

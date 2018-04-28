@@ -29,12 +29,12 @@
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="manualVerification">
                     <mat-header-cell *matHeaderCellDef>Manual Verification?</mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.manualVerification}} </mat-cell>
+                    <mat-cell *matCellDef="let element"> {{ (element.ManualVerification) ? 'Yes' : 'No' }} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="verifiedBy">
                     <mat-header-cell *matHeaderCellDef>Verified By</mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.verifiedBy}} </mat-cell>
+                    <mat-cell *matCellDef="let element"> {{element.VerifiedBy}} </mat-cell>
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

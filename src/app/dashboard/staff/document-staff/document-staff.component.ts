@@ -12,12 +12,17 @@ import { BaseComponent } from '../../base/base.component';
 })
 export class DocumentStaffComponent extends BaseComponent implements OnInit {
 
-    @Input() staffDocuments: Array<StaffDocument> = [];
-    @Input() staffId: number;
+
 
     displayedColumns = ['name', 'value', 'attachemnt', 'manualVerification', 'verifiedBy'];
     dataSource = new MatTableDataSource<StaffDocument>();
     @ViewChild(MatPaginator) paginator: MatPaginator;
+
+    @Input()
+    set staffDocuments(staffDocuments: Array<StaffDocument>) {
+        this.dataSource.data = staffDocuments;
+    }
+    @Input() staffId: number;
 
     constructor(public dialog: MatDialog, public injector: Injector) {
         super(injector);

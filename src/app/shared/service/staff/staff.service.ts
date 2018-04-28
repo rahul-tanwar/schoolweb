@@ -160,7 +160,6 @@ export class StaffService {
         staffdocument.UpdatedEmail = Context.getUserName();
         return new Observable((subscriber: Subscriber<any>) => {
             this.staffApiService.insertStaffDoc(staffdocument).subscribe((result: Model.StaffDocument) => {
-                debugger;
                 if (!!result) {
                     subscriber.next(true);
                 } else {
@@ -218,6 +217,7 @@ export class StaffService {
                         staffInfo.staffBasicInfo.staffSubTypeList =
                             this.getStaffSubTypeId().filter((item) => item.StaffTypeId === staffInfo.staffBasicInfo.StaffTypeId);
                     }
+                    debugger;
                     staffInfo.staffOtherInfo = !!result[1] ? result[1] : new Model.StaffBasicInfo();
                     staffInfo.staffOtherInfo.StaffInfoId = staffInfo.staffBasicInfo.StaffInfoId;
                     staffInfo.staffExperiences = result[2];

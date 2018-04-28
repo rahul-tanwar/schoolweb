@@ -42,7 +42,7 @@ export class MultimediaComponent implements OnInit {
             const reader = new FileReader();
             const fileType = filedata.type as string;
             const fileName = filedata.name as string;
-            if (!fileType.startsWith('application/pdf')) {
+            if (!fileType.startsWith('image/')) {
                 //   void this.notificationsService.addNotification('TEMP ISSUE: Accepts only images', 'warning');
 
                 // } else if (filedata.size && filedata.size >= 1048576) { // 1 MB
