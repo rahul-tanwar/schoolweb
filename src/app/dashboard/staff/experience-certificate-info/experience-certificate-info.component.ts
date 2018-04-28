@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { StaffExperience } from '../../../shared/model/staff';
 
 @Component({
-  selector: 'app-experience-certificate-info',
-  templateUrl: './experience-certificate-info.component.html',
-  styleUrls: ['./experience-certificate-info.component.css']
+    selector: 'app-experience-certificate-info',
+    templateUrl: './experience-certificate-info.component.html',
+    styleUrls: ['./experience-certificate-info.component.css']
 })
 export class ExperienceCertificateInfoComponent implements OnInit {
 
-  constructor() { }
+    @Input() staffExperiences: Array<StaffExperience> = [];
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit() {
+    }
 
 }

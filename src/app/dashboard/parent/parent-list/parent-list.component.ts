@@ -87,7 +87,6 @@ export class ParentListComponent extends BaseComponent implements OnInit {
     public subscribeFilter() {
         this.services.studentService.getfilterParents.subscribe((filter: Filter) => {
             if (!!filter) {
-                debugger;
                 if (!!filter.classId && filter.classId > 0) {
                     this.dataSource.data = this.studentParents.filter((item) => item.ClassId === filter.classId);
                     if (!!filter.serachKeyword) {
@@ -125,7 +124,6 @@ export class ParentListComponent extends BaseComponent implements OnInit {
     openParentDialog(studentId: number, parent: Parent): void {
         const parentObj = new Parent();
         parentObj.StudentId = studentId;
-
         const dialogRef = this.dialog.open(AddParentComponent, {
             width: '500px',
             data: { 'parent': !!parent ? parent : parentObj }

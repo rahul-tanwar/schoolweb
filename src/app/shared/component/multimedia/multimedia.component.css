@@ -1,0 +1,15 @@
+.image-preview {
+    border: 1px dashed #b6b6b9;
+    width: 98%;
+    padding: 2px;
+    margin-bottom: 5px;
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.fa-paperclip {
+    font-size: 22px;
+    color: #29b8bb;
+}

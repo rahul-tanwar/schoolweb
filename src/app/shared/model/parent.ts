@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import { Student } from './student';
+import { MultimediaFile } from './mutimedia';
 
 export class Parent {
     StudentParentId: number;
@@ -14,6 +15,7 @@ export class Parent {
     IsAppSignUp: true;
     UpdateDate: moment.Moment;
     UpdatedEmail: string;
+    profileImage: MultimediaFile;
 }
 
 export enum ListType {

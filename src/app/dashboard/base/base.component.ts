@@ -6,7 +6,7 @@ interface IService {
     classService: Services.ClassService;
     notificationService: Services.NotificationService;
     studentService: Services.StudentService;
-    staffService?: any;
+    staffService: Services.StaffService;
 }
 
 export class BaseComponent {
@@ -20,7 +20,8 @@ export class BaseComponent {
             spinnerService: injector.get(Services.SpinnerService),
             classService: injector.get(Services.ClassService),
             notificationService: injector.get(Services.NotificationService),
-            studentService: injector.get(Services.StudentService)
+            studentService: injector.get(Services.StudentService),
+            staffService: injector.get(Services.StaffService)
         };
         this.changeDetector = injector.get(ChangeDetectorRef);
     }

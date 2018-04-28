@@ -35,19 +35,19 @@
                         <div class="body-section">
                             <mat-tab-group>
                                 <mat-tab label="Basic Info">
-                                    <app-staff-info [staffModel]="staffBasicInfo"></app-staff-info>
+                                    <app-staff-info [staffBasicInfo]="staffInfo.staffBasicInfo"></app-staff-info>
                                 </mat-tab>
                                 <mat-tab label="Other Info">
-                                    <app-staff-other-info></app-staff-other-info>
+                                    <app-staff-other-info [staffOtherInfo]="staffInfo.staffOtherInfo"></app-staff-other-info>
                                 </mat-tab>
                                 <mat-tab label="Experience/Certificate Info">
-                                    <app-experience-certificate-info></app-experience-certificate-info>
+                                    <app-experience-certificate-info [staffExperiences]="staffInfo.staffExperiences"></app-experience-certificate-info>
                                 </mat-tab>
                                 <mat-tab label="Setting">
-                                    <app-setting-staff></app-setting-staff>
+                                    <app-setting-staff [staffClass]="staffInfo.staffClass"></app-setting-staff>
                                 </mat-tab>
                                 <mat-tab label="Documents">
-                                    <app-document-staff></app-document-staff>
+                                    <app-document-staff [staffId]="staffInfoId" [staffDocuments]="staffInfo.staffDocuments"></app-document-staff>
                                 </mat-tab>
 
                             </mat-tab-group>

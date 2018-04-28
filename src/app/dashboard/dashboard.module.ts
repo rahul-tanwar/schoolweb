@@ -19,6 +19,7 @@ import { ParentDetailsComponent } from './student/parent-details/parent-details.
 import { AddParentComponent } from './parent/add-parent/add-parent.component';
 import { StudentActivityComponent } from './student/student-activity/student-activity.component';
 import { SpinnerComponent } from './../shared/component/spinner/spinner.component';
+import { MultimediaComponent } from './../shared/component/multimedia/multimedia.component';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -162,7 +163,8 @@ export class MaterialModule { }
         ClassStudentsComponent,
         AddStudentComponent,
         ClassParentsComponent,
-        StaffInfoComponent
+        StaffInfoComponent,
+        MultimediaComponent
 
     ],
     entryComponents: [

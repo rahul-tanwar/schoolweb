@@ -11,3 +11,8 @@ color: rgba(41, 184, 187, 1) !important}
     .off-canvas-sidebar .nav i.fa-female {
         width: 17px;
     }
+
+    a.disabled {
+        pointer-events: none;
+        cursor: default;
+     }

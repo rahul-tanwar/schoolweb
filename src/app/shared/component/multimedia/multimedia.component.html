@@ -1,0 +1,23 @@
+<div>
+
+    <input type="file" [name]="item.id" [id]="item.id" (change)="onChange($event)" style="display: none" />
+
+    <div class="input-wrapper">
+
+        <label> file upload</label>
+        <a href="javascript:void(0)" *ngIf="item.filename === undefined" mat-fab color="basic" (click)="click()">
+            <i class="fa fa-paperclip" aria-hidden="true"></i>
+        </a>
+
+        <div *ngIf="item.filename !== undefined ">
+            <i class="fa fa-paperclip"></i>
+            {{item.filename}}
+            <span class="fa fa-trash" placement="left" container="body" (click)="clear()"></span>
+        </div>
+
+    </div>
+</div>
+
+<!-- <div *ngIf="item.mimetype !== undefined && item.mimetype.startsWith('image/')">
+    <img [src]="item.data" class="image-preview" />
+</div> -->

@@ -47,7 +47,8 @@ import * as Service from './shared/service';
         Service.StudentService,
         Service.SpinnerService,
         Service.NotificationService,
-        Service.StaffService
+        Service.StaffService,
+        Service.StateMachineService
     ],
     bootstrap: [AppComponent]
 })

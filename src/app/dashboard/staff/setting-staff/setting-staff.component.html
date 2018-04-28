@@ -1,28 +1,28 @@
-<form class="setting-staff-container">
+<form class="setting-staff-container" novalidate (ngSubmit)="save()" #staffSettingForm='ngForm'>
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-<h5>Feature Access</h5>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h5>Feature Access</h5>
 
-      <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-sm-offset-1 col-form-label">Classes Allowed</label>
-        <div class="col-sm-8">
-      <mat-form-field class="width-100per">
-        <span matPrefix>
-            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-        <mat-select>
-            <mat-option value="option">Management</mat-option>
-            <mat-option value="option">Technical</mat-option>
-            <mat-option value="option">Clerical</mat-option>
-            <mat-option value="option">Supporting</mat-option>
-        </mat-select>
-    </mat-form-field>
+            <div class="form-group row" *ngIf="staffClass">
+                <label for="inputPassword3" class="col-sm-2 col-sm-offset-1 col-form-label">Classes Allowed</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Class" name="ClassIds" [(ngModel)]="staffClass.ClassIds" multiple>
+                            <mat-option *ngFor="let class of classList" [value]="class.ClassId">
+                                {{ class.ClassName }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="align-center">
+                <button type="submit" mat-raised-button color="basic" [disabled]="!staffSettingForm.form.valid">Save</button>
+                <button class="" mat-raised-button color="basic">Reset</button>
+            </div>
         </div>
-      </div>
-
-      <div class="align-center">
-        <button class="" mat-raised-button color="basic">Save</button>
-      </div>
     </div>
-  </div>
 </form>

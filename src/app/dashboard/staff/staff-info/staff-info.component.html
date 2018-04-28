@@ -1,143 +1,143 @@
 <form class="add-staff-container" novalidate (ngSubmit)="save()" #staffForm="ngForm">
-  <div class="panel panel-default">
-    <div class="panel-body">
+    <div class="panel panel-default">
+        <div class="panel-body">
 
-      <div class="row">
-        <!-- <div class="col-md-12 col-xs-12">
+            <div class="row" *ngIf="staffBasicInfo">
+                <!-- <div class="col-md-12 col-xs-12">
                   <mat-form-field>
                       <span matPrefix>
                           <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
                       <input matInput disabled placeholder="Staff ID" value="2323">
                   </mat-form-field>
               </div> -->
-        <div class="col-md-6 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput placeholder="First Name" name="FirstName" required [(ngModel)]="staffModel.FirstName">
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput placeholder="Last Name" name="LastName" required [(ngModel)]="staffModel.LastName">
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput placeholder="Email" name="Email" required [(ngModel)]="staffModel.Email">
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput placeholder="Mobile No." name="MobileNumber" required [(ngModel)]="staffModel.MobileNumber">
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-            <mat-select placeholder="Staff Type" name="staffType" required [(ngModel)]="staffModel.StaffTypeId" (ngModelChange)="onSelect($event)">
-              <mat-option [value]="0"> Select </mat-option>
-              <mat-option *ngFor="let staffType of staffTypes" [value]="staffType.StaffTypeId">
-                {{ staffType.StaffTypeName }}
-              </mat-option>
-              <!-- <mat-option [value]="2">Technical</mat-option>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="First Name" name="FirstName" required [(ngModel)]="staffBasicInfo.FirstName">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Last Name" name="LastName" required [(ngModel)]="staffBasicInfo.LastName">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Email" name="Email" required [(ngModel)]="staffBasicInfo.Email">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Mobile No." name="MobileNumber" required [(ngModel)]="staffBasicInfo.MobileNumber">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Staff Type" name="staffType" required [(ngModel)]="staffBasicInfo.StaffTypeId" (ngModelChange)="onSelect($event)">
+                            <mat-option [value]="0"> Select </mat-option>
+                            <mat-option *ngFor="let staffType of staffBasicInfo.staffTypeList" [value]="staffType.StaffTypeId">
+                                {{ staffType.StaffTypeName }}
+                            </mat-option>
+                            <!-- <mat-option [value]="2">Technical</mat-option>
                           <mat-option [value]="3">Clerical</mat-option>
                           <mat-option [value]="4">Supporting</mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-            <mat-select placeholder="Staff Subtype" name="staffSubType" [(ngModel)]="staffModel.StaffSubTypeId">
-              <mat-option *ngIf='selectedStaffType.StaffTypeId == 0' [value]="0"> Select </mat-option>
-              <mat-option *ngFor="let staffSubType of staffSubTypes" [value]="staffSubType.StaffSubTypeId">
-                {{ staffSubType.StaffSubTypeName }}
-              </mat-option>
-              <!-- <mat-option [value]="3">Clerical</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Staff Subtype" name="staffSubType" [(ngModel)]="staffBasicInfo.StaffSubTypeId">
+                            <mat-option *ngIf='selectedStaffType.StaffTypeId == 0' [value]="0"> Select </mat-option>
+                            <mat-option *ngFor="let staffSubType of staffBasicInfo.staffSubTypeList" [value]="staffSubType.StaffSubTypeId">
+                                {{ staffSubType.StaffSubTypeName }}
+                            </mat-option>
+                            <!-- <mat-option [value]="3">Clerical</mat-option>
                           <mat-option [value]="4">Supporting</mat-option> -->
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-md-12 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput placeholder="Other Info" name="OtherInfo" required [(ngModel)]="staffModel.OtherInfo">
-          </mat-form-field>
-        </div>
-        <div class="col-md-12 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput placeholder="Address" name="Address" required [(ngModel)]="staffModel.Address">
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-            <mat-select placeholder="Gender" name="Gender" required [(ngModel)]="staffModel.Gender">
-              <!-- <mat-option [value]="Male">Male</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Other Info" name="OtherInfo" required [(ngModel)]="staffBasicInfo.OtherInfo">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Address" name="Address" required [(ngModel)]="staffBasicInfo.Address">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Gender" name="Gender" required [(ngModel)]="staffBasicInfo.Gender">
+                            <!-- <mat-option [value]="Male">Male</mat-option>
                           <mat-option [value]="Female">Female</mat-option> -->
-              <mat-option [value]="1">Male</mat-option>
-              <mat-option [value]="2">Female</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-            <mat-select placeholder="Maritial Status" name="MarriedStatus" required [(ngModel)]="staffModel.MarriedStatus">
-              <mat-option [value]="false">Single</mat-option>
-              <mat-option [value]="true">Married</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+                            <mat-option value='1'>Male</mat-option>
+                            <mat-option value='2'>Female</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Maritial Status" name="MarriedStatus" required [(ngModel)]="staffBasicInfo.MarriedStatus">
+                            <mat-option [value]="false">Single</mat-option>
+                            <mat-option [value]="true">Married</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
 
-        <div class="col-md-4 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput [matDatepicker]="DOB" placeholder="DOB" name="Dob" [(ngModel)]="staffModel.Dob">
-            <mat-datepicker-toggle matSuffix [for]="DOB"></mat-datepicker-toggle>
-            <mat-datepicker #DOB></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div class="col-md-4 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput [matDatepicker]="DOJ" placeholder="DOJ" name="DateOfJoining" [(ngModel)]="staffModel.DateOfJoining">
-            <mat-datepicker-toggle matSuffix [for]="DOJ"></mat-datepicker-toggle>
-            <mat-datepicker #DOJ></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div class="col-md-4 col-xs-12">
-          <mat-form-field class="width-100per">
-            <span matPrefix>
-              <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-            <input matInput [matDatepicker]="DOL" placeholder="DOL" name="DateOfLeaving" [(ngModel)]="staffModel.DateOfLeaving">
-            <mat-datepicker-toggle matSuffix [for]="DOL"></mat-datepicker-toggle>
-            <mat-datepicker #DOL></mat-datepicker>
-          </mat-form-field>
-        </div>
+                <div class="col-md-4 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput [matDatepicker]="DOB" placeholder="DOB" name="Dob" [(ngModel)]="staffBasicInfo.Dob">
+                        <mat-datepicker-toggle matSuffix [for]="DOB"></mat-datepicker-toggle>
+                        <mat-datepicker #DOB></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput [matDatepicker]="DOJ" placeholder="DOJ" name="DateOfJoining" [(ngModel)]="staffBasicInfo.DateOfJoining">
+                        <mat-datepicker-toggle matSuffix [for]="DOJ"></mat-datepicker-toggle>
+                        <mat-datepicker #DOJ></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput [matDatepicker]="DOL" placeholder="DOL" name="DateOfLeaving" [(ngModel)]="staffBasicInfo.DateOfLeaving">
+                        <mat-datepicker-toggle matSuffix [for]="DOL"></mat-datepicker-toggle>
+                        <mat-datepicker #DOL></mat-datepicker>
+                    </mat-form-field>
+                </div>
 
 
-        <div class="align-center">
-          <button type="submit" mat-raised-button color="basic" [disabled]="!staffForm.form.valid">Save</button>
-          <button type="reset" (click)="reset()" mat-raised-button color="basic">Reset</button>
+                <div class="align-center">
+                    <button type="submit" mat-raised-button color="basic" [disabled]="!staffForm.form.valid">Save</button>
+                    <button type="reset" (click)="reset()" mat-raised-button color="basic">Reset</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </form>

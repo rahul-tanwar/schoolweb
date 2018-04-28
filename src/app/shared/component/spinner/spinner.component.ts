@@ -24,7 +24,6 @@ import { ISpinnerState, SpinnerService } from '../../service/spinner/spinner.ser
 
 export class SpinnerComponent implements OnInit, OnDestroy {
     visible = false;
-    isOverlay = false;
 
     private spinnerStateChanged: Subscription;
 
@@ -34,7 +33,6 @@ export class SpinnerComponent implements OnInit, OnDestroy {
         this.spinnerStateChanged = this.spinnerService.spinnerState
             .subscribe((state: ISpinnerState) => {
                 this.visible = state.show;
-                this.isOverlay = state.showOverlay;
             });
     }
 

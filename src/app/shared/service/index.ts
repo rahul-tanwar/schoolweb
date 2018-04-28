@@ -7,3 +7,4 @@ export { StudentService } from '../service/student/student.service';
 export { SpinnerService } from '../service/spinner/spinner.service';
 export { NotificationService } from '../service/notification/notification.service';
 export { StaffService } from '../service/staff/staff.service';
+export { StateMachineService } from '../service/state-machine/state-machine.service';

@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Parent } from '../../../shared/model/parent';
 import { StudentService } from '../../../shared/service/student/student.service';
 import { BaseComponent } from '../../base/base.component';
+import { MultimediaFile } from '../../../shared/model/mutimedia';
 
 @Component({
     selector: 'app-add-parent',
@@ -18,6 +19,10 @@ export class AddParentComponent extends BaseComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: any,
         private injector: Injector) {
         super(injector);
+        this.parent = this.data.parent;
+        const file = new MultimediaFile();
+        file.id = 'parentfileid';
+        this.parent.profileImage = file;
     }
 
     onNoClick(): void {
@@ -25,10 +30,12 @@ export class AddParentComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.parent = this.data.parent;
+
+
     }
 
     public save(): void {
+        debugger;
         this.services.spinnerService.show();
         this.services.studentService.saveParent(this.parent).subscribe((result) => {
             if (result) {

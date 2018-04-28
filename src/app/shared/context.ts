@@ -6,12 +6,12 @@ export class Context {
     private static UserName: string;
 
     public static setContext(user: User) {
-        Context.SchoolId = 1;
+        Context.SchoolId = user.SchoolInfoId;
         Context.UserName = user.UserName;
     }
 
     public static getSchoolId() {
-        return Context.SchoolId;
+        return +Context.SchoolId;
     }
 
     public static getUserName() {

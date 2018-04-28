@@ -5,42 +5,41 @@ import { StaffService } from '../../../shared/service/staff/staff.service';
 import { StaffBasicInfo, StaffInfo } from '../../../shared/model/staff';
 
 @Component({
-  selector: 'app-staff-details',
-  templateUrl: './staff-details.component.html',
-  styleUrls: ['./staff-details.component.css']
+    selector: 'app-staff-details',
+    templateUrl: './staff-details.component.html',
+    styleUrls: ['./staff-details.component.css']
 })
 export class StaffDetailsComponent implements OnInit {
-  public staffInfoId: string;
-  public staffBasicInfo: StaffBasicInfo = new StaffBasicInfo();
+    public staffInfoId: string;
+    public staffInfo = new StaffInfo();
 
-  constructor(private route: ActivatedRoute, private staffService: StaffService, private changeDetectorRef: ChangeDetectorRef) { }
+    constructor(private route: ActivatedRoute, private staffService: StaffService, private changeDetectorRef: ChangeDetectorRef) { }
 
-  ngOnInit() {
-    debugger
-    this.subscribeRouteParams().then(() => {
-      this.getStaffInfo();
-    });
+    ngOnInit() {
+        this.subscribeRouteParams().then(() => {
+            this.getStaffInfo();
+        });
 
-  }
+    }
 
-  private subscribeRouteParams(): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
-      this.route.params.subscribe(params => {
-        this.staffInfoId = params['id'];
-        resolve(true);
-      }, (error) => {
-        reject(false);
-      }
-      );
-    });
-  }
-  private getStaffInfo() {
-    this.staffService.getStaffInfo(this.staffInfoId).subscribe((result: StaffInfo) => {
-      if (!!result) {
-        this.staffBasicInfo = result.staffBasicInfo;
-        // this.schoolOtherInfo = result.schoolOtherInfo;
-        this.changeDetectorRef.detectChanges();
-      }
-    });
-  }
+    private subscribeRouteParams(): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            this.route.params.subscribe(params => {
+                this.staffInfoId = params['id'];
+                resolve(true);
+            }, (error) => {
+                reject(false);
+            }
+            );
+        });
+    }
+    private getStaffInfo() {
+        this.staffService.getStaffdetails(this.staffInfoId).subscribe((result: StaffInfo) => {
+            if (!!result) {
+                this.staffInfo = result;
+
+                this.changeDetectorRef.detectChanges();
+            }
+        });
+    }
 }

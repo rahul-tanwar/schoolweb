@@ -1,81 +1,86 @@
-<form class="otherinfo-staff-container">
-  <div class="panel panel-default">
-      <div class="panel-body">
+<form class="otherinfo-staff-container" novalidate (ngSubmit)="save()" #staffOtherInfoForm='ngForm'>
+    <div class="panel panel-default">
+        <div class="panel-body">
 
-          <div class="row">
-              <div class="col-md-6 col-xs-12">
-                <mat-form-field>
-                  <span matPrefix>
-                      <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                  <mat-select placeholder="Height Education">
-                      <mat-option value="No">No</mat-option>
-                      <mat-option value="X">X</mat-option>
-                      <mat-option value="XII">XII</mat-option>
-                      <mat-option value="Bachelors">Bachelors</mat-option>
-                      <mat-option value="Masters">Masters</mat-option>
-                      <mat-option value="PHD">PHD</mat-option>
-                  </mat-select>
-              </mat-form-field>
-              </div>
-              <div class="col-md-6 col-xs-12">
-                <mat-form-field>
-                  <span matPrefix>
-                      <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                  <mat-select placeholder="Degree Details">
-                      <mat-option value="No">BA</mat-option>
-                      <mat-option value="X">BCOM</mat-option>
-                      <mat-option value="XII">BEd</mat-option>
-                      <mat-option value="Bachelors">BE</mat-option>
-                      <mat-option value="Masters">MBBS</mat-option>
-                      <mat-option value="PHD">MA</mat-option>
-                      <mat-option value="No">ME</mat-option>
-                      <mat-option value="X">MCOM</mat-option>
-                      <mat-option value="XII">Med</mat-option>
-                      <mat-option value="Bachelors">MBA </mat-option>
-                  </mat-select>
-              </mat-form-field>
-              </div>
-              <div class="col-md-6 col-xs-12">
-                  <mat-form-field>
-                      <span matPrefix>
-                          <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-                      <input matInput placeholder="Degree Specialization">
-                  </mat-form-field>
-              </div>
-              <div class="col-md-6 col-xs-12">
-                  <mat-form-field>
-                      <span matPrefix>
-                          <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                      <input matInput placeholder="Teaching Subject (S)">
-                  </mat-form-field>
-              </div>
-          
-              <div class="col-md-12 col-xs-12">
-                      <mat-form-field>
-                          <span matPrefix>
-                              <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                              <textarea matInput placeholder="Professional Summary, Skills, Expertise"></textarea>
-                      </mat-form-field>
-                  </div>
-              <div class="col-md-6 col-xs-12">
-                  <mat-form-field>
-                      <span matPrefix>
-                          <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                      <input matInput placeholder="AWARDS & Accolades">
-                  </mat-form-field>
-              </div>
-              <div class="col-md-6 col-xs-12">
-                <mat-form-field>
-                    <span matPrefix>
-                        <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                    <input matInput placeholder="Hobbies">
-                </mat-form-field>
+            <div class="row" *ngIf="staffOtherInfo">
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Height Education" name="HighEducation" [(ngModel)]="staffOtherInfo.HighEducation">
+                            <mat-option [value]="1">No</mat-option>
+                            <mat-option [value]="2">X</mat-option>
+                            <mat-option [value]="3">XII</mat-option>
+                            <mat-option [value]="4">Bachelors</mat-option>
+                            <mat-option [value]="5">Masters</mat-option>
+                            <mat-option [value]="6">PHD</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Degree Details" name="FirstName" [(ngModel)]="staffOtherInfo.DegreeIdList" multiple>
+                            <mat-option [value]="1">BA</mat-option>
+                            <mat-option [value]="2">BCOM</mat-option>
+                            <mat-option [value]="3">BEd</mat-option>
+                            <mat-option [value]="4">BE</mat-option>
+                            <mat-option [value]="5">MBBS</mat-option>
+                            <mat-option [value]="6">MA</mat-option>
+                            <mat-option [value]="7">ME</mat-option>
+                            <mat-option [value]="8">MCOM</mat-option>
+                            <mat-option [value]="9">Med</mat-option>
+                            <mat-option [value]="10">MBA </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Degree Specialization" name="DegreeSepecialization" [(ngModel)]="staffOtherInfo.DegreeSepecialization">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Teaching Subject (S)" name="SubjectIdList" [(ngModel)]="staffOtherInfo.SubjectIdList" multiple>
+                            <mat-option [value]="1">English</mat-option>
+                            <mat-option [value]="2">Hindi</mat-option>
+                            <mat-option [value]="3">Maths</mat-option>
+                            <mat-option [value]="4">Science</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <textarea matInput placeholder="Professional Summary, Skills, Expertise" name="Skills" [(ngModel)]="staffOtherInfo.Skills"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="AWARDS & Accolades" name="Awards" [(ngModel)]="staffOtherInfo.Awards">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Hobbies" name="Hobbies" [(ngModel)]="staffOtherInfo.Hobbies">
+                    </mat-form-field>
+                </div>
+                <div class="align-center">
+                    <button type="submit" mat-raised-button color="basic" [disabled]="!staffOtherInfoForm.form.valid">Save</button>
+                    <button class="" mat-raised-button color="basic">Reset</button>
+                </div>
             </div>
-            <div class="align-center">
-                  <button class="" mat-raised-button color="basic">Save</button>
-                  <button class="" mat-raised-button color="basic">Reset</button>
-              </div>
-          </div>
-      </div>
-  </div>
+        </div>
+    </div>
 </form>

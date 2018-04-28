@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { StateMachineService } from '../../shared/service/state-machine/state-machine.service';
 
 @Component({
-  selector: 'app-sidebar-nav',
-  templateUrl: './sidebar-nav.component.html',
-  styleUrls: ['./sidebar-nav.component.css']
+    selector: 'app-sidebar-nav',
+    templateUrl: './sidebar-nav.component.html',
+    styleUrls: ['./sidebar-nav.component.css']
 })
 export class SidebarNavComponent implements OnInit {
 
-  constructor() { }
+    public isDisable = false;
 
-  ngOnInit() {
-  }
+    constructor(private stateMachineService: StateMachineService) { }
+
+    ngOnInit() {
+        this.stateMachineService.getDisableNavForAdmin().subscribe((result: boolean) => {
+            debugger;
+            // this.isDisable = result;
+        });
+    }
 
 }

@@ -7,55 +7,54 @@ import { StaffBasicInfo } from '../../shared/model/staff';
 import { UserService } from '../../shared/service';
 
 @Component({
-  selector: 'app-staff',
-  templateUrl: './staff.component.html',
-  styleUrls: ['./staff.component.css']
+    selector: 'app-staff',
+    templateUrl: './staff.component.html',
+    styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
 
 
-  displayedColumns = ['name'];
-  dataSource: MatTableDataSource<StaffBasicInfo>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+    displayedColumns = ['name'];
+    dataSource: MatTableDataSource<StaffBasicInfo>;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
-  constructor(public dialog: MatDialog,
-    private staffService: StaffService,
-    private userService: UserService
-  ) { }
+    constructor(public dialog: MatDialog,
+        private staffService: StaffService,
+        private userService: UserService
+    ) { }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AddStaffComponent, {
-      width: '500px'
-      // data: { name: this.name, animal: this.animal }
-    });
+    openDialog(): void {
+        const dialogRef = this.dialog.open(AddStaffComponent, {
+            width: '500px'
+            // data: { name: this.name, animal: this.animal }
+        });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      //  this.animal = result;
-    });
-  }
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            //  this.animal = result;
+        });
+    }
 
-  ngOnInit() {
-    this.subscribeStaffData();
-    this.staffService.getAllStaff();
-  }
+    ngOnInit() {
+        this.subscribeStaffData();
+        this.staffService.getAllStaff();
+    }
 
-  private subscribeStaffData(): void {
+    private subscribeStaffData(): void {
 
-    this.staffService.staffData.subscribe((result) => {
-      debugger;
-      this.dataSource = new MatTableDataSource<StaffBasicInfo>(result.reverse());
-      this.dataSource.paginator = this.paginator;
-    });
+        this.staffService.staffData.subscribe((result) => {
+            this.dataSource = new MatTableDataSource<StaffBasicInfo>(result.reverse());
+            this.dataSource.paginator = this.paginator;
+        });
 
 
-  }
+    }
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }
+    applyFilter(filterValue: string) {
+        filterValue = filterValue.trim(); // Remove whitespace
+        filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+        this.dataSource.filter = filterValue;
+    }
 
 }
