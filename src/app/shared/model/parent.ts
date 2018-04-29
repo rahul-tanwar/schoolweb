@@ -8,6 +8,7 @@ export class Parent {
     StudentId: number;
     FirstName: string;
     LastName: string;
+    Gender: string;
     Email: string;
     MobileNumber: string;
     ContactNumber: string;

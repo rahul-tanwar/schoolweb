@@ -14,6 +14,16 @@
                 <div class="col-md-6 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Gender" name="Gender" required [(ngModel)]="student.Gender">
+                            <mat-option [value]="1">Male</mat-option>
+                            <mat-option [value]="2">Female</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
                             <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
                         <input matInput [matDatepicker]="DOB1" name="DOB" placeholder="DOB" [(ngModel)]="student.DOB" required>
                         <mat-datepicker-toggle matSuffix [for]="DOB1"></mat-datepicker-toggle>

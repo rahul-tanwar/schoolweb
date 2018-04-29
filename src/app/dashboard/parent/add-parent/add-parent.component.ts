@@ -42,5 +42,7 @@ export class AddParentComponent extends BaseComponent implements OnInit {
         });
 
     }
-
+    public cancel(): void {
+        this.dialogRef.close();
+    }
 }

@@ -14,6 +14,14 @@
     <mat-form-field>
         <span matPrefix>
             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+        <mat-select placeholder="Gender" name="Gender" required [(ngModel)]="parent.Gender">
+            <mat-option value="1">Male</mat-option>
+            <mat-option value="2">Female</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <span matPrefix>
+            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
         <input matInput placeholder="Email" name="Email" [(ngModel)]="parent.Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
     </mat-form-field>
     <mat-form-field>
@@ -28,7 +36,9 @@
     </mat-form-field>
     <div class="align-center">
         <button type="submit" mat-raised-button color="basic" [disabled]="!addparentform.form.valid">Save</button>
-        <button mat-raised-button [disabled]="true" color="basic">Reset</button>
+        <button type="button" (click)="cancel()" mat-raised-button color="basic">
+            cancel
+        </button>
     </div>
 
 </form>

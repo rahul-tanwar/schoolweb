@@ -1,24 +1,27 @@
-import { Component, OnInit, Input, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Inject, ChangeDetectorRef, Injector } from '@angular/core';
 import { SchoolBasicInfo } from '../../../shared/model/school';
 import { SchoolService } from '../../../shared/service/school/school.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../../shared/service/spinner/spinner.service';
+import { BaseComponent } from '../../base/base.component';
 @Component({
     selector: 'app-school-info',
     templateUrl: './school-info.component.html',
     styleUrls: ['./school-info.component.css']
 })
-export class SchoolInfoComponent implements OnInit {
+export class SchoolInfoComponent extends BaseComponent implements OnInit {
 
     // public schoolBasicInfo: SchoolBasicInfo = new SchoolBasicInfo();
 
     @Input() public schoolBasicInfo: SchoolBasicInfo;
 
-    constructor(public schoolService: SchoolService,
+    constructor(
         private changeDetectorRef: ChangeDetectorRef,
-        private router: Router
+        private router: Router,
+        private injector: Injector
     ) {
-
+        super(injector);
 
     }
 
@@ -27,8 +30,10 @@ export class SchoolInfoComponent implements OnInit {
     }
 
     public save(): void {
-        this.schoolService.saveBasicInfo(this.schoolBasicInfo).subscribe((result) => {
-            alert('successfully save');
+        this.services.spinnerService.show();
+        this.services.schoolService.saveBasicInfo(this.schoolBasicInfo).subscribe((result) => {
+            this.services.spinnerService.hide();
+            this.services.notificationService.show('successfully saved');
         });
     }
 

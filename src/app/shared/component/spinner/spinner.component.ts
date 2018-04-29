@@ -6,7 +6,7 @@ import { ISpinnerState, SpinnerService } from '../../service/spinner/spinner.ser
     selector: 'app-spinner',
     styles: [`
   .overlay{
-    position:fixed; width: 100%; height: 100%;background:rgba(0,0,0,0.1); top:0; left:0; z-index: 2;
+    position:fixed; width: 100%; height: 100%;background:rgba(0,0,0,0.1); top:0; left:0; z-index: 9999;
   }
   .spinner-position {
     position: fixed;

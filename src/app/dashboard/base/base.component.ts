@@ -7,6 +7,7 @@ interface IService {
     notificationService: Services.NotificationService;
     studentService: Services.StudentService;
     staffService: Services.StaffService;
+    schoolService: Services.SchoolService;
 }
 
 export class BaseComponent {
@@ -21,7 +22,8 @@ export class BaseComponent {
             classService: injector.get(Services.ClassService),
             notificationService: injector.get(Services.NotificationService),
             studentService: injector.get(Services.StudentService),
-            staffService: injector.get(Services.StaffService)
+            staffService: injector.get(Services.StaffService),
+            schoolService: injector.get(Services.SchoolService)
         };
         this.changeDetector = injector.get(ChangeDetectorRef);
     }

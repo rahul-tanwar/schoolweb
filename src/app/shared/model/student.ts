@@ -6,6 +6,7 @@ export class Student {
     SchoolInfoId: number;
     StudentUniqueId: string;
     Name: string;
+    Gender: string;
     DOB: moment.Moment;
     IsActive: boolean;
     AadharNumber: string;
