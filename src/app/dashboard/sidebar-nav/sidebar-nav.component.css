@@ -15,4 +15,13 @@ color: rgba(41, 184, 187, 1) !important}
     a.disabled {
         pointer-events: none;
         cursor: default;
+        color: #e4e0d7 !important;
+     }
+
+     .header{
+         padding: 5px 20px 0px 20px;
+         text-align: center;
+     }
+     .header img{
+         margin-bottom: 7px;
      }

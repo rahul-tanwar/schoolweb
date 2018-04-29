@@ -8,3 +8,4 @@ export { SpinnerService } from '../service/spinner/spinner.service';
 export { NotificationService } from '../service/notification/notification.service';
 export { StaffService } from '../service/staff/staff.service';
 export { StateMachineService } from '../service/state-machine/state-machine.service';
+export { SchoolInterceptor } from '../service/school-interceptor/school-interceptor';

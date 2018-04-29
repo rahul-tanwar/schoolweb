@@ -50,6 +50,7 @@ export class StaffExperience {
     ToDate: moment.Moment;
     ExperienceTypeId: number;
     Name: string;
+    Details: string;
     UpdateDate: moment.Moment;
     UpdatedEmail: string;
 }

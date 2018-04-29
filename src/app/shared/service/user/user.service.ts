@@ -4,7 +4,6 @@ import { UserServiceApi } from './../../school-api/user/user.service';
 import { Observable, Subscriber, ReplaySubject } from 'rxjs/Rx';
 import { User } from '../../model/user';
 import { error } from 'protractor';
-import { BaseServiceApi } from '../../school-api/base/base.service';
 import { Context } from '../../../shared/context';
 import { StateMachineService } from '../state-machine/state-machine.service';
 
@@ -12,7 +11,6 @@ import { StateMachineService } from '../state-machine/state-machine.service';
 export class UserService {
 
     constructor(private userServiceApi: UserServiceApi,
-        private baseServiceApi: BaseServiceApi,
         private stateMachineService: StateMachineService
     ) {
 
@@ -24,7 +22,6 @@ export class UserService {
     private isLoginUser = false;
 
     public initilizeCurrentUser(result: User): void {
-        this.baseServiceApi.initilizeBaseApi(result.access_token);
         this.currentUser = result;
         this.isLoginUser = true;
         Context.setContext(result);
@@ -37,7 +34,6 @@ export class UserService {
     }
 
     checkIfUserIsAdmin(user: User) {
-        debugger;
         if (user.RoleName === 'SuperAdmin') {
             this.stateMachineService.setDisableNavForAdmin.next(true);
         }

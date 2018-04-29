@@ -1,0 +1,55 @@
+<form class="add-experience-certificate-container" novalidate (ngSubmit)="save()" #staffExperienceForm="ngForm">
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Experience/Certificate" name="Type" [(ngModel)]="staffExperience.ExperienceTypeId" required>
+                            <mat-option [value]=1>Experience</mat-option>
+                            <mat-option [value]=2>Certificate</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput [matDatepicker]="fromDate" name="From" placeholder="From" [(ngModel)]="staffExperience.FromDate" required>
+                        <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                        <mat-datepicker #fromDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput [matDatepicker]="todate" name="To" placeholder="To" [(ngModel)]="staffExperience.ToDate" required>
+                        <mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+                        <mat-datepicker #todate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Institute Name" name="InstituteName" [(ngModel)]="staffExperience.Name" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput placeholder="Details" name="Details" [(ngModel)]="staffExperience.Details" required>
+                    </mat-form-field>
+                </div>
+                <div class="align-center">
+                    <button type="submit" mat-raised-button color="basic" [disabled]="!staffExperienceForm.form.valid">Save</button>
+                    <button (click)="reset()" mat-raised-button color="basic">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

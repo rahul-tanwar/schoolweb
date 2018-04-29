@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
@@ -20,38 +21,6 @@ import { AddParentComponent } from './parent/add-parent/add-parent.component';
 import { StudentActivityComponent } from './student/student-activity/student-activity.component';
 import { SpinnerComponent } from './../shared/component/spinner/spinner.component';
 import { MultimediaComponent } from './../shared/component/multimedia/multimedia.component';
-import {
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule
-} from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 import { AddStaffComponent } from './staff/add-staff/add-staff.component';
@@ -78,49 +47,10 @@ import { AddSchoolComponent } from './school/add-school/add-school.component';
 import { AddStudentComponent } from './student/add-student/add-student.component';
 import { ClassParentsComponent } from './class/class-parents/class-parents.component';
 import { StaffInfoComponent } from './staff/staff-info/staff-info.component';
-/**
- * NgModule that includes all Material modules that are required to serve
- * the Plunker.
- */
-@NgModule({
-    exports: [
+import {
+    AddCertificateExperienceComponent
+} from './staff/experience-certificate-info/add-certificate-experience/add-certificate-experience.component';
 
-        MatNativeDateModule,
-        MatAutocompleteModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatCardModule,
-        MatCheckboxModule,
-        MatChipsModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatExpansionModule,
-        MatGridListModule,
-        MatIconModule,
-        MatInputModule,
-        MatListModule,
-        MatMenuModule,
-        MatProgressBarModule,
-        MatProgressSpinnerModule,
-        MatRadioModule,
-        MatRippleModule,
-        MatSelectModule,
-        MatSidenavModule,
-        MatSlideToggleModule,
-        MatSliderModule,
-        MatSnackBarModule,
-        MatTabsModule,
-        MatToolbarModule,
-        MatTooltipModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatFormFieldModule
-
-    ],
-    declarations: []
-
-})
-export class MaterialModule { }
 
 @NgModule({
     declarations: [
@@ -164,8 +94,8 @@ export class MaterialModule { }
         AddStudentComponent,
         ClassParentsComponent,
         StaffInfoComponent,
-        MultimediaComponent
-
+        MultimediaComponent,
+        AddCertificateExperienceComponent
     ],
     entryComponents: [
         AddParentComponent,
@@ -176,7 +106,8 @@ export class MaterialModule { }
         StudentListComponent,
         AddStudentClassComponent,
         AddSchoolComponent,
-        AddStudentComponent
+        AddStudentComponent,
+        AddCertificateExperienceComponent
     ],
     imports: [
         BrowserModule,

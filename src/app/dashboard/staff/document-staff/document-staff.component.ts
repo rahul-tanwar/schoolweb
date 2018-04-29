@@ -14,7 +14,7 @@ export class DocumentStaffComponent extends BaseComponent implements OnInit {
 
 
 
-    displayedColumns = ['name', 'value', 'attachemnt', 'manualVerification', 'verifiedBy'];
+    displayedColumns = ['name', 'value', 'attachemnt', 'manualVerification', 'verifiedBy', 'delete'];
     dataSource = new MatTableDataSource<StaffDocument>();
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -54,6 +54,14 @@ export class DocumentStaffComponent extends BaseComponent implements OnInit {
         });
 
 
+    }
+    public removeDocument(documentId: string) {
+        this.services.staffService.deleteStaffDocument(documentId).subscribe((result) => {
+            if (result) {
+                this.services.notificationService.show('deleted successfully');
+                this.services.staffService.getStaffDocuments(this.staffId.toString());
+            }
+        });
     }
 
 

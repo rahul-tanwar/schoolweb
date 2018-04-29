@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './account/login/login.component';
 import { SignupComponent } from './account/signup/signup.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SchoolInfoComponent } from './account/school-info/school-info.component';
@@ -23,7 +23,6 @@ import * as Service from './shared/service';
         SignupComponent,
         ForgotPasswordComponent,
         SchoolInfoComponent
-
     ],
     imports: [
         BrowserModule,
@@ -33,7 +32,12 @@ import * as Service from './shared/service';
         HttpClientModule
     ],
     providers: [
-        ServiceAPI.BaseServiceApi,
+        // ServiceAPI.BaseServiceApi,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: Service.SchoolInterceptor,
+            multi: true
+        },
         ServiceAPI.SchoolServiceApi,
         ServiceAPI.ClassServiceApi,
         ServiceAPI.UserServiceApi,

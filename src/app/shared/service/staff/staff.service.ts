@@ -15,6 +15,11 @@ export class StaffService {
 
     get staffDocumentData(): Observable<Array<Model.StaffDocument>> { return this._staffDocumentData.asObservable(); }
 
+    private _staffExperienceData: ReplaySubject<Array<Model.StaffExperience>> = new ReplaySubject(1);
+
+    get staffExperienceData(): Observable<Array<Model.StaffExperience>> { return this._staffExperienceData.asObservable(); }
+
+
     constructor(private staffApiService: StaffApiService) {
 
     }
@@ -109,20 +114,20 @@ export class StaffService {
         });
     }
 
-    public getStaffExperiences(staffId: string): Observable<Array<Model.StaffExperience>> {
-        return new Observable((subscriber: Subscriber<any>) => {
-            this.staffApiService.getStaffExperienceInfobyStaffId(staffId)
-                .subscribe((result: Array<Model.StaffExperience>) => {
-                    if (!!result) {
-                        subscriber.next(result);
-                    } else {
-                        subscriber.next(null);
-                    }
-                }, (error: any) => {
-                    subscriber.error('Could not save school please try again');
-                });
+    public getStaffExperiences(staffId: string): void {
 
-        });
+        this.staffApiService.getStaffExperienceInfobyStaffId(staffId)
+            .subscribe((result: Array<Model.StaffExperience>) => {
+                if (!!result) {
+                    this._staffExperienceData.next(result);
+                } else {
+                    this._staffExperienceData.next(null);
+                }
+            }, (error: any) => {
+                this._staffExperienceData.error('Could not fetch Experience data please try again');
+            });
+
+
     }
 
     public saveStaffClass(staffClass: Model.StaffClass): Observable<Model.StaffClass> {
@@ -199,6 +204,20 @@ export class StaffService {
         });
     }
 
+    public deleteStaffExperience(StaffExperienceId: string): Observable<boolean> {
+        return new Observable((subscriber: Subscriber<any>) => {
+            this.staffApiService.deleteStaffExperienceById(StaffExperienceId).subscribe((result: boolean) => {
+                if (!!result) {
+                    subscriber.next(true);
+                } else {
+                    subscriber.next(false);
+                }
+            }, (error: any) => {
+                subscriber.error('Could not delete Staff Experience Please try again.');
+            });
+        });
+    }
+
     public getStaffdetails(staffId: string): Observable<Model.StaffInfo> {
         return new Observable((subscriber: Subscriber<any>) => {
             Observable.forkJoin(
@@ -217,7 +236,6 @@ export class StaffService {
                         staffInfo.staffBasicInfo.staffSubTypeList =
                             this.getStaffSubTypeId().filter((item) => item.StaffTypeId === staffInfo.staffBasicInfo.StaffTypeId);
                     }
-                    debugger;
                     staffInfo.staffOtherInfo = !!result[1] ? result[1] : new Model.StaffBasicInfo();
                     staffInfo.staffOtherInfo.StaffInfoId = staffInfo.staffBasicInfo.StaffInfoId;
                     staffInfo.staffExperiences = result[2];

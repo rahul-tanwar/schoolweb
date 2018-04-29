@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpParams } from '@angular/common/http';
+import { HttpParams, HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { SchoolBasicInfo } from '../../model/school';
 import { BaseServiceApi } from './../base/base.service';
@@ -8,7 +8,9 @@ import { BaseServiceApi } from './../base/base.service';
 @Injectable()
 export class SchoolServiceApi extends BaseServiceApi {
 
-
+    constructor(protected httpClient: HttpClient) {
+        super();
+    }
     public getSchoolBasicInfoById(schoolUniqueId: string): Observable<object> {
 
         this.httpParams = new HttpParams();
@@ -26,12 +28,12 @@ export class SchoolServiceApi extends BaseServiceApi {
     }
 
     public getAllSchoolList(): Observable<object> {
-        return this.httpClient.get<object>(this.baseUrl + 'school/getallschoollist', this.httpOptions)
+        return this.httpClient.get<object>(this.baseUrl + 'school/getallschoollist')
             .pipe(catchError(this.handleError));
     }
 
     public saveBasicInfo(schoolInfo: object): Observable<object> {
-        return this.httpClient.post(this.baseUrl + 'school/insertupdateschool', schoolInfo, this.httpOptions)
+        return this.httpClient.post(this.baseUrl + 'school/insertupdateschool', schoolInfo)
             .pipe(catchError(this.handleError));
     }
 
