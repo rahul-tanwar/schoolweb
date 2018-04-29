@@ -3,7 +3,7 @@ import { StudentService } from '../../../shared/service/student/student.service'
 import { Student } from '../../../shared/model/student';
 import { Class } from '../../../shared/model/class';
 import { ClassService } from '../../../shared/service/class/class.service';
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-student-profile',
     templateUrl: './student-profile.component.html',
@@ -17,6 +17,7 @@ export class StudentProfileComponent implements OnInit {
 
     constructor(public studentService: StudentService,
         public classService: ClassService,
+        private router: Router
     ) { }
 
     ngOnInit() {
@@ -44,8 +45,8 @@ export class StudentProfileComponent implements OnInit {
         });
     }
 
-    public reset(): void {
-        this.student = new Student();
+    public cancel(): void {
+        this.router.navigateByUrl('/dashboard/student-list');
     }
 
 

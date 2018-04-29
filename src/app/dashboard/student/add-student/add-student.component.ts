@@ -38,8 +38,8 @@ export class AddStudentComponent implements OnInit {
         });
     }
 
-    public reset(): void {
-        this.student = new Student();
+    public cancel(): void {
+        this.dialogRef.close();
     }
 
 }

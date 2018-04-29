@@ -21,7 +21,9 @@
 
             <div class="align-center">
                 <button type="submit" mat-raised-button color="basic" [disabled]="!staffSettingForm.form.valid">Save</button>
-                <button class="" mat-raised-button color="basic">Reset</button>
+                <button type="button" (click)="cancel()" mat-raised-button color="basic">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>

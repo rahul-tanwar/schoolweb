@@ -63,6 +63,10 @@ export class AddStaffComponent implements OnInit {
             new StaffSubTypeModel(18, 4, 'OTHER'),
         ];
     }
+
+    public cancel(): void {
+        this.dialogRef.close();
+    }
 }
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject, ChangeDetectorRef, AfterViewInit } fr
 import { StaffBasicInfo, StaffTypeModel, StaffSubTypeModel } from '../../../shared/model/staff';
 import { StaffService } from '../../../shared/service/staff/staff.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
+import { Router } from "@angular/router";
 @Component({
     selector: 'app-staff-info',
     templateUrl: './staff-info.component.html',
@@ -17,7 +17,8 @@ export class StaffInfoComponent implements OnInit {
 
     constructor(
         private staffService: StaffService,
-        private changeDetectorRef: ChangeDetectorRef
+        private changeDetectorRef: ChangeDetectorRef,
+        private router: Router
     ) {
         // this.staffTypes = this.getStaffType();
     }
@@ -33,6 +34,10 @@ export class StaffInfoComponent implements OnInit {
         this.staffService.saveStaff(this.staffBasicInfo).subscribe((result) => {
             alert('successfully save');
         });
+    }
+
+    public cancel(): void {
+        this.router.navigateByUrl('/dashboard/staff');
     }
 
 }

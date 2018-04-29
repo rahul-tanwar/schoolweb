@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StudentService } from '../../../shared/service/student/student.service';
 import { Student, StudentAppCode } from '../../../shared/model/student';
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-generate-student-app-code',
     templateUrl: './generate-student-app-code.component.html',
@@ -11,7 +11,8 @@ export class GenerateStudentAppCodeComponent implements OnInit {
     @Input() studentId: number;
     public studentAppCode = new StudentAppCode();
 
-    constructor(public studentService: StudentService) { }
+    constructor(public studentService: StudentService,
+        private router: Router) { }
 
     ngOnInit() {
         this.getStudent();
@@ -33,7 +34,9 @@ export class GenerateStudentAppCodeComponent implements OnInit {
             }
         });
     }
-
+    public cancel(): void {
+        this.router.navigateByUrl('/dashboard/student-list');
+    }
 
 
 }
