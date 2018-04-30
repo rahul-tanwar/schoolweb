@@ -19,6 +19,7 @@ import { StudentDetailsComponent } from './student/student-details/student-detai
 import { ParentDetailsComponent } from './student/parent-details/parent-details.component';
 import { AddParentComponent } from './parent/add-parent/add-parent.component';
 import { StudentActivityComponent } from './student/student-activity/student-activity.component';
+// tslint:disable-next-line:comment-format
 //import { SpinnerComponent } from './../shared/component/spinner/spinner.component';
 import { MultimediaComponent } from './../shared/component/multimedia/multimedia.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';

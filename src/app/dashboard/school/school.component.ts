@@ -47,8 +47,11 @@ export class SchoolComponent extends BaseComponent implements OnInit {
 
     private subscribeSchoolData(): void {
         this.schoolService.schoolData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<SchoolBasicInfo>(result.reverse());
-            this.dataSource.paginator = this.paginator;
+            if (!!result) {
+                this.dataSource = new MatTableDataSource<SchoolBasicInfo>(result.reverse());
+                this.dataSource.paginator = this.paginator;
+            }
+
             //  this.changeDetectorRef.detectChanges();
             this.changeDetectorRef.markForCheck();
             this.services.spinnerService.hide();

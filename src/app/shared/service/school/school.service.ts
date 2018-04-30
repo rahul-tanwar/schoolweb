@@ -115,7 +115,6 @@ export class SchoolService {
                 this.schoolServiceApi.getSchoolOtherInfoById(schoolUniqueId)
             ).subscribe((result: any) => {
                 if (!!result) {
-                    debugger;
                     const schoolInfo = new SchoolInfo();
                     schoolInfo.schoolBasicInfo = result[0] as SchoolBasicInfo;
                     if (!!result[1]) {

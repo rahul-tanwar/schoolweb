@@ -49,8 +49,11 @@ export class ExperienceCertificateInfoComponent extends BaseComponent implements
 
     private subscribeStaffExperienceData(): void {
         this.services.staffService.staffExperienceData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<StaffExperience>(result.reverse());
-            this.dataSource.paginator = this.paginator;
+            if (!!result) {
+                this.dataSource = new MatTableDataSource<StaffExperience>(result.reverse());
+                this.dataSource.paginator = this.paginator;
+            }
+
             this.services.spinnerService.hide();
         });
 

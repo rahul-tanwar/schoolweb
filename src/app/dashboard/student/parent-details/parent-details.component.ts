@@ -47,8 +47,10 @@ export class ParentDetailsComponent implements OnInit {
     private subscribeStudentPatentsData(): void {
 
         this.studentService.parentData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<Parent>(result.reverse());
-            this.dataSource.paginator = this.paginator;
+            if (!!result) {
+                this.dataSource = new MatTableDataSource<Parent>(result.reverse());
+                this.dataSource.paginator = this.paginator;
+            }
             this.parents = result;
         });
     }

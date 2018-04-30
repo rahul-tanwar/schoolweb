@@ -22,7 +22,7 @@ export class AddStudentClassComponent extends BaseComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor( @Inject(MAT_DIALOG_DATA) public data: any,
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
         public dialogRef: MatDialogRef<AddStudentClassComponent>,
         private injector: Injector
     ) {
@@ -30,7 +30,7 @@ export class AddStudentClassComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.services.spinnerService.show();
+        //   this.services.spinnerService.show();
         this.subscribeStudentData();
         this.services.studentService.getStudentsBySchoolId();
     }
@@ -38,9 +38,12 @@ export class AddStudentClassComponent extends BaseComponent implements OnInit {
     private subscribeStudentData(): void {
 
         this.services.studentService.studentData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<Student>(result.reverse());
-            this.dataSource.paginator = this.paginator;
-            this.studentList = result;
+            if (!!result) {
+                this.dataSource = new MatTableDataSource<Student>(result.reverse());
+                this.dataSource.paginator = this.paginator;
+                this.studentList = result;
+            }
+
             this.services.spinnerService.hide();
             //  this.changeDetectorRef.detectChanges();
             //  this.changeDetectorRef.markForCheck();

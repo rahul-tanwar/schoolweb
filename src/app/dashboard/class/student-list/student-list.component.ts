@@ -36,10 +36,13 @@ export class StudentListComponent implements OnInit {
 
     private subscribeStudentData() {
         this.classService.studentsByClassData.subscribe((students: Array<Student>) => {
-            this.dataSource = new MatTableDataSource<Student>(students.reverse());
-            this.dataSource.paginator = this.paginator;
-            this.studentList = students;
-            this.isRemoveButtonVisible = false;
+            if (!!students) {
+                this.dataSource = new MatTableDataSource<Student>(students.reverse());
+                this.dataSource.paginator = this.paginator;
+                this.studentList = students;
+                this.isRemoveButtonVisible = false;
+            }
+
         });
     }
 
