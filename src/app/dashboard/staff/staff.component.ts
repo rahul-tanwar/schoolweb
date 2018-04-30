@@ -44,8 +44,10 @@ export class StaffComponent extends BaseComponent implements OnInit {
     private subscribeStaffData(): void {
 
         this.services.staffService.staffData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<StaffBasicInfo>(result.reverse());
-            this.dataSource.paginator = this.paginator;
+            if (!!result) {
+                this.dataSource = new MatTableDataSource<StaffBasicInfo>(result.reverse());
+                this.dataSource.paginator = this.paginator;
+            }
             this.services.spinnerService.hide();
         });
 

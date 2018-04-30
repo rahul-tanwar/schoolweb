@@ -7,7 +7,7 @@
         </div> -->
         <div class="header">
             <img matListAvatar src="../../../assets/img/new_logo.png" alt="...">
-            <form>
+            <form *ngIf="isAdmin">
                 <mat-form-field class="width-100per">
                     <span matPrefix>
                         <i class="fa fa-address-card" aria-hidden="true"></i> &nbsp;</span>

@@ -22,7 +22,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
         const user: User = JSON.parse(localStorage.getItem('user-access'));
         if (!!user) {
             this.userService.initilizeCurrentUser(user);
-            return this.checkUserIsAdmin(route, user);
+            return this.checkUserRoles(route, user);
         } else {
             this.router.navigate(['']);
         }
@@ -30,17 +30,23 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
         return false;
     }
 
-    private checkUserIsAdmin(route: ActivatedRouteSnapshot, user: User): boolean {
-        if (user.RoleName === 'SuperAdmin' && Context.getSchoolId() === 0) {
-            this.stateMachineService.setDisableNavByUserRole.next({ role: 'SuperAdmin', value: false });
-            const url = window.location.href;
-            if (url.includes('/dashboard/dashboardmain')
-                || url.includes('http://localhost:4200/#/')
-                || url.includes('/dashboard/school')) {
-                return true;
-            } else {
-                return false;
+    private checkUserRoles(route: ActivatedRouteSnapshot, user: User): boolean {
+        debugger;
+        if (user.RoleName === 'SuperAdmin') {
+            if (Context.getSchoolId() === 0) {
+                this.stateMachineService.setDisableNavByUserRole.next({ role: 'SuperAdmin', value: false });
+                const url = window.location.href;
+                if (url.includes('/dashboard/dashboardmain')
+                    || url.includes('http://localhost:4200/#/')
+                    || url.includes('/dashboard/school')) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
+
+        } else {
+            this.stateMachineService.setDisableNavByUserRole.next({ role: 'Admin', value: false });
         }
         return true;
     }

@@ -52,9 +52,9 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
 
     private disableNavLinksBasedOnUserRole() {
         this.services.stateMachineService.getDisableNavByUserRole().subscribe((result: { role: string, value: boolean }) => {
-            debugger;
             if (result.role === 'SuperAdmin') {
                 this.isSuperAdmin = result.value;
+                this.isAdmin = true;
             } else {
                 this.isAdmin = result.value;
             }
