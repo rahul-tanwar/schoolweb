@@ -11,10 +11,11 @@
                 <mat-form-field class="width-100per">
                     <span matPrefix>
                         <i class="fa fa-address-card" aria-hidden="true"></i> &nbsp;</span>
-                    <input type="text" placeholder="Select school" aria-label="Number" name="selectSchool" matInput [matAutocomplete]="auto">
+                    <input type="text" placeholder="Select school" aria-label="Number" (ngModelChange)="filterData($event)" [(ngModel)]="selectedSchool"
+                        name="selectSchool" matInput [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let school of schoolList" [value]="school.Name+school.SchoolUniqueId">
-                            {{ school.Name }} {{ ( school.SchoolUniqueId ) }}
+                        <mat-option (onSelectionChange)="selectSchool($event)" *ngFor="let school of autocompleteList" [value]="school">
+                            {{school}}
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
@@ -28,31 +29,31 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li routerLinkActive="active">
+            <li routerLinkActive="active" *ngIf="isAdmin">
                 <a routerLink="school">
                     <i class="fa fa-building" aria-hidden="true"></i>
                     <p>Schools</p>
                 </a>
             </li>
-            <li routerLinkActive="active" *ngIf="!isDisable">
+            <li routerLinkActive="active" *ngIf="isSuperAdmin">
                 <a routerLink="class">
                     <i class="ti-map"></i>
                     <p>Class</p>
                 </a>
             </li>
-            <li routerLinkActive="active" *ngIf="!isDisable">
+            <li routerLinkActive="active" *ngIf="isSuperAdmin">
                 <a routerLink="staff">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <p>Staff</p>
                 </a>
             </li>
-            <li routerLinkActive="active" *ngIf="!isDisable">
+            <li routerLinkActive="active" *ngIf="isSuperAdmin">
                 <a routerLink="student-list">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <p>Students</p>
                 </a>
             </li>
-            <li routerLinkActive="active" *ngIf="!isDisable">
+            <li routerLinkActive="active" *ngIf="isSuperAdmin">
                 <a routerLink="parent">
                     <i class="fa fa-male" aria-hidden="true"></i>
                     <i class="fa fa-female" aria-hidden="true"></i>

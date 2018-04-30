@@ -33,17 +33,11 @@ export class UserService {
         this.isLoginUser = false;
     }
 
-    checkIfUserIsAdmin(user: User) {
-        if (user.RoleName === 'SuperAdmin') {
-            this.stateMachineService.setDisableNavForAdmin.next(true);
-        }
-    }
 
     public getUser(user: User): Observable<any> {
         return new Observable((subscriber: Subscriber<any>) => {
             this.userServiceApi.getToken(user).subscribe((result: User) => {
                 if (!!result) {
-                    this.checkIfUserIsAdmin(result);
                     localStorage.setItem('user-access', JSON.stringify(result));
                     this.initilizeCurrentUser(result);
 
@@ -58,9 +52,18 @@ export class UserService {
         });
     }
 
-    public isUserLoggedIn(): boolean {
-        return this.isLoginUser;
+    updateSchoolForAdmin(schoolId: number) {
+        const user: User = JSON.parse(localStorage.getItem('user-access'));
+        user.SchoolInfoId = schoolId;
+        localStorage.setItem('user-access', JSON.stringify(user));
+        this.initilizeCurrentUser(user);
+        this.stateMachineService.setDisableNavByUserRole.next({ role: 'SuperAdmin', value: true });
     }
+
+    // public isUserLoggedIn(): boolean {
+    //     //  return this.isLoginUser;
+    //     return false;
+    // }
 
     public getLoggedInUser(): any {
         return null;

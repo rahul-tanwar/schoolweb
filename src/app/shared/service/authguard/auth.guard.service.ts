@@ -15,26 +15,28 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (this.userService.isUserLoggedIn()) {
-            return true;
+        debugger;
+        // if (this.userService.isUserLoggedIn()) {
+        //     return true;
+        // } else {
+        const user: User = JSON.parse(localStorage.getItem('user-access'));
+        if (!!user) {
+            this.userService.initilizeCurrentUser(user);
+            return this.checkUserIsAdmin(route, user);
         } else {
-            const user: User = JSON.parse(localStorage.getItem('user-access'));
-            if (!!user) {
-
-                this.userService.initilizeCurrentUser(user);
-                return this.checkUserIsAdmin(route, user);
-            } else {
-                this.router.navigate(['']);
-            }
+            this.router.navigate(['']);
         }
+        // }
         return false;
     }
 
     private checkUserIsAdmin(route: ActivatedRouteSnapshot, user: User): boolean {
         if (user.RoleName === 'SuperAdmin' && Context.getSchoolId() === 0) {
-            this.stateMachineService.setDisableNavForAdmin.next(true);
+            this.stateMachineService.setDisableNavByUserRole.next({ role: 'SuperAdmin', value: false });
             const url = window.location.href;
-            if (url.includes('/dashboard/dashboardmain') || url.includes('/dashboard/school')) {
+            if (url.includes('/dashboard/dashboardmain')
+                || url.includes('http://localhost:4200/#/')
+                || url.includes('/dashboard/school')) {
                 return true;
             } else {
                 return false;
