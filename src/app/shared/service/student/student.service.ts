@@ -5,6 +5,8 @@ import { Parent } from '../../model/parent';
 import { Filter } from '../../model/filter';
 import { StudentApiService } from '../../school-api/student/student-api.service';
 import { Context } from '../../../shared/context';
+import { NotificationService } from "../notification/notification.service";
+import { SpinnerService } from "../spinner/spinner.service";
 
 @Injectable()
 export class StudentService {
@@ -31,7 +33,9 @@ export class StudentService {
     get getfilterParents(): Observable<Filter> { return this._filterParents.asObservable(); }
 
 
-    constructor(private studentApiService: StudentApiService) {
+    constructor(private studentApiService: StudentApiService,
+        private notificationService: NotificationService,
+        private spinnerService: SpinnerService) {
     }
 
     public filterParents(filter: Filter) {
@@ -49,6 +53,8 @@ export class StudentService {
                 this._studentData.next(null);
             }
         }, (error: any) => {
+            this.spinnerService.hide();
+            this.notificationService.show(error);
             this._studentData.error('Could not fetch student list please try again');
         });
     }
@@ -65,6 +71,8 @@ export class StudentService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not save student please try again');
             });
         });
@@ -84,6 +92,8 @@ export class StudentService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not fetch student please try again');
             });
         });
@@ -101,6 +111,8 @@ export class StudentService {
                 this._allParentsData.next(null);
             }
         }, (error: any) => {
+            this.spinnerService.hide();
+            this.notificationService.show(error);
             this._allParentsData.error('Could not fetch student list alont with patents please try again');
         });
 
@@ -115,6 +127,8 @@ export class StudentService {
                 this._parentData.next(null);
             }
         }, (error: any) => {
+            this.spinnerService.hide();
+            this.notificationService.show(error);
             this._parentData.error('Could not fetch parent list please try again');
         });
 
@@ -131,6 +145,8 @@ export class StudentService {
                 this._classParentsData.next(null);
             }
         }, (error: any) => {
+            this.spinnerService.hide();
+            this.notificationService.show(error);
             this._classParentsData.error('Could not fetch student list alont with patents please try again');
         });
 
@@ -151,6 +167,8 @@ export class StudentService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not save student app code please try again');
             });
         });
@@ -168,7 +186,9 @@ export class StudentService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
-                subscriber.error('Could not save parent please try again');
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                //subscriber.error('Could not save parent please try again');
             });
         });
     }

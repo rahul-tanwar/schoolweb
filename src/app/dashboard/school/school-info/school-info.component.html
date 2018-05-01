@@ -15,7 +15,7 @@
                     <mat-form-field class="width-100per">
                         <span matPrefix>
                             <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;</span>
-                        <input matInput [(ngModel)]="schoolBasicInfo.Email" name="email" placeholder="Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                        <input matInput disabled [(ngModel)]="schoolBasicInfo.Email" name="email" placeholder="Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                     </mat-form-field>
                 </div>
                 <div class="col-md-6 col-xs-12">

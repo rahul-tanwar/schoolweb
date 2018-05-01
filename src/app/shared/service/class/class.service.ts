@@ -30,6 +30,7 @@ export class ClassService {
                 this._classData.next(null);
             }
         }, (error: any) => {
+
             this._classData.error('Could not fetch school info please try again');
         });
     }

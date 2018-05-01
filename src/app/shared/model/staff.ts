@@ -8,6 +8,7 @@ export class StaffBasicInfo {
     FirstName: string;
     LastName: string;
     Email: string;
+    Password: string;
     MobileNumber: string;
     Address: string;
     StaffTypeId: number;

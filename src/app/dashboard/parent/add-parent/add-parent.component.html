@@ -19,11 +19,19 @@
             <mat-option value="2">Female</mat-option>
         </mat-select>
     </mat-form-field>
+
     <mat-form-field>
         <span matPrefix>
             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
         <input matInput placeholder="Email" name="Email" [(ngModel)]="parent.Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
     </mat-form-field>
+
+    <mat-form-field *ngIf="parent.Password != null">
+        <span matPrefix>
+            <i class="fa fa-key" aria-hidden="true"></i> &nbsp;</span>
+        <input matInput disabled name="Password" [(ngModel)]="parent.Password" placeholder="Parent Password">
+    </mat-form-field>
+
     <mat-form-field>
         <span matPrefix>
             <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>

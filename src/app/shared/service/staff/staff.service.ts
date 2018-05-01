@@ -36,8 +36,9 @@ export class StaffService {
                 this._staffData.next(null);
             }
         }, (error: any) => {
-
-            this._staffData.error('Could not fetch staff info please try again');
+            this.spinnerService.hide();
+            this.notificationService.show(error);
+            //this._staffData.error('Could not fetch staff info please try again');
         });
     }
 
@@ -52,7 +53,9 @@ export class StaffService {
                     subscriber.next(false);
                 }
             }, (error: any) => {
-                subscriber.error('Could not Save Staff Information Please try again.');
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                //subscriber.error('Could not Save Staff Information Please try again.');
             });
         });
     }
@@ -68,6 +71,8 @@ export class StaffService {
                         subscriber.next(null);
                     }
                 }, (error: any) => {
+                    this.spinnerService.hide();
+                    this.notificationService.show(error);
                     subscriber.error('Could not save school please try again');
                 });
 
@@ -84,7 +89,8 @@ export class StaffService {
                     subscriber.next(false);
                 }
             }, (error: any) => {
-
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not Save Staff Information Please try again.');
             });
         });
@@ -100,6 +106,8 @@ export class StaffService {
                         subscriber.next(null);
                     }
                 }, (error: any) => {
+                    this.spinnerService.hide();
+                    this.notificationService.show(error);
                     subscriber.error('Could not save school please try again');
                 });
 
@@ -115,6 +123,8 @@ export class StaffService {
                     subscriber.next(false);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not Save Staff Information Please try again.');
             });
         });
@@ -130,6 +140,8 @@ export class StaffService {
                     this._staffExperienceData.next(null);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 this._staffExperienceData.error('Could not fetch Experience data please try again');
             });
 
@@ -146,6 +158,8 @@ export class StaffService {
                     subscriber.next(false);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not Save Staff Information Please try again.');
             });
         });

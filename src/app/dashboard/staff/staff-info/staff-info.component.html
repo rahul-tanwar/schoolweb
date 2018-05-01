@@ -28,9 +28,11 @@
                     <mat-form-field class="width-100per">
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
-                        <input matInput placeholder="Email" name="Email" required [(ngModel)]="staffBasicInfo.Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                        <input matInput disabled placeholder="Email" name="Email" required [(ngModel)]="staffBasicInfo.Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                     </mat-form-field>
                 </div>
+
+
                 <div class="col-md-6 col-xs-12">
                     <mat-form-field class="width-100per">
                         <span matPrefix>
@@ -131,7 +133,13 @@
                         <mat-datepicker #DOL></mat-datepicker>
                     </mat-form-field>
                 </div>
-
+                <div class="col-md-12 col-xs-12">
+                    <mat-form-field class="width-100per">
+                        <span matPrefix>
+                            <i class="fa fa-key" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput disabled name="Password" [(ngModel)]="staffBasicInfo.Password" placeholder="Staff Password">
+                    </mat-form-field>
+                </div>
 
                 <div class="align-center">
                     <button type="submit" mat-raised-button color="basic" [disabled]="!staffForm.form.valid">Save</button>

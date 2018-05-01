@@ -10,6 +10,7 @@ export class Parent {
     LastName: string;
     Gender: string;
     Email: string;
+    Password: string;
     MobileNumber: string;
     ContactNumber: string;
     IsActive: true;

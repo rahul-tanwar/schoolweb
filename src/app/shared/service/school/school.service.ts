@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, Subscriber, ReplaySubject } from 'rxjs/Rx';
 import { SchoolBasicInfo, SchoolOtherInfo, SchoolInfo } from '../../model/school';
 import { SchoolServiceApi } from '../../school-api/school/school-api.service';
-
+import { NotificationService } from "../notification/notification.service";
+import { SpinnerService } from "../spinner/spinner.service";
 @Injectable()
 export class SchoolService {
 
@@ -10,7 +11,9 @@ export class SchoolService {
 
     get schoolData(): Observable<Array<SchoolBasicInfo>> { return this._schoolData.asObservable(); }
 
-    constructor(private schoolServiceApi: SchoolServiceApi) {
+    constructor(private schoolServiceApi: SchoolServiceApi,
+        private notificationService: NotificationService,
+        private spinnerService: SpinnerService) {
     }
 
     public getSchoolList(): void {
@@ -21,6 +24,8 @@ export class SchoolService {
                 this._schoolData.next(null);
             }
         }, (error: any) => {
+            this.spinnerService.hide();
+            this.notificationService.show(error);
             this._schoolData.error('Could not fetch school list please try again');
         });
     }
@@ -36,6 +41,8 @@ export class SchoolService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not fetch school info please try again');
             });
         });
@@ -52,6 +59,8 @@ export class SchoolService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not fetch school other info please try again');
             });
         });
@@ -63,7 +72,6 @@ export class SchoolService {
     public saveBasicInfo(schoolBasicInfo: SchoolBasicInfo): Observable<SchoolBasicInfo> {
 
         return new Observable((subscriber: Subscriber<any>) => {
-            debugger
             this.schoolServiceApi.saveBasicInfo(schoolBasicInfo).subscribe((result: SchoolBasicInfo) => {
                 if (!!result) {
                     console.log(JSON.stringify(result));
@@ -73,7 +81,9 @@ export class SchoolService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
-                subscriber.error('Could not save school please try again');
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                // subscriber.error('Could not save school please try again');
             });
         });
     }
@@ -81,7 +91,6 @@ export class SchoolService {
     public saveOtherInfo(schoolOtherInfo: SchoolOtherInfo): Observable<SchoolOtherInfo> {
 
         return new Observable((subscriber: Subscriber<any>) => {
-            debugger
             this.schoolServiceApi.saveOtherInfo(schoolOtherInfo).subscribe((result: SchoolOtherInfo) => {
                 if (!!result) {
                     console.log(JSON.stringify(result));
@@ -91,6 +100,8 @@ export class SchoolService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not save school please try again');
             });
         });
@@ -119,6 +130,8 @@ export class SchoolService {
                     subscriber.next(null);
                 }
             }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
                 subscriber.error('Could not save school please try again');
             });
 
