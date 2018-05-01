@@ -12,7 +12,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     public user = new User();
 
     constructor(private injector: Injector, private router: Router) {
-        super(injector)
+        super(injector);
     }
 
     ngOnInit() {

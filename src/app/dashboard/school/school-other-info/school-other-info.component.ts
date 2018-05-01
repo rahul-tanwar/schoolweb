@@ -22,7 +22,7 @@ export class SchoolOtherInfoComponent extends BaseComponent implements OnInit {
             file.labelName = 'Upload School Logo';
             file.required = false;
             this._schoolOtherInfo = schoolOtherInfo;
-            this._schoolOtherInfo.MultimediaFile = file
+            this._schoolOtherInfo.MultimediaFile = file;
             console.log(schoolOtherInfo.LogoURL);
         }
     }

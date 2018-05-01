@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, Injector } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BaseComponent } from '../../../base/base.component';
 import { StaffExperience } from '../../../../shared/model/staff';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-add-certificate-experience',
     templateUrl: './add-certificate-experience.component.html',

@@ -35,7 +35,7 @@ export class SchoolDetailsComponent implements OnInit {
     }
 
     private getSchoolInfo() {
-        debugger
+        debugger;
         this.schoolService.getSchoolInfo(this.schoolUniqueId).subscribe((result: SchoolInfo) => {
             if (!!result) {
                 this.schoolBasicInfo = result.schoolBasicInfo;

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, Subscriber, ReplaySubject } from 'rxjs/Rx';
 import { SchoolBasicInfo, SchoolOtherInfo, SchoolInfo } from '../../model/school';
 import { SchoolServiceApi } from '../../school-api/school/school-api.service';
-import { NotificationService } from "../notification/notification.service";
-import { SpinnerService } from "../spinner/spinner.service";
+import { NotificationService } from '../notification/notification.service';
+import { SpinnerService } from '../spinner/spinner.service';
 @Injectable()
 export class SchoolService {
 

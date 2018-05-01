@@ -15,7 +15,6 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        debugger;
         // if (this.userService.isUserLoggedIn()) {
         //     return true;
         // } else {
@@ -31,13 +30,12 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     }
 
     private checkUserRoles(route: ActivatedRouteSnapshot, user: User): boolean {
-        debugger;
         if (user.RoleName === 'SuperAdmin') {
             if (Context.getSchoolId() === 0) {
                 this.stateMachineService.setDisableNavByUserRole.next({ role: 'SuperAdmin', value: false });
                 const url = window.location.href;
                 if (url.includes('/dashboard/dashboardmain')
-                    || url.includes('http://localhost:4200/#/')
+                    || url.includes('http://schoolweb.anaghaenterprises.in/#/')
                     || url.includes('/dashboard/school')) {
                     return true;
                 } else {

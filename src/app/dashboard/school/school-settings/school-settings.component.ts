@@ -27,7 +27,7 @@ export class SchoolSettingsComponent extends BaseComponent implements OnInit {
         this.services.spinnerService.show();
         this.services.schoolService.saveOtherInfo(this.schoolOtherInfo).subscribe((result) => {
             this.services.spinnerService.hide();
-            this.services.notificationService.show("Successfully saved.");
+            this.services.notificationService.show('Successfully saved.');
         });
     }
 
