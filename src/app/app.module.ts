@@ -8,13 +8,13 @@ import { LoginComponent } from './account/login/login.component';
 import { SignupComponent } from './account/signup/signup.component';
 import { ForgotPasswordComponent } from './account/forgot-password/forgot-password.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { MaterialModule } from './material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SchoolInfoComponent } from './account/school-info/school-info.component';
 import { AppRoutingModule } from './app.routing';
 import * as ServiceAPI from './shared/school-api';
 import * as Service from './shared/service';
-
+import { SpinnerComponent } from '../app/shared/component/spinner/spinner.component';
 
 @NgModule({
     declarations: [
@@ -22,14 +22,16 @@ import * as Service from './shared/service';
         LoginComponent,
         SignupComponent,
         ForgotPasswordComponent,
-        SchoolInfoComponent
+        SchoolInfoComponent,
+        SpinnerComponent
     ],
     imports: [
         BrowserModule,
         DashboardModule,
         FormsModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        MaterialModule
     ],
     providers: [
         // ServiceAPI.BaseServiceApi,

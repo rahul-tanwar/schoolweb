@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, Injector, ReflectiveInjector } from '@angular/core';
+import { Component, ChangeDetectorRef, Injector, ReflectiveInjector, Inject } from '@angular/core';
 import * as Services from '../../shared/service/index';
 
 interface IService {
@@ -9,6 +9,7 @@ interface IService {
     staffService: Services.StaffService;
     stateMachineService: Services.StateMachineService;
     schoolService: Services.SchoolService;
+    userService: Services.UserService;
 }
 
 export class BaseComponent {
@@ -25,7 +26,8 @@ export class BaseComponent {
             studentService: injector.get(Services.StudentService),
             staffService: injector.get(Services.StaffService),
             stateMachineService: injector.get(Services.StateMachineService),
-            schoolService: injector.get(Services.SchoolService)
+            schoolService: injector.get(Services.SchoolService),
+            userService: injector.get(Services.UserService)
         };
     }
 

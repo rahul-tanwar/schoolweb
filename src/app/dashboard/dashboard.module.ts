@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
@@ -19,7 +19,7 @@ import { StudentDetailsComponent } from './student/student-details/student-detai
 import { ParentDetailsComponent } from './student/parent-details/parent-details.component';
 import { AddParentComponent } from './parent/add-parent/add-parent.component';
 import { StudentActivityComponent } from './student/student-activity/student-activity.component';
-import { SpinnerComponent } from './../shared/component/spinner/spinner.component';
+//import { SpinnerComponent } from './../shared/component/spinner/spinner.component';
 import { MultimediaComponent } from './../shared/component/multimedia/multimedia.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
@@ -56,7 +56,6 @@ import {
     declarations: [
         DashboardComponent,
         SidebarNavComponent,
-        SpinnerComponent,
         SchoolComponent,
         StudentComponent,
         ClassComponent,
