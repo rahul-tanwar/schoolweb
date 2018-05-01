@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-
+import { MultimediaFile } from './mutimedia';
 
 
 export class SchoolInfo {
@@ -36,10 +36,12 @@ export class SchoolOtherInfo {
     Tagline: string;
     Validity: moment.Moment;
     logo: string;
+    LogoURL: string;
     AllowVideo: boolean;
     AllowBranding: boolean;
     AllowDocument: boolean;
     UpdateDate: moment.Moment;
     UpdatedEmail: string;
     IsActive = true;
+    MultimediaFile: MultimediaFile;
 }

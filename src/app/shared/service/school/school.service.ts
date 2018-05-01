@@ -63,7 +63,7 @@ export class SchoolService {
     public saveBasicInfo(schoolBasicInfo: SchoolBasicInfo): Observable<SchoolBasicInfo> {
 
         return new Observable((subscriber: Subscriber<any>) => {
-
+            debugger
             this.schoolServiceApi.saveBasicInfo(schoolBasicInfo).subscribe((result: SchoolBasicInfo) => {
                 if (!!result) {
                     console.log(JSON.stringify(result));
@@ -81,7 +81,7 @@ export class SchoolService {
     public saveOtherInfo(schoolOtherInfo: SchoolOtherInfo): Observable<SchoolOtherInfo> {
 
         return new Observable((subscriber: Subscriber<any>) => {
-
+            debugger
             this.schoolServiceApi.saveOtherInfo(schoolOtherInfo).subscribe((result: SchoolOtherInfo) => {
                 if (!!result) {
                     console.log(JSON.stringify(result));
@@ -104,6 +104,7 @@ export class SchoolService {
                 this.schoolServiceApi.getSchoolOtherInfoById(schoolUniqueId)
             ).subscribe((result: any) => {
                 if (!!result) {
+                    debugger;
                     const schoolInfo = new SchoolInfo();
                     schoolInfo.schoolBasicInfo = result[0] as SchoolBasicInfo;
                     if (!!result[1]) {
