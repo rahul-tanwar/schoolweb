@@ -1,21 +1,23 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Injector } from '@angular/core';
 import { StaffOtherInfo } from '../../../shared/model/staff';
 import { StaffService } from '../../../shared/service/staff/staff.service';
 import { Router } from '@angular/router';
+import { BaseComponent } from '../../base/base.component';
 @Component({
     selector: 'app-staff-other-info',
     templateUrl: './staff-other-info.component.html',
     styleUrls: ['./staff-other-info.component.css']
 })
-export class StaffOtherInfoComponent implements OnInit {
+export class StaffOtherInfoComponent extends BaseComponent implements OnInit {
 
     @Input() public staffOtherInfo: StaffOtherInfo;
 
     constructor(
-        private staffService: StaffService,
+        public injector: Injector,
         private changeDetectorRef: ChangeDetectorRef,
         private router: Router
     ) {
+        super(injector);
         // this.staffTypes = this.getStaffType();
     }
 
@@ -24,9 +26,10 @@ export class StaffOtherInfoComponent implements OnInit {
 
 
     public save(): void {
-        debugger;
-        this.staffService.saveStaffOtherInfo(this.staffOtherInfo).subscribe((result) => {
-            alert('successfully save');
+        this.services.spinnerService.show();
+        this.services.staffService.saveStaffOtherInfo(this.staffOtherInfo).subscribe((result) => {
+            this.services.spinnerService.hide();
+            this.services.notificationService.show('successfully saved');
         });
     }
 

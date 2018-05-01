@@ -1,29 +1,31 @@
-import { Component, OnInit, Input, Inject, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Inject, ChangeDetectorRef, AfterViewInit, Injector } from '@angular/core';
 import { StaffBasicInfo, StaffTypeModel, StaffSubTypeModel } from '../../../shared/model/staff';
 import { StaffService } from '../../../shared/service/staff/staff.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from "@angular/router";
+import { BaseComponent } from '../../base/base.component';
 @Component({
     selector: 'app-staff-info',
     templateUrl: './staff-info.component.html',
     styleUrls: ['./staff-info.component.css']
 })
 
-export class StaffInfoComponent implements OnInit {
+export class StaffInfoComponent extends BaseComponent implements OnInit {
     @Input() public staffBasicInfo = new StaffBasicInfo();
     selectedStaffType: StaffTypeModel = new StaffTypeModel(0, ' ');
     staffTypes: StaffTypeModel[];
     staffSubTypes: StaffSubTypeModel[];
 
     constructor(
-        private staffService: StaffService,
+        public injector: Injector,
         private changeDetectorRef: ChangeDetectorRef,
         private router: Router
     ) {
         // this.staffTypes = this.getStaffType();
+        super(injector);
     }
     public onSelect(staffTypeId) {
-        this.staffSubTypes = this.staffService.getStaffSubTypeId().filter((item) => item.StaffTypeId === staffTypeId);
+        this.staffSubTypes = this.services.staffService.getStaffSubTypeId().filter((item) => item.StaffTypeId === staffTypeId);
     }
 
 
@@ -31,8 +33,10 @@ export class StaffInfoComponent implements OnInit {
     }
 
     public save(): void {
-        this.staffService.saveStaff(this.staffBasicInfo).subscribe((result) => {
-            alert('successfully save');
+        this.services.spinnerService.show();
+        this.services.staffService.saveStaff(this.staffBasicInfo).subscribe((result) => {
+            this.services.spinnerService.hide();
+            this.services.notificationService.show('successfully saved');
         });
     }
 

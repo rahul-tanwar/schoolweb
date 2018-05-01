@@ -13,6 +13,7 @@ export class SchoolBasicInfo {
     SchoolInfoId: number;
     Name: string;
     Email: string;
+    Password: string;
     ContactNumber: string;
     Address: string;
     City: string;

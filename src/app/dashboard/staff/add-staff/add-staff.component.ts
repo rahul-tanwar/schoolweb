@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { StaffService } from '../../../shared/service/staff/staff.service';
 import { StaffBasicInfo, StaffTypeModel, StaffSubTypeModel } from '../../../shared/model/staff';
-
+import { BaseComponent } from '../../base/base.component';
 @Component({
     selector: 'app-add-staff',
     templateUrl: './add-staff.component.html',
     styleUrls: ['./add-staff.component.css']
 })
-export class AddStaffComponent implements OnInit {
+export class AddStaffComponent extends BaseComponent implements OnInit {
     public staffModel = new StaffBasicInfo();
     selectedStaffType: StaffTypeModel = new StaffTypeModel(0, ' ');
     staffTypes: StaffTypeModel[];
     staffSubTypes: StaffSubTypeModel[];
     constructor(public dialogRef: MatDialogRef<AddStaffComponent>,
-        private staffService: StaffService) {
+        public injector: Injector) {
+        super(injector);
         this.staffTypes = this.getStaffType();
     }
 
@@ -26,10 +27,12 @@ export class AddStaffComponent implements OnInit {
     }
 
     public save(): void {
-        this.staffService.saveStaff(this.staffModel).subscribe((result) => {
-            this.staffService.getAllStaff();
+        this.services.spinnerService.show();
+        this.services.staffService.saveStaff(this.staffModel).subscribe((result) => {
+            this.services.staffService.getAllStaff();
+            this.services.spinnerService.hide();
             this.dialogRef.close('successfully');
-            alert('successfully save');
+            this.services.notificationService.show('successfully saved');
         });
     }
 

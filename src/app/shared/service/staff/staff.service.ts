@@ -4,6 +4,8 @@ import * as Model from '../../model/staff';
 import { Student } from '../../model/student';
 import { StaffApiService } from '../../school-api/staff/staff-api.service';
 import { Context } from '../../../shared/context';
+import { NotificationService } from "../notification/notification.service";
+import { SpinnerService } from "../spinner/spinner.service";
 
 @Injectable()
 export class StaffService {
@@ -20,7 +22,9 @@ export class StaffService {
     get staffExperienceData(): Observable<Array<Model.StaffExperience>> { return this._staffExperienceData.asObservable(); }
 
 
-    constructor(private staffApiService: StaffApiService) {
+    constructor(private staffApiService: StaffApiService,
+        private notificationService: NotificationService,
+        private spinnerService: SpinnerService) {
 
     }
     public getAllStaff(): void {
@@ -32,6 +36,7 @@ export class StaffService {
                 this._staffData.next(null);
             }
         }, (error: any) => {
+
             this._staffData.error('Could not fetch staff info please try again');
         });
     }
@@ -79,6 +84,7 @@ export class StaffService {
                     subscriber.next(false);
                 }
             }, (error: any) => {
+
                 subscriber.error('Could not Save Staff Information Please try again.');
             });
         });
@@ -171,7 +177,9 @@ export class StaffService {
                     subscriber.next(false);
                 }
             }, (error: any) => {
-                subscriber.error('Could not Save Staff document Please try again.');
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                //subscriber.error('Could not Save Staff document Please try again.');
             });
         });
     }

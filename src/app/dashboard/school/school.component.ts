@@ -29,6 +29,7 @@ export class SchoolComponent extends BaseComponent implements OnInit {
         this.services.spinnerService.show();
         this.subscribeSchoolData();
         this.schoolService.getSchoolList();
+
     }
 
 

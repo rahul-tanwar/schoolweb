@@ -30,10 +30,12 @@ export class AddDocumentComponent extends BaseComponent implements OnInit {
     }
 
     public save(): void {
+        this.services.spinnerService.show();
         this.services.staffService.saveStaffDocument(this.staffDocument).subscribe((result) => {
             this.services.staffService.getStaffDocuments(this.staffDocument.StaffInfoId.toString());
             this.dialogRef.close('successfully');
-            alert('successfully save');
+            this.services.spinnerService.hide();
+            this.services.notificationService.show('successfully saved');
         });
     }
 

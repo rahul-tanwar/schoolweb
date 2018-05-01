@@ -43,6 +43,7 @@ export class DocumentStaffComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.services.spinnerService.show();
         this.dataSource.data = this.staffDocuments;
         this.subscribeStaffDocumentData();
     }
@@ -51,13 +52,16 @@ export class DocumentStaffComponent extends BaseComponent implements OnInit {
         this.services.staffService.staffDocumentData.subscribe((result) => {
             this.dataSource = new MatTableDataSource<StaffDocument>(result.reverse());
             this.dataSource.paginator = this.paginator;
+            this.services.spinnerService.hide();
         });
 
 
     }
     public removeDocument(documentId: string) {
+        this.services.spinnerService.show();
         this.services.staffService.deleteStaffDocument(documentId).subscribe((result) => {
             if (result) {
+                this.services.spinnerService.hide();
                 this.services.notificationService.show('deleted successfully');
                 this.services.staffService.getStaffDocuments(this.staffId.toString());
             }

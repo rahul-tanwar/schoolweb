@@ -7,7 +7,6 @@ import { StudentService } from '../../../shared/service/student/student.service'
 import { Parent, ListType } from '../../../shared/model/parent';
 import { Filter } from '../../../shared/model/filter';
 import { Student } from '../../../shared/model/student';
-import { SpinnerService } from '../../../shared/service/spinner/spinner.service';
 import { BaseComponent } from '../../base/base.component';
 
 

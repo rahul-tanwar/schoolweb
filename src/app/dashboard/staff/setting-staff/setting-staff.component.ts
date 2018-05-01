@@ -19,6 +19,7 @@ export class SettingStaffComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.services.spinnerService.show();
         this.subscribeClassData();
         this.services.classService.getAllClasses();
     }
@@ -26,13 +27,16 @@ export class SettingStaffComponent extends BaseComponent implements OnInit {
     private subscribeClassData(): void {
         this.services.classService.classData.subscribe((result: Array<Class>) => {
             this.classList = result;
+            this.services.spinnerService.hide();
         });
     }
 
 
     public save(): void {
+        this.services.spinnerService.show();
         this.services.staffService.saveStaffClass(this.staffClass).subscribe((result) => {
-            alert('successfully save');
+            this.services.spinnerService.hide();
+            this.services.notificationService.show('successfully saved');
         });
     }
     public cancel(): void {

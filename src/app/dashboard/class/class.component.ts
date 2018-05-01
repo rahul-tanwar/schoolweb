@@ -1,26 +1,23 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AddClassComponent } from './add-class/add-class.component';
-import { ClassService } from '../../shared/service/class/class.service';
 import { Class } from '../../shared/model/class';
-import { UserService } from '../../shared/service';
-
+import { BaseComponent } from '../base/base.component';
 @Component({
     selector: 'app-class',
     templateUrl: './class.component.html',
     styleUrls: ['./class.component.css']
 })
-export class ClassComponent implements OnInit {
+export class ClassComponent extends BaseComponent implements OnInit {
 
     displayedColumns = ['name'];
     dataSource: MatTableDataSource<Class>;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(public dialog: MatDialog,
-        private classService: ClassService,
-        private userService: UserService
-    ) { }
+        public injector: Injector
+    ) { super(injector); }
 
     foods = [
         { value: 'steak-0', viewValue: 'Class 1' },
@@ -45,17 +42,19 @@ export class ClassComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.services.spinnerService.show();
         this.subscribeClassData();
-        this.classService.getAllClasses();
+        this.services.classService.getAllClasses();
     }
 
     private subscribeClassData(): void {
 
-        this.classService.classData.subscribe((result) => {
+        this.services.classService.classData.subscribe((result) => {
             this.dataSource = new MatTableDataSource<Class>(result.reverse());
             this.dataSource.paginator = this.paginator;
             //  this.changeDetectorRef.detectChanges();
             //  this.changeDetectorRef.markForCheck();
+            this.services.spinnerService.hide();
         });
 
 

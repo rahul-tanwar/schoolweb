@@ -23,10 +23,12 @@ export class AddCertificateExperienceComponent extends BaseComponent implements 
     }
 
     public save(): void {
+        this.services.spinnerService.show();
         this.services.staffService.saveStaffExperience(this.staffExperience).subscribe((result) => {
             this.services.staffService.getStaffExperiences(this.staffExperience.StaffInfoId.toString());
             this.dialogRef.close('successfully');
-            alert('successfully save');
+            this.services.spinnerService.hide();
+            this.services.notificationService.show('successfully saved');
         });
     }
 

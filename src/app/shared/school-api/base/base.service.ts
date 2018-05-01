@@ -25,7 +25,7 @@ export class BaseServiceApi {
         }
         // return an ErrorObservable with a user-facing error message
         return new ErrorObservable(
-            'Something bad happened; please try again later.');
+            error.error);
     }
 
 }

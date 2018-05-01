@@ -1,17 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AddStaffComponent } from './add-staff/add-staff.component';
 import { StaffService } from '../../shared/service/staff/staff.service';
 import { StaffBasicInfo } from '../../shared/model/staff';
 import { UserService } from '../../shared/service';
-
+import { BaseComponent } from '../base/base.component';
 @Component({
     selector: 'app-staff',
     templateUrl: './staff.component.html',
     styleUrls: ['./staff.component.css']
 })
-export class StaffComponent implements OnInit {
+export class StaffComponent extends BaseComponent implements OnInit {
 
 
     displayedColumns = ['name'];
@@ -20,9 +20,8 @@ export class StaffComponent implements OnInit {
 
 
     constructor(public dialog: MatDialog,
-        private staffService: StaffService,
-        private userService: UserService
-    ) { }
+        public injector: Injector
+    ) { super(injector); }
 
     openDialog(): void {
         const dialogRef = this.dialog.open(AddStaffComponent, {
@@ -37,15 +36,17 @@ export class StaffComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.services.spinnerService.show();
         this.subscribeStaffData();
-        this.staffService.getAllStaff();
+        this.services.staffService.getAllStaff();
     }
 
     private subscribeStaffData(): void {
 
-        this.staffService.staffData.subscribe((result) => {
+        this.services.staffService.staffData.subscribe((result) => {
             this.dataSource = new MatTableDataSource<StaffBasicInfo>(result.reverse());
             this.dataSource.paginator = this.paginator;
+            this.services.spinnerService.hide();
         });
 
 

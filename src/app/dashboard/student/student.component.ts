@@ -48,6 +48,7 @@ export class StudentComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.services.spinnerService.show();
         this.subscribeStudentData();
         this.subscribeClassData();
         this.services.studentService.getStudentsBySchoolId();
@@ -66,13 +67,13 @@ export class StudentComponent extends BaseComponent implements OnInit {
             this.dataSource = new MatTableDataSource<Student>(result.reverse());
             this.dataSource.paginator = this.paginator;
             this.studentList = result;
+            this.services.spinnerService.hide();
             //  this.changeDetectorRef.detectChanges();
             //  this.changeDetectorRef.markForCheck();
         });
     }
 
     applyFilter(filterValue: string) {
-        debugger;
         filterValue = filterValue.trim(); // Remove whitespace
         filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
         this.dataSource.filter = filterValue;

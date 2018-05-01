@@ -29,7 +29,7 @@
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;</span>
-                        <input matInput name="validity" [(ngModel)]="schoolOtherInfo.Validity" [matDatepicker]="Validity" placeholder="Validity">
+                        <input matInput name="validity" required [(ngModel)]="schoolOtherInfo.Validity" [matDatepicker]="Validity" placeholder="Validity">
                         <mat-datepicker-toggle matSuffix [for]="Validity"></mat-datepicker-toggle>
                         <mat-datepicker #Validity></mat-datepicker>
                     </mat-form-field>
