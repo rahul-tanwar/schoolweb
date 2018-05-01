@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, Injector } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BaseComponent } from '../../../base/base.component';
 import { StaffExperience } from '../../../../shared/model/staff';
-
+import { Router } from "@angular/router";
 @Component({
     selector: 'app-add-certificate-experience',
     templateUrl: './add-certificate-experience.component.html',
@@ -11,7 +11,7 @@ import { StaffExperience } from '../../../../shared/model/staff';
 export class AddCertificateExperienceComponent extends BaseComponent implements OnInit {
     public staffExperience: StaffExperience;
 
-    constructor(public dialogRef: MatDialogRef<AddCertificateExperienceComponent>,
+    constructor(public dialogRef: MatDialogRef<AddCertificateExperienceComponent>, private router: Router,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private injector: Injector
     ) {
@@ -30,6 +30,10 @@ export class AddCertificateExperienceComponent extends BaseComponent implements 
             this.services.spinnerService.hide();
             this.services.notificationService.show('successfully saved');
         });
+    }
+
+    public cancel(): void {
+        this.dialogRef.close('successfully');
     }
 
 

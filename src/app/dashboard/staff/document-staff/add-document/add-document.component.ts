@@ -39,5 +39,9 @@ export class AddDocumentComponent extends BaseComponent implements OnInit {
         });
     }
 
+    public cancel(): void {
+        this.dialogRef.close('successfully');
+    }
+
 
 }
