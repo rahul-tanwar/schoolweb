@@ -1,19 +1,26 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { OnInit, AfterViewInit, ChangeDetectorRef, Component, Injector } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { SchoolService } from '../../../shared/service/school/school.service';
 import { SchoolBasicInfo, SchoolOtherInfo, SchoolInfo } from '../../../shared/model/school';
+import { BaseComponent } from '../../base/base.component';
+
 @Component({
     selector: 'app-school-details',
     templateUrl: './school-details.component.html',
     styleUrls: ['./school-details.component.css']
 })
-export class SchoolDetailsComponent implements OnInit {
+export class SchoolDetailsComponent extends BaseComponent implements OnInit {
     public schoolUniqueId: string;
     public schoolBasicInfo: SchoolBasicInfo = new SchoolBasicInfo();
     public schoolOtherInfo: SchoolOtherInfo = new SchoolOtherInfo();
 
-    constructor(private route: ActivatedRoute, private schoolService: SchoolService, private changeDetectorRef: ChangeDetectorRef) { }
+    constructor(private route: ActivatedRoute,
+        private schoolService: SchoolService,
+        private changeDetectorRef: ChangeDetectorRef,
+        public injector: Injector) {
+        super(injector);
+    }
 
     ngOnInit() {
         this.subscribeRouteParams().then(() => {
@@ -35,12 +42,12 @@ export class SchoolDetailsComponent implements OnInit {
     }
 
     private getSchoolInfo() {
-        debugger
-        this.schoolService.getSchoolInfo(this.schoolUniqueId).subscribe((result: SchoolInfo) => {
+        this.schoolService.getSchoolInfo(this.schoolUniqueId);
+        this.schoolService.schoolInfo.subscribe((result: SchoolInfo) => {
             if (!!result) {
                 this.schoolBasicInfo = result.schoolBasicInfo;
                 this.schoolOtherInfo = result.schoolOtherInfo;
-                this.changeDetectorRef.detectChanges();
+                this.services.stateMachineService.setBreadCrumb.next('School / ' + this.schoolBasicInfo.Name);
             }
         });
     }

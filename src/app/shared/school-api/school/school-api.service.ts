@@ -11,7 +11,17 @@ export class SchoolServiceApi extends BaseServiceApi {
     constructor(protected httpClient: HttpClient) {
         super();
     }
-    public getSchoolBasicInfoById(schoolUniqueId: string): Observable<object> {
+
+
+    public getSchoolInfoById(schoolId: string): Observable<object> {
+
+        this.httpParams = new HttpParams();
+        const param = this.httpParams.set('schoolInfoId', schoolId);
+        return this.httpClient.get<object>(this.baseUrl + 'school/getschoolinfobyid', { params: param })
+            .pipe(catchError(this.handleError));
+    }
+
+    public getSchoolBasicInfoByUniqueId(schoolUniqueId: string): Observable<object> {
 
         this.httpParams = new HttpParams();
         const param = this.httpParams.set('schoolUniqueId', schoolUniqueId);
@@ -19,7 +29,7 @@ export class SchoolServiceApi extends BaseServiceApi {
             .pipe(catchError(this.handleError));
     }
 
-    public getSchoolOtherInfoById(schoolUniqueId: string): Observable<object> {
+    public getSchoolOtherInfoByUniqueId(schoolUniqueId: string): Observable<object> {
 
         this.httpParams = new HttpParams();
         const param = this.httpParams.set('schoolUniqueId', schoolUniqueId);
@@ -42,6 +52,13 @@ export class SchoolServiceApi extends BaseServiceApi {
             .pipe(catchError(this.handleError));
     }
 
+    public addsuperadminschool(schoolInfo: object): Observable<object> {
+        return this.httpClient.post(this.baseUrl + 'school/addsuperadminschool', schoolInfo)
+            .pipe(catchError(this.handleError));
+    }
 
-
+    public deletesuperadminschool(schoolInfo: object): Observable<object> {
+        return this.httpClient.post(this.baseUrl + 'school/deletesuperadminschool', schoolInfo)
+            .pipe(catchError(this.handleError));
+    }
 }

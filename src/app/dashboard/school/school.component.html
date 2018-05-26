@@ -28,7 +28,7 @@
                                 <ng-container matColumnDef="schoolId">
                                     <mat-header-cell *matHeaderCellDef class="header">SCHOOL ID</mat-header-cell>
                                     <mat-cell *matCellDef="let school">
-                                        <a [routerLink]="['/dashboard/school-details', school.SchoolUniqueId]">{{school.SchoolUniqueId}}</a>
+                                        <a [routerLink]="['/dashboard/school/school-details', school.SchoolUniqueId]">{{school.SchoolUniqueId}}</a>
                                     </mat-cell>
                                 </ng-container>
 
@@ -47,14 +47,14 @@
                                 </ng-container>
 
                                 <!-- board Column -->
-                                <ng-container matColumnDef="board">
-                                    <mat-header-cell *matHeaderCellDef>BOARD</mat-header-cell>
-                                    <mat-cell *matCellDef="let school"> {{school.BoardTypeId}} </mat-cell>
+                                <ng-container matColumnDef="KeyContactName">
+                                    <mat-header-cell *matHeaderCellDef>KEY CONTACT NAME</mat-header-cell>
+                                    <mat-cell *matCellDef="let school"> {{school.KeyContactName}} </mat-cell>
                                 </ng-container>
                                 <!-- schoolType Column -->
-                                <ng-container matColumnDef="schoolType">
-                                    <mat-header-cell *matHeaderCellDef>SCHOOl TYPE</mat-header-cell>
-                                    <mat-cell *matCellDef="let school"> {{school.SchoolTypeIdList}} </mat-cell>
+                                <ng-container matColumnDef="KeyDesignation">
+                                    <mat-header-cell *matHeaderCellDef>KEY DESIGNATION</mat-header-cell>
+                                    <mat-cell *matCellDef="let school"> {{school.KeyDesignation}} </mat-cell>
                                 </ng-container>
 
                                 <!-- status Column -->

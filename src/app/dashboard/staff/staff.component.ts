@@ -36,6 +36,7 @@ export class StaffComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.services.stateMachineService.setBreadCrumb.next('Staff');
         this.services.spinnerService.show();
         this.subscribeStaffData();
         this.services.staffService.getAllStaff();

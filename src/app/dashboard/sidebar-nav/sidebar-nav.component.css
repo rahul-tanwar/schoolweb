@@ -25,3 +25,21 @@ color: rgba(41, 184, 187, 1) !important}
      .header img{
          margin-bottom: 7px;
      }
+.selected-school {
+    width: 100%;
+display: flex;
+padding-top: 5px;
+}
+
+.selected-school h4 {
+    flex: 1;
+    margin: 0px;
+    font-size: 16px;
+    color: #9d9b96;
+}
+
+.selected-school .fa-times-circle {
+    margin-top: 2px;
+    font-size: 16px;
+    cursor: pointer;
+}

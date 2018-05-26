@@ -38,7 +38,7 @@ export class GenerateStudentAppCodeComponent extends BaseComponent implements On
         });
     }
     public cancel(): void {
-        this.router.navigateByUrl('/dashboard/student-list');
+        this.router.navigateByUrl('/dashboard/student');
     }
 
 

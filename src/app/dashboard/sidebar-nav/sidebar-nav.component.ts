@@ -2,7 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { StateMachineService } from '../../shared/service/state-machine/state-machine.service';
 import { Context } from '../../shared/context';
 import { BaseComponent } from '../base/base.component';
-import { SchoolBasicInfo } from '../../shared/model/school';
+import { SchoolBasicInfo, SchoolInfo } from '../../shared/model/school';
 import { log } from 'util';
 
 
@@ -14,36 +14,50 @@ import { log } from 'util';
 export class SidebarNavComponent extends BaseComponent implements OnInit {
 
     public isSuperAdmin = true;
-    public isAdmin = true;
-    public schoolId: number;
     public selectedSchool: string;
     public schoolList = [];
+    public schoolId: number;
     public autocompleteList: Array<string>;
     public autocompleteList2: Array<string>;
+    public schoolLogo: string;
+
     constructor(private injector: Injector) {
         super(injector);
     }
 
     ngOnInit() {
         this.schoolId = Context.getSchoolId();
+        debugger;
+        this.schoolLogo = '../../../assets/img/new_logo.png';
         this.disableNavLinksBasedOnUserRole();
-        this.getAllSchools();
+        this.subscribeAllSchools();
+        this.getSchooinfo();
     }
 
-    private getAllSchools() {
-        this.subscribeSchoolData();
+    private getSchooinfo() {
+        if (this.schoolId > 0) {
+            this.services.schoolService.getSchoolInfoById(this.schoolId.toString()).subscribe((result: SchoolInfo) => {
+                if (!!result) {
+                    this.selectedSchool = result['SchoolBasicInfoModel'].Name + '(' + result['SchoolBasicInfoModel'].SchoolUniqueId + ')';
+                    if (!!result['SchoolOtherInfoModel'] && !!result['SchoolOtherInfoModel'].logo) {
+                        this.schoolLogo = result['SchoolOtherInfoModel'].logo;
+                    }
+                }
+            });
+        }
+    }
+
+    private subscribeAllSchools(): void {
         this.services.schoolService.getSchoolList();
-    }
-
-    private subscribeSchoolData(): void {
-
         this.services.schoolService.schoolData.subscribe((result: SchoolBasicInfo[]) => {
-            this.schoolList = result;
-            this.createAutocompleteData(result);
+            if (!!result) {
+                this.schoolList = result;
+                this.createAutocompleteData(result);
+            }
         });
     }
 
-    public createAutocompleteData(schools: SchoolBasicInfo[]) {
+    private createAutocompleteData(schools: SchoolBasicInfo[]) {
         this.autocompleteList = schools.map((school: SchoolBasicInfo) => {
             return school.Name + ' (' + school.SchoolUniqueId + ')';
         });
@@ -51,19 +65,12 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
     }
 
     private disableNavLinksBasedOnUserRole() {
-        this.services.stateMachineService.getDisableNavByUserRole().subscribe((result: { role: string, value: boolean }) => {
-            if (result.role === 'SuperAdmin') {
-                this.isSuperAdmin = result.value;
-                this.isAdmin = true;
-            } else {
-                this.isAdmin = result.value;
+
+        if (this.schoolId > 0) {
+            if (Context.getUserRole() === 'SuperAdmin') {
+                this.isSuperAdmin = true;
             }
-        });
-    }
-
-    public changeSchool(schoolId: number) {
-        console.log(schoolId);
-
+        }
     }
 
     public selectSchool(event: any) {
@@ -72,9 +79,18 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
                 (event.source.value.indexOf(schoolitem.SchoolUniqueId) > -1)
             );
             if (school.length > 0) {
-                this.services.userService.updateSchoolForAdmin(school[0].SchoolInfoId);
+                this.services.schoolService.setSuperAdminSchool(school[0].SchoolInfoId).subscribe((result) => {
+                    this.services.userService.updateSchoolForAdmin(school[0].SchoolInfoId);
+                });
             }
         }
+    }
+
+    public deleteSchool(): void {
+        debugger;
+        this.services.schoolService.deleteSuperAdminSchool().subscribe((result) => {
+            this.services.userService.updateSchoolForAdmin(0);
+        });
     }
 
     public filterData(filterValue: string) {

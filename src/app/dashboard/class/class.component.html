@@ -32,7 +32,7 @@
                                             <mat-list-item>
                                                 <div class="col-md-10">
                                                     <h6 matLine class="width-fit-content">
-                                                        <a [routerLink]="['/dashboard/class-details', element.ClassId]">{{element.ClassName}}</a>
+                                                        <a [routerLink]="['/dashboard/class/class-details', element.ClassId]" [queryParams]="{ name: element.ClassName }">{{element.ClassName}}</a>
                                                     </h6>
                                                 </div>
                                                 <div class="col-md-2 text-right">

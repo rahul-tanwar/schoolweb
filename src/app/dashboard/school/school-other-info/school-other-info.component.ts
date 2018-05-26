@@ -22,8 +22,7 @@ export class SchoolOtherInfoComponent extends BaseComponent implements OnInit {
             file.labelName = 'Upload School Logo';
             file.required = false;
             this._schoolOtherInfo = schoolOtherInfo;
-            this._schoolOtherInfo.MultimediaFile = file
-            console.log(schoolOtherInfo.LogoURL);
+            this._schoolOtherInfo.MultimediaFile = file;
         }
     }
     get schoolOtherInfo() {
@@ -37,7 +36,6 @@ export class SchoolOtherInfoComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.schoolOtherInfo);
 
     }
 

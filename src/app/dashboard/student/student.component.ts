@@ -48,6 +48,7 @@ export class StudentComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.services.stateMachineService.setBreadCrumb.next('Student');
         this.services.spinnerService.show();
         this.subscribeStudentData();
         this.subscribeClassData();

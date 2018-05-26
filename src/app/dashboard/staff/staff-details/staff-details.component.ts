@@ -38,9 +38,10 @@ export class StaffDetailsComponent extends BaseComponent implements OnInit {
         this.services.staffService.getStaffdetails(this.staffInfoId).subscribe((result: StaffInfo) => {
             if (!!result) {
                 this.staffInfo = result;
+                this.services.stateMachineService.setBreadCrumb.next('Staff / ' + this.staffInfo.staffBasicInfo.FirstName + ' ' +
+                    this.staffInfo.staffBasicInfo.LastName);
                 this.changeDetectorRef.detectChanges();
                 this.services.spinnerService.hide();
-
             }
             this.services.spinnerService.hide();
         });

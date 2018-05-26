@@ -40,7 +40,6 @@ export class UserService {
                 if (!!result) {
                     localStorage.setItem('user-access', JSON.stringify(result));
                     this.initilizeCurrentUser(result);
-
                     subscriber.next(true);
                 } else {
                     subscriber.next(false);
@@ -56,14 +55,12 @@ export class UserService {
         const user: User = JSON.parse(localStorage.getItem('user-access'));
         user.SchoolInfoId = schoolId;
         localStorage.setItem('user-access', JSON.stringify(user));
-        this.initilizeCurrentUser(user);
-        this.stateMachineService.setDisableNavByUserRole.next({ role: 'SuperAdmin', value: true });
+        window.location.reload();
     }
 
-    // public isUserLoggedIn(): boolean {
-    //     //  return this.isLoginUser;
-    //     return false;
-    // }
+    public isUserLoggedIn(): boolean {
+        return this.isLoginUser;
+    }
 
     public getLoggedInUser(): any {
         return null;

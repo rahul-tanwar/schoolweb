@@ -15,40 +15,18 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        debugger;
-        // if (this.userService.isUserLoggedIn()) {
-        //     return true;
-        // } else {
-        const user: User = JSON.parse(localStorage.getItem('user-access'));
-        if (!!user) {
-            this.userService.initilizeCurrentUser(user);
-            return this.checkUserRoles(route, user);
+        if (this.userService.isUserLoggedIn()) {
+            return true;
         } else {
-            this.router.navigate(['']);
-        }
-        // }
-        return false;
-    }
-
-    private checkUserRoles(route: ActivatedRouteSnapshot, user: User): boolean {
-        debugger;
-        if (user.RoleName === 'SuperAdmin') {
-            if (Context.getSchoolId() === 0) {
-                this.stateMachineService.setDisableNavByUserRole.next({ role: 'SuperAdmin', value: false });
-                const url = window.location.href;
-                if (url.includes('/dashboard/dashboardmain')
-                    || url.includes('http://localhost:4200/#/')
-                    || url.includes('/dashboard/school')) {
-                    return true;
-                } else {
-                    return false;
-                }
+            const user: User = JSON.parse(localStorage.getItem('user-access'));
+            if (!!user) {
+                this.userService.initilizeCurrentUser(user);
+                return true;
+            } else {
+                this.router.navigate(['']);
             }
-
-        } else {
-            this.stateMachineService.setDisableNavByUserRole.next({ role: 'Admin', value: false });
         }
-        return true;
+        return false;
     }
 
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {

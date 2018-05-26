@@ -38,6 +38,7 @@ export class StudentProfileComponent extends BaseComponent implements OnInit {
     getStudent(): void {
         this.studentService.getStudentById(this.studentId).subscribe((result) => {
             this.student = result;
+            this.services.stateMachineService.setBreadCrumb.next('Student / ' + this.student.Name);
         });
     }
 
@@ -51,8 +52,6 @@ export class StudentProfileComponent extends BaseComponent implements OnInit {
     }
 
     public cancel(): void {
-        this.router.navigateByUrl('/dashboard/student-list');
+        this.router.navigateByUrl('/dashboard/student');
     }
-
-
 }

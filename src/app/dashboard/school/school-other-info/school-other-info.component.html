@@ -5,6 +5,32 @@
 
             <div class="row" *ngIf="schoolOtherInfo">
                 <div class="col-md-6 col-xs-12">
+
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="School Type" name="schoolyypeidlist" [(ngModel)]="schoolOtherInfo.SchoolTypeIdList" multiple required>
+                            <mat-option [value]=1>Preschool</mat-option>
+                            <mat-option [value]=2>I to IV</mat-option>
+                            <mat-option [value]=3>V to X</mat-option>
+                            <mat-option [value]=4>XI to XII</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <mat-select placeholder="Board" name="selected" [(ngModel)]="schoolOtherInfo.BoardTypeId" required>
+                            <mat-option [value]=1>CBSE</mat-option>
+                            <mat-option [value]=2>State Board</mat-option>
+                            <mat-option [value]=3>ICSE</mat-option>
+                            <mat-option [value]=4>IB</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
                     <mat-form-field>
                         <span matPrefix>
                             <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
@@ -37,6 +63,13 @@
                         <span matPrefix>
                             <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
                         <input matInput name="tagline" [(ngModel)]="schoolOtherInfo.Tagline" placeholder="School Tagline">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <mat-form-field>
+                        <span matPrefix>
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;</span>
+                        <input matInput name="notes" [(ngModel)]="schoolOtherInfo.Notes" placeholder="Enter notes">
                     </mat-form-field>
                 </div>
                 <!-- <div class="col-md-6 col-xs-12">

@@ -1,5 +1,4 @@
-import { OnInit, AfterViewInit, ChangeDetectorRef, Injector } from '@angular/core';
-import { Component, ViewChild } from '@angular/core';
+import { OnInit, AfterViewInit, ChangeDetectorRef, Injector, Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AddSchoolComponent } from '../school/add-school/add-school.component';
@@ -13,7 +12,7 @@ import { BaseComponent } from '../base/base.component';
     styleUrls: ['./school.component.css']
 })
 export class SchoolComponent extends BaseComponent implements OnInit {
-    displayedColumns = ['schoolId', 'schoolName', 'city', 'board', 'schoolType', 'status'];
+    displayedColumns = ['schoolId', 'schoolName', 'city', 'KeyContactName', 'KeyDesignation', 'status'];
     dataSource: MatTableDataSource<SchoolBasicInfo>;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -26,6 +25,7 @@ export class SchoolComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.services.stateMachineService.setBreadCrumb.next('School');
         this.services.spinnerService.show();
         this.subscribeSchoolData();
         this.schoolService.getSchoolList();
