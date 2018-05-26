@@ -66,5 +66,9 @@ export class StudentApiService extends BaseServiceApi {
             .pipe(catchError(this.handleError));
     }
 
+    public remindmail(parentId: string): Observable<jsObject> {
+        return this.httpClient.post(this.baseUrl + 'student/remindmail', parentId)
+            .pipe(catchError(this.handleError));
+    }
 
 }

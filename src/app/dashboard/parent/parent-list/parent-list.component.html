@@ -35,8 +35,13 @@
     <ng-container matColumnDef="SIGN UP">
         <mat-header-cell *matHeaderCellDef>SIGN UP</mat-header-cell>
         <mat-cell *matCellDef="let element">
-            <button *ngIf="element.ParentProfile.length > 0" mat-button color="warn" class="remind-button">
-                <i class="fa fa-bell"></i>Remind</button>
+            <mat-list *ngIf="element.ParentProfile.length > 0" class="parent-list">
+                <mat-list-item *ngFor="let parent of element.ParentProfile">
+                    <button (click)="sendRemindMail(parent.StudentParentId)" mat-button color="warn" class="remind-button">
+                        <i class="fa fa-bell"></i>Remind</button>
+                </mat-list-item>
+            </mat-list>
+
         </mat-cell>
     </ng-container>
 

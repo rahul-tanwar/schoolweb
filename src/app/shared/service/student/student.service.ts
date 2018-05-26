@@ -160,8 +160,6 @@ export class StudentService {
 
             this.studentApiService.updateAppCode(studentAppCode).subscribe((result: StudentAppCode) => {
                 if (!!result) {
-                    console.log(JSON.stringify(result));
-
                     subscriber.next(result);
                 } else {
                     subscriber.next(null);
@@ -188,7 +186,25 @@ export class StudentService {
             }, (error: any) => {
                 this.spinnerService.hide();
                 this.notificationService.show(error);
-                //subscriber.error('Could not save parent please try again');
+                // subscriber.error('Could not save parent please try again');
+            });
+        });
+    }
+
+    public sendRemindMailToParent(parentId: string): Observable<Student> {
+
+        return new Observable((subscriber: Subscriber<any>) => {
+            this.studentApiService.remindmail(parentId).subscribe((result: Student) => {
+                if (!!result) {
+                    debugger;
+                    subscriber.next(result);
+                } else {
+                    subscriber.next(null);
+                }
+            }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                // subscriber.error('Could not save parent please try again');
             });
         });
     }

@@ -141,5 +141,11 @@ export class ParentListComponent extends BaseComponent implements OnInit {
         this.dataSource.filter = filterValue;
     }
 
+    public sendRemindMail(parentId: string): void {
+        this.services.studentService.sendRemindMailToParent(parentId).subscribe((result) => {
+            this.services.notificationService.show('Sent successfully');
+        });
+    }
+
 
 }
