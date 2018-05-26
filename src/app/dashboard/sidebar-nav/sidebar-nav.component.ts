@@ -27,7 +27,6 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
 
     ngOnInit() {
         this.schoolId = Context.getSchoolId();
-        debugger;
         this.schoolLogo = '../../../assets/img/new_logo.png';
         this.disableNavLinksBasedOnUserRole();
         this.subscribeAllSchools();
@@ -87,7 +86,6 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
     }
 
     public deleteSchool(): void {
-        debugger;
         this.services.schoolService.deleteSuperAdminSchool().subscribe((result) => {
             this.services.userService.updateSchoolForAdmin(0);
         });
