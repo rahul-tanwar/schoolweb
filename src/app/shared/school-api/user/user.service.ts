@@ -19,7 +19,7 @@ export class UserServiceApi extends BaseServiceApi {
             'Accept': '*/*'
         });
         this.httpParams = new HttpParams()
-            .set('username', user['userName'])
+            .set('username', user['UserName'])
             .set('password', user['password'])
             .set('grant_type', 'password');
         return this.httpClient.post('http://schoolapi.anaghaenterprises.in/token',

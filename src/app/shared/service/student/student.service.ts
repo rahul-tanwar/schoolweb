@@ -5,8 +5,8 @@ import { Parent } from '../../model/parent';
 import { Filter } from '../../model/filter';
 import { StudentApiService } from '../../school-api/student/student-api.service';
 import { Context } from '../../../shared/context';
-import { NotificationService } from "../notification/notification.service";
-import { SpinnerService } from "../spinner/spinner.service";
+import { NotificationService } from '../notification/notification.service';
+import { SpinnerService } from '../spinner/spinner.service';
 
 @Injectable()
 export class StudentService {

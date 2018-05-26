@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject, ChangeDetectorRef, AfterViewInit, Inj
 import { StaffBasicInfo, StaffTypeModel, StaffSubTypeModel } from '../../../shared/model/staff';
 import { StaffService } from '../../../shared/service/staff/staff.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { BaseComponent } from '../../base/base.component';
 @Component({
     selector: 'app-staff-info',

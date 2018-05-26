@@ -4,8 +4,8 @@ import * as Model from '../../model/staff';
 import { Student } from '../../model/student';
 import { StaffApiService } from '../../school-api/staff/staff-api.service';
 import { Context } from '../../../shared/context';
-import { NotificationService } from "../notification/notification.service";
-import { SpinnerService } from "../spinner/spinner.service";
+import { NotificationService } from '../notification/notification.service';
+import { SpinnerService } from '../spinner/spinner.service';
 
 @Injectable()
 export class StaffService {
