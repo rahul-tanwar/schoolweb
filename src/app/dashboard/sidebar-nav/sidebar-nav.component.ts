@@ -13,7 +13,7 @@ import { log } from 'util';
 })
 export class SidebarNavComponent extends BaseComponent implements OnInit {
 
-    public isSuperAdmin = true;
+    public isSuperAdmin = false;
     public selectedSchool: string;
     public schoolList = [];
     public schoolId = 0;
