@@ -68,10 +68,8 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
 
     private disableNavLinksBasedOnUserRole() {
 
-        if (this.schoolId > 0) {
-            if (Context.getUserRole() === 'SuperAdmin') {
-                this.isSuperAdmin = true;
-            }
+        if (Context.getUserRole() === 'SuperAdmin') {
+            this.isSuperAdmin = true;
         }
     }
 
@@ -81,16 +79,20 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
                 (event.source.value.indexOf(schoolitem.SchoolUniqueId) > -1)
             );
             if (school.length > 0) {
+                this.services.spinnerService.show();
                 this.services.schoolService.setSuperAdminSchool(school[0].SchoolInfoId).subscribe((result) => {
                     this.services.userService.updateSchoolForAdmin(school[0].SchoolInfoId);
+                    this.services.spinnerService.hide();
                 });
             }
         }
     }
 
     public deleteSchool(): void {
+        this.services.spinnerService.show();
         this.services.schoolService.deleteSuperAdminSchool().subscribe((result) => {
             this.services.userService.updateSchoolForAdmin(0);
+            this.services.spinnerService.hide();
         });
     }
 
