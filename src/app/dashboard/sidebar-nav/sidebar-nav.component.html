@@ -33,7 +33,7 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li routerLinkActive="active">
+            <li routerLinkActive="active" *ngIf="isSuperAdmin">
                 <a routerLink="school">
                     <i class="fa fa-building" aria-hidden="true"></i>
                     <p>Schools</p>

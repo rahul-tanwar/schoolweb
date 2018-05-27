@@ -16,7 +16,7 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
     public isSuperAdmin = true;
     public selectedSchool: string;
     public schoolList = [];
-    public schoolId: number;
+    public schoolId = 0;
     public autocompleteList: Array<string>;
     public autocompleteList2: Array<string>;
     public schoolLogo: string;
@@ -47,13 +47,16 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
     }
 
     private subscribeAllSchools(): void {
-        this.services.schoolService.getSchoolList();
-        this.services.schoolService.schoolData.subscribe((result: SchoolBasicInfo[]) => {
-            if (!!result) {
-                this.schoolList = result;
-                this.createAutocompleteData(result);
-            }
-        });
+        if (this.schoolId === 0) {
+            this.services.schoolService.getSchoolList();
+            this.services.schoolService.schoolData.subscribe((result: SchoolBasicInfo[]) => {
+                if (!!result) {
+                    this.schoolList = result;
+                    this.createAutocompleteData(result);
+                }
+            });
+        }
+
     }
 
     private createAutocompleteData(schools: SchoolBasicInfo[]) {
