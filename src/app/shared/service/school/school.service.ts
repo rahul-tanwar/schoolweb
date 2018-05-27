@@ -41,7 +41,6 @@ export class SchoolService {
     public getSchoolInfoById(schoolId: string): Observable<SchoolInfo> {
 
         return new Observable((subscriber: Subscriber<any>) => {
-
             this.schoolServiceApi.getSchoolInfoById(schoolId).subscribe((result: jsObject) => {
                 if (!!result) {
                     subscriber.next(result);

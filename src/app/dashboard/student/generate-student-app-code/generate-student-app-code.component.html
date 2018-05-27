@@ -1,4 +1,4 @@
-<form class="studentprofileform" novalidate (ngSubmit)="generateAppCode()" #addStudentForm="ngForm">
+<form class="studentprofileform" id="studentprofileform">
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -17,16 +17,16 @@
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
-                        <input type="test" class="form-control" name="AppCode" [(ngModel)]="studentAppCode.AppCode" id="inputPassword3" placeholder="Password">
+                        <input type="test" class="form-control" name="AppCode" [(ngModel)]="studentAppCode.AppCode" placeholder="AppCode" readonly>
                     </div>
                 </div>
             </div>
 
             <div class="align-center">
-                <button type="submit" mat-raised-button color="basic">Generate New Code</button>
-                <button class="" mat-raised-button color="basic">Print</button>
-                <button class="" mat-raised-button color="basic">Email</button>
-                <button type="button" (click)="cancel()" mat-raised-button color="basic">
+                <button mat-raised-button color="basic" [disabled]="!isParentAvailable || studentAppCode.AppCode !== null" (click)="generateAppCode()">Generate New Code</button>
+                <!-- <button class="" mat-raised-button color="basic" [disabled]="!isParentAvailable || studentAppCode.AppCode === null" (click)="print()">Print</button> -->
+                <button class="" mat-raised-button color="basic" [disabled]="!isParentAvailable ||  studentAppCode.AppCode === null" (click)="mailAppCodeToParents()">Email</button>
+                <button (click)="cancel()" mat-raised-button color="basic">
                     Cancel
                 </button>
             </div>

@@ -39,14 +39,14 @@ export class AddStudentClassComponent extends BaseComponent implements OnInit {
 
         this.services.studentService.studentData.subscribe((result) => {
             if (!!result) {
+                if (!!this.data.studentList && this.data.studentList.length > 0) {
+                    result = result.filter((item) => (this.data.studentList as Student[]).find((item2) => item2.ClassId !== item.ClassId));
+                }
                 this.dataSource = new MatTableDataSource<Student>(result.reverse());
                 this.dataSource.paginator = this.paginator;
                 this.studentList = result;
             }
-
             this.services.spinnerService.hide();
-            //  this.changeDetectorRef.detectChanges();
-            //  this.changeDetectorRef.markForCheck();
         });
 
 

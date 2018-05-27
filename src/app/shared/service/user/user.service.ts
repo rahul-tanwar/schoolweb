@@ -6,12 +6,14 @@ import { User } from '../../model/user';
 import { error } from 'protractor';
 import { Context } from '../../../shared/context';
 import { StateMachineService } from '../state-machine/state-machine.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
 
     constructor(private userServiceApi: UserServiceApi,
-        private stateMachineService: StateMachineService
+        private stateMachineService: StateMachineService,
+        private router: Router
     ) {
 
     }
@@ -55,7 +57,9 @@ export class UserService {
         const user: User = JSON.parse(localStorage.getItem('user-access'));
         user.SchoolInfoId = schoolId;
         localStorage.setItem('user-access', JSON.stringify(user));
-        window.location.reload();
+        this.router.navigate(['dashboard']).then(() => {
+            window.location.reload();
+        });
     }
 
     public isUserLoggedIn(): boolean {

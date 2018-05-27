@@ -1,25 +1,27 @@
 
-import { OnInit, Input } from '@angular/core';
-import { Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { OnInit, Input, Component, ViewChild, Injector } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatPaginator, MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { AddStudentClassComponent } from '../add-student-class/add-student-class.component';
 import { ActivatedRoute } from '@angular/router';
 import { ClassService } from '../../../shared/service/class/class.service';
 import { Student } from '../../../shared/model/student';
 import { StudentClassModel } from '../../../shared/model/class';
+import { BaseComponent } from '../../base/base.component';
 
 @Component({
     selector: 'app-student-list',
     templateUrl: './student-list.component.html',
     styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent implements OnInit {
+export class StudentListComponent extends BaseComponent implements OnInit {
 
     @Input() public classId: number;
 
-    constructor(public dialog: MatDialog, private classService: ClassService) { }
+    constructor(public dialog: MatDialog,
+        private injector: Injector) {
+        super(injector);
+    }
 
     displayedColumns = ['select', 'name'];
     dataSource: MatTableDataSource<Student>;
@@ -30,12 +32,12 @@ export class StudentListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     ngOnInit() {
-        this.classService.getAllStudentByClassId(this.classId);
         this.subscribeStudentData();
     }
 
     private subscribeStudentData() {
-        this.classService.studentsByClassData.subscribe((students: Array<Student>) => {
+        this.services.classService.getAllStudentByClassId(this.classId);
+        this.services.classService.studentsByClassData.subscribe((students: Array<Student>) => {
             if (!!students) {
                 this.dataSource = new MatTableDataSource<Student>(students.reverse());
                 this.dataSource.paginator = this.paginator;
@@ -50,11 +52,12 @@ export class StudentListComponent implements OnInit {
     openDialog(): void {
         const dialogRef = this.dialog.open(AddStudentClassComponent, {
             width: '500px',
-            data: { classId: this.classId }
+            data: { classId: this.classId, studentList: this.studentList }
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            this.classService.getAllStudentByClassId(this.classId);
+            this.services.classService.getAllStudentByClassId(this.classId);
+            this.services.studentService.getParentsByClassId(this.classId);
         });
     }
 
@@ -70,8 +73,9 @@ export class StudentListComponent implements OnInit {
             const obj = new StudentClassModel();
             obj.ClassId = this.classId;
             obj.StudentIds = studentList.map(item => item.StudentId);
-            this.classService.removeStudentFromClass(obj).subscribe((item) => {
-                this.classService.getAllStudentByClassId(this.classId);
+            this.services.classService.removeStudentFromClass(obj).subscribe((item) => {
+                this.services.classService.getAllStudentByClassId(this.classId);
+                this.services.studentService.getParentsByClassId(this.classId);
             });
         }
     }

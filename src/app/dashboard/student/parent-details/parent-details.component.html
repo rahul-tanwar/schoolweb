@@ -33,8 +33,10 @@
         <ng-container matColumnDef="sign-up">
             <mat-header-cell *matHeaderCellDef> Sign Up </mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-raised-button color="warn" class="remind-button">
+                <button (click)="sendRemindMail(element.UserId)" mat-raised-button color="warn" class="remind-button" *ngIf="!element.IsAppSignUp">
                     <i class="fa fa-bell"></i>Remind</button>
+                <span *ngIf="element.IsAppSignUp">YES
+                </span>
             </mat-cell>
         </ng-container>
 

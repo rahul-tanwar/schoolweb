@@ -24,6 +24,7 @@ color: rgba(41, 184, 187, 1) !important}
      }
      .header img{
          margin-bottom: 7px;
+         width: 80px;
      }
 .selected-school {
     width: 100%;

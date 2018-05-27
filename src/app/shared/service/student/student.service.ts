@@ -191,12 +191,28 @@ export class StudentService {
         });
     }
 
-    public sendRemindMailToParent(parentId: string): Observable<Student> {
+    public sendRemindMailToParent(parentId: string): Observable<boolean> {
 
         return new Observable((subscriber: Subscriber<any>) => {
-            this.studentApiService.remindmail(parentId).subscribe((result: Student) => {
+            this.studentApiService.remindmail(parentId).subscribe((result: boolean) => {
                 if (!!result) {
-                    debugger;
+                    subscriber.next(result);
+                } else {
+                    subscriber.next(null);
+                }
+            }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                // subscriber.error('Could not save parent please try again');
+            });
+        });
+    }
+
+    public sendAppCodeMailToParent(studentId: string): Observable<boolean> {
+
+        return new Observable((subscriber: Subscriber<any>) => {
+            this.studentApiService.sendappcode(studentId).subscribe((result: boolean) => {
+                if (!!result) {
                     subscriber.next(result);
                 } else {
                     subscriber.next(null);

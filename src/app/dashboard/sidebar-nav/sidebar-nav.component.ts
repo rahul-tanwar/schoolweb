@@ -39,7 +39,7 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
                 if (!!result) {
                     this.selectedSchool = result['SchoolBasicInfoModel'].Name + '(' + result['SchoolBasicInfoModel'].SchoolUniqueId + ')';
                     if (!!result['SchoolOtherInfoModel'] && !!result['SchoolOtherInfoModel'].logo) {
-                        this.schoolLogo = result['SchoolOtherInfoModel'].logo;
+                        this.schoolLogo = result['SchoolOtherInfoModel'].LogoURL;
                     }
                 }
             });

@@ -14,7 +14,7 @@ export class Parent {
     MobileNumber: string;
     ContactNumber: string;
     IsActive: true;
-    IsAppSignUp: true;
+    IsAppSignUp: false;
     UpdateDate: moment.Moment;
     UpdatedEmail: string;
     profileImage: MultimediaFile;

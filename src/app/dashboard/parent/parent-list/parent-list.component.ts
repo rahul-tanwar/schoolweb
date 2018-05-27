@@ -142,6 +142,7 @@ export class ParentListComponent extends BaseComponent implements OnInit {
     }
 
     public sendRemindMail(parentId: string): void {
+        debugger;
         this.services.studentService.sendRemindMailToParent(parentId).subscribe((result) => {
             this.services.notificationService.show('Sent successfully');
         });
