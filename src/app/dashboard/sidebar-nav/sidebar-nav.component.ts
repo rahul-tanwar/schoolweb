@@ -35,6 +35,7 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
 
     private getSchooinfo() {
         if (this.schoolId > 0) {
+            this.services.spinnerService.show();
             this.services.schoolService.getSchoolInfoById(this.schoolId.toString()).subscribe((result: SchoolInfo) => {
                 if (!!result) {
                     this.selectedSchool = result['SchoolBasicInfoModel'].Name + '(' + result['SchoolBasicInfoModel'].SchoolUniqueId + ')';
@@ -42,18 +43,21 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
                         this.schoolLogo = result['SchoolOtherInfoModel'].LogoURL;
                     }
                 }
+                this.services.spinnerService.hide();
             });
         }
     }
 
     private subscribeAllSchools(): void {
         if (this.schoolId === 0) {
+            this.services.spinnerService.show();
             this.services.schoolService.getSchoolList();
             this.services.schoolService.schoolData.subscribe((result: SchoolBasicInfo[]) => {
                 if (!!result) {
                     this.schoolList = result;
                     this.createAutocompleteData(result);
                 }
+                this.services.spinnerService.hide();
             });
         }
 
@@ -82,7 +86,6 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
                 this.services.spinnerService.show();
                 this.services.schoolService.setSuperAdminSchool(school[0].SchoolInfoId).subscribe((result) => {
                     this.services.userService.updateSchoolForAdmin(school[0].SchoolInfoId);
-                    this.services.spinnerService.hide();
                 });
             }
         }
@@ -92,7 +95,6 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
         this.services.spinnerService.show();
         this.services.schoolService.deleteSuperAdminSchool().subscribe((result) => {
             this.services.userService.updateSchoolForAdmin(0);
-            this.services.spinnerService.hide();
         });
     }
 

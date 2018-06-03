@@ -2,6 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { BaseComponent } from '../../base/base.component';
+import { ListType } from '../../../shared/model/parent';
 
 @Component({
     selector: 'app-class-details',
@@ -11,7 +12,7 @@ import { BaseComponent } from '../../base/base.component';
 export class ClassDetailsComponent extends BaseComponent implements OnInit {
 
     public classId: number;
-
+    public listType = ListType;
     constructor(private route: ActivatedRoute,
         public injector: Injector
     ) { super(injector); }

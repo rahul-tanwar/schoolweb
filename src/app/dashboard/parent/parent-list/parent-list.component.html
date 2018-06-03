@@ -1,66 +1,72 @@
-<mat-table #table [dataSource]="dataSource">
-    <!-- Name Column -->
-    <ng-container matColumnDef="STUDENT">
-        <mat-header-cell *matHeaderCellDef>STUDENT </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            <mat-list>
-                <mat-list-item>
-                    <img matListAvatar src="assets/img/faces/face-1.jpg" alt="...">
-                    <h3 matLine class="align-left">
-                        <a [routerLink]="['/dashboard/student/student-details', element.StudentId]">{{element.Name}}</a>
-                    </h3>
-                </mat-list-item>
-            </mat-list>
-        </mat-cell>
-    </ng-container>
+<div *ngIf="studentParents.length > 0">
+    <mat-table #table [dataSource]="dataSource">
+        <!-- Name Column -->
+        <ng-container matColumnDef="STUDENT">
+            <mat-header-cell *matHeaderCellDef>STUDENT </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-list>
+                    <mat-list-item>
+                        <img matListAvatar src="assets/img/faces/face-1.jpg" alt="...">
+                        <h3 matLine class="align-left">
+                            <a [routerLink]="['/dashboard/student/student-details', element.StudentId]">{{element.Name}}</a>
+                        </h3>
+                    </mat-list-item>
+                </mat-list>
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="PARENTS">
-        <mat-header-cell *matHeaderCellDef>PARENTS</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            <mat-list *ngIf="element.ParentProfile.length > 0" class="parent-list">
-                <mat-list-item *ngFor="let parent of element.ParentProfile">
-                    <img matListAvatar src="assets/img/faces/face-1.jpg" alt="...">
-                    <h3 matLine class="align-left">
-                        <a class="cursor-pointer" (click)="openParentDialog(element.StudentId,parent)">{{ parent.FirstName + ' ' + parent.LastName }}</a>
-                    </h3>
-                </mat-list-item>
-            </mat-list>
-            <i class="fa fa-user-plus more-parent" *ngIf="element.ParentProfile.length == 1" (click)="openParentDialog(element.StudentId)"></i>
-            <button *ngIf="element.ParentProfile.length == 0" (click)="openParentDialog(element.StudentId)" mat-raised-button color="warn"
-                class="invite-button">
-                <i class="fa fa-user-plus"></i>Invite Parent</button>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="PARENTS">
+            <mat-header-cell *matHeaderCellDef>PARENTS</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-list *ngIf="element.ParentProfile.length > 0" class="parent-list">
+                    <mat-list-item *ngFor="let parent of element.ParentProfile">
+                        <img matListAvatar src="assets/img/faces/face-1.jpg" alt="...">
+                        <h3 matLine class="align-left">
+                            <a class="cursor-pointer" (click)="openParentDialog(element.StudentId,parent)">{{ parent.FirstName + ' ' + parent.LastName }}</a>
+                        </h3>
+                    </mat-list-item>
+                </mat-list>
+                <i class="fa fa-user-plus more-parent" *ngIf="element.ParentProfile.length == 1" (click)="openParentDialog(element.StudentId)"></i>
+                <button *ngIf="element.ParentProfile.length == 0" (click)="openParentDialog(element.StudentId)" mat-raised-button color="warn"
+                    class="invite-button">
+                    <i class="fa fa-user-plus"></i>Invite Parent</button>
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="SIGN UP">
-        <mat-header-cell *matHeaderCellDef>SIGN UP</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            <mat-list *ngIf="element.ParentProfile.length > 0" class="parent-list">
-                <mat-list-item *ngFor="let parent of element.ParentProfile">
-                    <button (click)="sendRemindMail(parent.UserId)" mat-button color="warn" *ngIf="!parent.IsAppSignUp" class="remind-button">
-                        <i class="fa fa-bell"></i>Remind</button>
-                    <span *ngIf="parent.IsAppSignUp">YES
-                    </span>
-                </mat-list-item>
-            </mat-list>
+        <ng-container matColumnDef="SIGN UP">
+            <mat-header-cell *matHeaderCellDef>SIGN UP</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-list *ngIf="element.ParentProfile.length > 0" class="parent-list">
+                    <mat-list-item *ngFor="let parent of element.ParentProfile">
+                        <button (click)="sendRemindMail(parent.UserId)" mat-button color="warn" *ngIf="!parent.IsAppSignUp" class="remind-button">
+                            <i class="fa fa-bell"></i>Remind</button>
+                        <span *ngIf="parent.IsAppSignUp">YES
+                        </span>
+                    </mat-list-item>
+                </mat-list>
 
-        </mat-cell>
-    </ng-container>
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="CHECK-IN CODE">
-        <mat-header-cell *matHeaderCellDef>CHECK-IN CODE</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            <span *ngIf="element.AppCode !== null" #revealButtton>
-                <button mat-button color="warn" (click)="appcode.classList.remove('display-none');
+        <ng-container matColumnDef="CHECK-IN CODE">
+            <mat-header-cell *matHeaderCellDef>CHECK-IN CODE</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span *ngIf="element.AppCode !== null" #revealButtton>
+                    <button mat-button color="warn" (click)="appcode.classList.remove('display-none');
                 revealButtton.classList.add('display-none');">
-                    <i class="fa fa-eye"></i>Reveal</button>
-            </span>
-            <span class="display-none" #appcode>{{ element.AppCode }}</span>
-        </mat-cell>
-    </ng-container>
+                        <i class="fa fa-eye"></i>Reveal</button>
+                </span>
+                <span class="display-none" #appcode>{{ element.AppCode }}</span>
+            </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
-<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-</mat-paginator>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+</div>
+
+
+
+<h4 *ngIf="studentParents.length === 0" class="norecord">No record Found</h4>

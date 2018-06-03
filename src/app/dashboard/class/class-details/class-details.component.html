@@ -17,7 +17,7 @@
                                     <app-class-parents [classId]="classId"></app-class-parents>
                                 </mat-tab>
                                 <mat-tab label="Activities">
-                                    <app-student-activity></app-student-activity>
+                                    <app-activity-list [id]="classId" [type]="listType.Class"></app-activity-list>
                                 </mat-tab>
                             </mat-tab-group>
                         </div>

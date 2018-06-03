@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-
+import { ListType } from '../../../shared/model/parent';
 
 @Component({
     selector: 'app-student-details',
@@ -10,6 +10,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 })
 export class StudentDetailsComponent implements OnInit, OnDestroy {
     studentId: number;
+    public listType = ListType;
     private sub: any;
 
     constructor(private route: ActivatedRoute) { }

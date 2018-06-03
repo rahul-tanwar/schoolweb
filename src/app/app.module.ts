@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -46,6 +46,7 @@ import { SpinnerComponent } from '../app/shared/component/spinner/spinner.compon
         ServiceAPI.StudentApiService,
         ServiceAPI.ClassServiceApi,
         ServiceAPI.StaffApiService,
+        ServiceAPI.ActivityApiService,
         Service.AuthGuardService,
         Service.SchoolService,
         Service.UserService,
@@ -54,7 +55,8 @@ import { SpinnerComponent } from '../app/shared/component/spinner/spinner.compon
         Service.SpinnerService,
         Service.NotificationService,
         Service.StaffService,
-        Service.StateMachineService
+        Service.StateMachineService,
+        Service.ActivityService
     ],
     bootstrap: [AppComponent]
 })

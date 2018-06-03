@@ -13,12 +13,11 @@ import { CalenderComponent } from './calender/calender.component';
 import { StaffComponent } from './staff/staff.component';
 import { ReportComponent } from './report/report.component';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
-import { DashboardRoutingModule } from './dashboard-routing';
+// import { DashboardRoutingModule } from './dashboard-routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentDetailsComponent } from './student/student-details/student-details.component';
 import { ParentDetailsComponent } from './student/parent-details/parent-details.component';
 import { AddParentComponent } from './parent/add-parent/add-parent.component';
-import { StudentActivityComponent } from './student/student-activity/student-activity.component';
 // tslint:disable-next-line:comment-format
 //import { SpinnerComponent } from './../shared/component/spinner/spinner.component';
 import { MultimediaComponent } from './../shared/component/multimedia/multimedia.component';
@@ -51,6 +50,11 @@ import { StaffInfoComponent } from './staff/staff-info/staff-info.component';
 import {
     AddCertificateExperienceComponent
 } from './staff/experience-certificate-info/add-certificate-experience/add-certificate-experience.component';
+import { ActivityComponent } from './activity/activity.component';
+import { ActivityListComponent } from '../dashboard/activity/activity-list/activity-list.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './profile/changepassword/changepassword.component';
+import { UserDetailComponent } from './profile/userdetail/userdetail.component';
 
 
 @NgModule({
@@ -68,7 +72,6 @@ import {
         StudentDetailsComponent,
         ParentDetailsComponent,
         AddParentComponent,
-        StudentActivityComponent,
         StudentProfileComponent,
         AddStaffComponent,
         AddClassComponent,
@@ -95,7 +98,12 @@ import {
         ClassParentsComponent,
         StaffInfoComponent,
         MultimediaComponent,
-        AddCertificateExperienceComponent
+        AddCertificateExperienceComponent,
+        ActivityComponent,
+        ActivityListComponent,
+        ProfileComponent,
+        ChangePasswordComponent,
+        UserDetailComponent
     ],
     entryComponents: [
         AddParentComponent,

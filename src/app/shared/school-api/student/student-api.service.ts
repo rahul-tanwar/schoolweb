@@ -67,13 +67,11 @@ export class StudentApiService extends BaseServiceApi {
     }
 
     public remindmail(parentId: string): Observable<boolean> {
-        debugger;
         return this.httpClient.post(this.baseUrl + 'student/remindmail', parentId)
             .pipe(catchError(this.handleError));
     }
 
     public sendappcode(studentId: string): Observable<boolean> {
-        debugger;
         return this.httpClient.post(this.baseUrl + '/student/sendappcode', studentId)
             .pipe(catchError(this.handleError));
     }

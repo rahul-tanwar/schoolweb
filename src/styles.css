@@ -143,5 +143,14 @@ width: 18px !important;
   outline: 1px solid slategrey;
 }
 
+.norecord {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    color: #d2d1ce;
+    margin-top: 125px;
+    margin-bottom: 125px;
+}
+
 
 

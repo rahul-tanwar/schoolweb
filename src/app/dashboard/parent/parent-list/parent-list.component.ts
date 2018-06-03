@@ -51,7 +51,7 @@ export class ParentListComponent extends BaseComponent implements OnInit {
                 break;
 
             case ListType.Student:
-                this.loadstudentParents();
+                // this.loadstudentParents();
                 break;
             default:
                 break;
@@ -67,18 +67,20 @@ export class ParentListComponent extends BaseComponent implements OnInit {
         this.services.studentService.getParentsByClassId(this.id);
     }
 
-    private loadstudentParents() {
+    // private loadstudentParents() {
 
-    }
+    // }
 
 
 
     private subscribeAllPatentsData(): void {
 
         this.services.studentService.getAllParentsData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<Student>(result);
-            this.dataSource.paginator = this.paginator;
-            this.studentParents = result;
+            if (!!result) {
+                this.dataSource = new MatTableDataSource<Student>(result);
+                this.dataSource.paginator = this.paginator;
+                this.studentParents = result;
+            }
             this.services.spinnerService.hide();
         });
     }
@@ -112,9 +114,12 @@ export class ParentListComponent extends BaseComponent implements OnInit {
     private subscribeClassPatentsData(): void {
 
         this.services.studentService.getClassParentsData.subscribe((result) => {
-            this.dataSource = new MatTableDataSource<Student>(result);
-            this.dataSource.paginator = this.paginator;
-            this.studentParents = result;
+            if (!!result) {
+                this.dataSource = new MatTableDataSource<Student>(result);
+                this.dataSource.paginator = this.paginator;
+                this.studentParents = result;
+            }
+
             this.services.spinnerService.hide();
         });
     }
@@ -142,8 +147,9 @@ export class ParentListComponent extends BaseComponent implements OnInit {
     }
 
     public sendRemindMail(parentId: string): void {
-        debugger;
+        this.services.spinnerService.show();
         this.services.studentService.sendRemindMailToParent(parentId).subscribe((result) => {
+            this.services.spinnerService.hide();
             this.services.notificationService.show('Sent successfully');
         });
     }

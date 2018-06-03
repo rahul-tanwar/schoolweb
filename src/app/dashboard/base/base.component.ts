@@ -10,6 +10,7 @@ interface IService {
     stateMachineService: Services.StateMachineService;
     schoolService: Services.SchoolService;
     userService: Services.UserService;
+    activityService: Services.ActivityService;
 }
 
 export class BaseComponent {
@@ -27,7 +28,8 @@ export class BaseComponent {
             staffService: injector.get(Services.StaffService),
             stateMachineService: injector.get(Services.StateMachineService),
             schoolService: injector.get(Services.SchoolService),
-            userService: injector.get(Services.UserService)
+            userService: injector.get(Services.UserService),
+            activityService: injector.get(Services.ActivityService)
         };
     }
 

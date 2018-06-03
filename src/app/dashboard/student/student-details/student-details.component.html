@@ -20,7 +20,7 @@
                                     <app-generate-student-app-code [studentId]="studentId"></app-generate-student-app-code>
                                 </mat-tab>
                                 <mat-tab label="Activities">
-                                    <app-student-activity [studentId]="studentId"></app-student-activity>
+                                    <app-activity-list [id]="studentId" [type]="listType.Student"></app-activity-list>
                                 </mat-tab>
                             </mat-tab-group>
                         </div>

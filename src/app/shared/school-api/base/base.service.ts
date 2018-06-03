@@ -22,6 +22,9 @@ export class BaseServiceApi {
             console.error(
                 `Backend returned code ${error.status}, ` +
                 `body was: ${error.error}`);
+            if (error.status === 401) {
+                window.top.location.href = '/';
+            }
         }
         // return an ErrorObservable with a user-facing error message
         return new ErrorObservable(

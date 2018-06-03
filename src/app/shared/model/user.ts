@@ -9,3 +9,18 @@ export class User {
     RoleName: string;
     SchoolInfoId: number;
 }
+
+export class UserProfile {
+    UserId: number;
+    FirstName: string;
+    LastName: string;
+    Email: string;
+    ContactNumber: string;
+}
+
+export class UserChangePassword {
+    UserId: number;
+    OldPassword: string;
+    NewPassword: string;
+    ConfirmPassword: string;
+}

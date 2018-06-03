@@ -2,18 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserServiceApi } from './../../school-api/user/user.service';
 import { Observable, Subscriber, ReplaySubject } from 'rxjs/Rx';
-import { User } from '../../model/user';
-import { error } from 'protractor';
+import { User, UserProfile, UserChangePassword } from '../../model/user';
 import { Context } from '../../../shared/context';
 import { StateMachineService } from '../state-machine/state-machine.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../notification/notification.service';
+import { SpinnerService } from '../spinner/spinner.service';
 
 @Injectable()
 export class UserService {
 
     constructor(private userServiceApi: UserServiceApi,
         private stateMachineService: StateMachineService,
-        private router: Router
+        private router: Router,
+        private notificationService: NotificationService,
+        private spinnerService: SpinnerService
     ) {
 
     }
@@ -68,6 +71,60 @@ export class UserService {
 
     public getLoggedInUser(): any {
         return null;
+    }
+
+    public getUserById(userId: number): Observable<UserProfile> {
+
+        return new Observable((subscriber: Subscriber<any>) => {
+
+            this.userServiceApi.getadminprofile(userId.toString()).subscribe((result: UserProfile) => {
+                if (!!result) {
+                    subscriber.next(result);
+                } else {
+                    subscriber.next(null);
+                }
+            }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                subscriber.error('Could not fetch User please try again');
+            });
+        });
+    }
+
+    public updateUserProfile(userProfile: UserProfile): Observable<UserProfile> {
+
+        return new Observable((subscriber: Subscriber<any>) => {
+
+            this.userServiceApi.updateAdminprofile(userProfile).subscribe((result: UserProfile) => {
+                if (!!result) {
+                    subscriber.next(result);
+                } else {
+                    subscriber.next(null);
+                }
+            }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                subscriber.error('Could not fetch User please try again');
+            });
+        });
+    }
+
+    public updateUserPassword(userChangePassword: UserChangePassword): Observable<boolean> {
+
+        return new Observable((subscriber: Subscriber<any>) => {
+            userChangePassword.UserId = Context.getUserId();
+            this.userServiceApi.changeProfilePassword(userChangePassword).subscribe((result: boolean) => {
+                if (!!result) {
+                    subscriber.next(result);
+                } else {
+                    subscriber.next(false);
+                }
+            }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                subscriber.error('Could not update user password please try again');
+            });
+        });
     }
 
 }

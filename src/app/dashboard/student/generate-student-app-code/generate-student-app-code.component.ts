@@ -43,7 +43,6 @@ export class GenerateStudentAppCodeComponent extends BaseComponent implements On
     public generateAppCode(): void {
         this.services.spinnerService.show();
         this.studentAppCode.AppCode = Math.random().toString(36).substring(2);
-        debugger;
         this.services.studentService.updateAppCode(this.studentAppCode).subscribe((result) => {
             if (!!result) {
                 this.services.notificationService.show('Success.');
@@ -54,9 +53,7 @@ export class GenerateStudentAppCodeComponent extends BaseComponent implements On
     }
 
     public mailAppCodeToParents(): void {
-        debugger;
         this.services.studentService.sendAppCodeMailToParent(this.studentId as any).subscribe((result) => {
-            debugger;
             if (result) {
                 this.services.notificationService.show('Sent successfully');
             }

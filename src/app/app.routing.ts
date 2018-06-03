@@ -16,7 +16,7 @@ import { SchoolComponent } from './dashboard/school/school.component';
 import { StudentDetailsComponent } from './dashboard/student/student-details/student-details.component';
 import { StaffDetailsComponent } from './dashboard/staff/staff-details/staff-details.component';
 import { ClassDetailsComponent } from './dashboard/class/class-details/class-details.component';
-
+import { ProfileComponent } from './dashboard/profile/profile.component';
 import { SchoolDetailsComponent } from './dashboard/school/school-details/school-details.component';
 import { AuthGuardService } from './shared/service/authguard/auth.guard.service';
 
@@ -42,6 +42,7 @@ const appRoutes: Routes = [
             { path: 'report', component: ReportComponent },
             { path: 'school', component: SchoolComponent },
             { path: 'school/school-details/:id', component: SchoolDetailsComponent },
+            { path: 'profile', component: ProfileComponent },
         ]
     },
     // otherwise redirect to home

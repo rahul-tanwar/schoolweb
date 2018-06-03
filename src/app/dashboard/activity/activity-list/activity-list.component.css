@@ -24,6 +24,14 @@ mat-header-row{
     
   }
 
+  .mat-card-header{
+      min-height: 60px;
+  }
+
+  .panel {
+    padding: 50px 15px;
+  }
+
 .activity-header-image {
  
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -37,9 +45,10 @@ mat-header-row{
 .mat-card-image{
   width: 100% !important;
   margin:0px !important;
+  max-height: 500px;
 }
 .activity-group{
-  padding: 20px;
+  padding-top: 10px;
 }
 .activity-date{
   text-align: center;
@@ -63,6 +72,7 @@ margin-top: 0px !important;
   position: relative;
   margin-left: -17px;
   margin-right: 10px;
+  background-color:#29b8bb;
 }
 
 .activity-icon i{
