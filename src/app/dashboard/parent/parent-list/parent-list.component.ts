@@ -1,15 +1,13 @@
 import { OnInit, Input, Output, EventEmitter, Injector } from '@angular/core';
 import { Component, ViewChild } from '@angular/core';
-
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AddParentComponent } from '../add-parent/add-parent.component';
 import { StudentService } from '../../../shared/service/student/student.service';
 import { Parent, ListType } from '../../../shared/model/parent';
 import { Filter } from '../../../shared/model/filter';
 import { Student } from '../../../shared/model/student';
 import { BaseComponent } from '../../base/base.component';
-
-
 
 @Component({
     selector: 'app-parent-list',
@@ -21,15 +19,10 @@ export class ParentListComponent extends BaseComponent implements OnInit {
     displayedColumns = ['STUDENT', 'PARENTS', 'SIGN UP', 'CHECK-IN CODE'];
     dataSource: MatTableDataSource<Student>;
     studentParents: Array<Student> = [];
-
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     @Input() id = 0;
     @Input() type: ListType;
-
-
-
-
-    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(public dialog: MatDialog, public injector: Injector) {
         super(injector);
@@ -44,10 +37,10 @@ export class ParentListComponent extends BaseComponent implements OnInit {
         this.services.spinnerService.show();
         switch (this.type) {
             case ListType.All:
-                this.loadAllParents();
+                this.subscribeAllPatentsData();
                 break;
             case ListType.Class:
-                this.loadClassParents();
+                this.subscribeClassPatentsData();
                 break;
 
             case ListType.Student:
@@ -58,28 +51,15 @@ export class ParentListComponent extends BaseComponent implements OnInit {
         }
     }
 
-    private loadAllParents() {
-        this.subscribeAllPatentsData();
-        this.services.studentService.getAllParents();
-    }
-    private loadClassParents() {
-        this.subscribeClassPatentsData();
-        this.services.studentService.getParentsByClassId(this.id);
-    }
-
-    // private loadstudentParents() {
-
-    // }
-
 
 
     private subscribeAllPatentsData(): void {
-
+        this.services.studentService.getAllParents();
         this.services.studentService.getAllParentsData.subscribe((result) => {
             if (!!result) {
-                this.dataSource = new MatTableDataSource<Student>(result);
-                this.dataSource.paginator = this.paginator;
+                this.dataSource = new MatTableDataSource<Student>(result.reverse());
                 this.studentParents = result;
+                this.dataSource.paginator = this.paginator;
             }
             this.services.spinnerService.hide();
         });
@@ -112,7 +92,7 @@ export class ParentListComponent extends BaseComponent implements OnInit {
 
 
     private subscribeClassPatentsData(): void {
-
+        this.services.studentService.getParentsByClassId(this.id);
         this.services.studentService.getClassParentsData.subscribe((result) => {
             if (!!result) {
                 this.dataSource = new MatTableDataSource<Student>(result);
@@ -130,7 +110,8 @@ export class ParentListComponent extends BaseComponent implements OnInit {
         parentObj.StudentId = studentId;
         const dialogRef = this.dialog.open(AddParentComponent, {
             width: '500px',
-            data: { 'parent': !!parent ? parent : parentObj }
+            data: { 'parent': !!parent ? parent : parentObj },
+            autoFocus: false
         });
 
         dialogRef.afterClosed().subscribe(result => {

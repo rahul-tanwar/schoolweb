@@ -20,6 +20,7 @@ export class SidebarNavComponent extends BaseComponent implements OnInit {
     public autocompleteList: Array<string>;
     public autocompleteList2: Array<string>;
     public schoolLogo: string;
+    public schoolModel: string;
 
     constructor(private injector: Injector) {
         super(injector);

@@ -225,4 +225,42 @@ export class StudentService {
         });
     }
 
+    public getAllParentBySchoolId(): Observable<Parent[]> {
+        return new Observable((subscriber: Subscriber<any>) => {
+
+            const schoolInfoId = Context.getSchoolId();
+            this.studentApiService.getAllParentBySchool(schoolInfoId.toString()).subscribe((result: Array<Student>) => {
+                if (!!result && result.length > 0) {
+                    subscriber.next(result);
+                } else {
+                    subscriber.next(null);
+                }
+            }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                subscriber.error('Could not fetch student list please try again');
+            });
+        });
+    }
+
+    public insertSecondStudentToParent(studentId: number, parentId: number): Observable<boolean> {
+        const model = {
+            'StudentId': studentId,
+            'ParentId': parentId
+        };
+        return new Observable((subscriber: Subscriber<any>) => {
+            this.studentApiService.insertSecondStudentToParent(model).subscribe((result: boolean) => {
+                if (!!result) {
+                    subscriber.next(result);
+                } else {
+                    subscriber.next(null);
+                }
+            }, (error: any) => {
+                this.spinnerService.hide();
+                this.notificationService.show(error);
+                // subscriber.error('Could not save parent please try again');
+            });
+        });
+    }
+
 }

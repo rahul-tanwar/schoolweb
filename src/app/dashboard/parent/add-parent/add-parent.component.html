@@ -1,15 +1,38 @@
-<form class="add-parent-container" novalidate #addparentform="ngForm" (ngSubmit)="save()">
+<form class="existng-parent-container" novalidate #updateparentform="ngForm" (ngSubmit)="saveSecondStudent()">
+    <h4>Select existing parent</h4>
+    <div class="from-group">
+        <mat-form-field>
+            <span matPrefix>
+                <i class="fa fa-address-card" aria-hidden="true"></i> &nbsp;</span>
+            <input type="text" placeholder="Select patent" aria-label="Number" [(ngModel)]="parentModel" (ngModelChange)="filterData($event)"
+                name="selectparent" matInput [matAutocomplete]="auto" required>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option (onSelectionChange)="selectparent($event)" *ngFor="let parent of filterParentList" [value]="parent">
+                    {{parent}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="basic" [disabled]="!updateparentform.form.valid">Save</button>
+    </div>
+</form>
 
+<hr>
+<div class="spliter-container">
+    <span>OR</span>
+</div>
+
+<form class="add-parent-container" novalidate #addparentform="ngForm" (ngSubmit)="save()">
+    <h4>Create new parent</h4>
 
     <mat-form-field>
         <span matPrefix>
             <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-        <input matInput placeholder="First Name" name="FirstName" [(ngModel)]="parent.FirstName" required>
+        <input matInput autofocus="true" placeholder="First Name" name="FirstName" [(ngModel)]="parent.FirstName" required>
     </mat-form-field>
     <mat-form-field>
         <span matPrefix>
             <i class="fa fa-user" aria-hidden="true"></i> &nbsp;</span>
-        <input matInput placeholder="Last Name" name="LastName" [(ngModel)]="parent.LastName" required>
+        <input matInput autofocus="true" placeholder="Last Name" name="LastName" [(ngModel)]="parent.LastName" required>
     </mat-form-field>
     <mat-form-field>
         <span matPrefix>

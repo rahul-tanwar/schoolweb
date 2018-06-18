@@ -55,6 +55,7 @@ import { ActivityListComponent } from '../dashboard/activity/activity-list/activ
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './profile/changepassword/changepassword.component';
 import { UserDetailComponent } from './profile/userdetail/userdetail.component';
+import { ConfirmComponent } from './../shared/component/confirm/confirm.component';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { UserDetailComponent } from './profile/userdetail/userdetail.component';
         ActivityListComponent,
         ProfileComponent,
         ChangePasswordComponent,
-        UserDetailComponent
+        UserDetailComponent,
+        ConfirmComponent
     ],
     entryComponents: [
         AddParentComponent,
@@ -115,7 +117,8 @@ import { UserDetailComponent } from './profile/userdetail/userdetail.component';
         AddStudentClassComponent,
         AddSchoolComponent,
         AddStudentComponent,
-        AddCertificateExperienceComponent
+        AddCertificateExperienceComponent,
+        ConfirmComponent
     ],
     imports: [
         BrowserModule,

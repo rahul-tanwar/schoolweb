@@ -26,7 +26,7 @@ panel-body {
     width: 100%;
   }
   mat-table{
-    max-height: 550px;
+    max-height: none !important;
 }
 .more-parent{
     float: left;

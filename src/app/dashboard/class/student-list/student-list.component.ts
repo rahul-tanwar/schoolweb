@@ -68,16 +68,19 @@ export class StudentListComponent extends BaseComponent implements OnInit {
     }
 
     public removeStudents(): void {
-        const studentList = this.studentList.filter((item: Student) => item.isSelected === true);
-        if (!!studentList) {
-            const obj = new StudentClassModel();
-            obj.ClassId = this.classId;
-            obj.StudentIds = studentList.map(item => item.StudentId);
-            this.services.classService.removeStudentFromClass(obj).subscribe((item) => {
-                this.services.classService.getAllStudentByClassId(this.classId);
-                this.services.studentService.getParentsByClassId(this.classId);
-            });
-        }
+        this.services.confirmService.open(() => {
+            const studentList = this.studentList.filter((item: Student) => item.isSelected === true);
+            if (!!studentList) {
+                const obj = new StudentClassModel();
+                obj.ClassId = this.classId;
+                obj.StudentIds = studentList.map(item => item.StudentId);
+                this.services.classService.removeStudentFromClass(obj).subscribe((item) => {
+                    this.services.classService.getAllStudentByClassId(this.classId);
+                    this.services.studentService.getParentsByClassId(this.classId);
+                    this.services.notificationService.show('Successfully remove from class');
+                });
+            }
+        });
     }
 
     public onSelect() {

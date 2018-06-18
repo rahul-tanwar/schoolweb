@@ -76,4 +76,18 @@ export class StudentApiService extends BaseServiceApi {
             .pipe(catchError(this.handleError));
     }
 
+    public getAllParentBySchool(schoolInfoId: string): Observable<jsObject> {
+        this.httpParams = new HttpParams()
+            .set('schoolInfoId', schoolInfoId);
+        return this.httpClient.get<object>(this.baseUrl + 'student/getallparentbyschoolinfoid', {
+            params: this.httpParams
+        })
+            .pipe(catchError(this.handleError));
+    }
+
+    public insertSecondStudentToParent(model: jsObject): Observable<boolean> {
+        return this.httpClient.post(this.baseUrl + 'student/insertsecondstudentToParent', model)
+            .pipe(catchError(this.handleError));
+    }
+
 }

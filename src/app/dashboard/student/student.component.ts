@@ -20,7 +20,7 @@ export class StudentComponent extends BaseComponent implements OnInit {
 
 
     displayedColumns = ['name'];
-    dataSource: MatTableDataSource<Student>;
+    dataSource1: MatTableDataSource<Student>;
     studentList: Array<Student>;
     public classList: Array<Class>;
     public filter = new Filter();
@@ -43,7 +43,6 @@ export class StudentComponent extends BaseComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
-            //  this.animal = result;
         });
     }
 
@@ -52,45 +51,43 @@ export class StudentComponent extends BaseComponent implements OnInit {
         this.services.spinnerService.show();
         this.subscribeStudentData();
         this.subscribeClassData();
-        this.services.studentService.getStudentsBySchoolId();
-        this.services.classService.getAllClasses();
     }
 
     private subscribeClassData(): void {
+        this.services.classService.getAllClasses();
         this.services.classService.classData.subscribe((result: Array<Class>) => {
             this.classList = result;
         });
     }
 
     private subscribeStudentData(): void {
-
+        this.services.studentService.getStudentsBySchoolId();
         this.services.studentService.studentData.subscribe((result) => {
             if (!!result) {
-                this.dataSource = new MatTableDataSource<Student>(result.reverse());
-                this.dataSource.paginator = this.paginator;
+                debugger;
+                this.dataSource1 = new MatTableDataSource<Student>(result.reverse());
+                this.dataSource1.paginator = this.paginator;
                 this.studentList = result;
             }
             this.services.spinnerService.hide();
-            //  this.changeDetectorRef.detectChanges();
-            //  this.changeDetectorRef.markForCheck();
         });
     }
 
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace
         filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-        this.dataSource.filter = filterValue;
+        this.dataSource1.filter = filterValue;
     }
 
     public filterData() {
         if (!!this.filter) {
             this.filter.serachKeyword = '';
-            this.dataSource.filter = '';
+            this.dataSource1.filter = '';
             if (!!this.filter.classId) {
-                this.dataSource.data = this.studentList.filter((item) => item.ClassId === this.filter.classId);
+                this.dataSource1.data = this.studentList.filter((item) => item.ClassId === this.filter.classId);
 
             } else {
-                this.dataSource.data = this.studentList;
+                this.dataSource1.data = this.studentList;
             }
             this.changeDetectorRef.markForCheck();
             this.changeDetectorRef.detectChanges();

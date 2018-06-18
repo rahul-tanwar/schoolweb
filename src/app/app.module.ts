@@ -56,7 +56,8 @@ import { SpinnerComponent } from '../app/shared/component/spinner/spinner.compon
         Service.NotificationService,
         Service.StaffService,
         Service.StateMachineService,
-        Service.ActivityService
+        Service.ActivityService,
+        Service.ConfirmService
     ],
     bootstrap: [AppComponent]
 })

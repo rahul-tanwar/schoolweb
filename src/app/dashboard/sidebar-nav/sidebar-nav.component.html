@@ -11,8 +11,8 @@
                 <mat-form-field class="width-100per">
                     <span matPrefix>
                         <i class="fa fa-address-card" aria-hidden="true"></i> &nbsp;</span>
-                    <input type="text" placeholder="Select school" aria-label="Number" (ngModelChange)="filterData($event)" name="selectSchool"
-                        matInput [matAutocomplete]="auto">
+                    <input type="text" placeholder="Select school" aria-label="Number" [(ngModel)]="schoolModel" (ngModelChange)="filterData($event)"
+                        name="selectSchool" matInput [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete">
                         <mat-option (onSelectionChange)="selectSchool($event)" *ngFor="let school of autocompleteList" [value]="school">
                             {{school}}

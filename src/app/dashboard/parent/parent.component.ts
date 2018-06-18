@@ -1,8 +1,8 @@
 
 import { OnInit, Input, Output, EventEmitter, ChangeDetectorRef, Injector } from '@angular/core';
 import { Component, ViewChild } from '@angular/core';
-
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AddParentComponent } from './add-parent/add-parent.component';
 import { StudentService } from '../../shared/service/student/student.service';
 import { Parent, ListType } from '../../shared/model/parent';
@@ -29,10 +29,10 @@ export class ParentComponent extends BaseComponent implements OnInit {
 
     ngOnInit() {
         this.subscribeClassData();
-        this.services.classService.getAllClasses();
     }
 
     private subscribeClassData(): void {
+        this.services.classService.getAllClasses();
         this.services.classService.classData.subscribe((result: Array<Class>) => {
             this.classList = result;
         });

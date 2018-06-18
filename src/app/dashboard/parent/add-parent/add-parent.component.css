@@ -1,4 +1,4 @@
-.add-parent-container button{
+.add-parent-container button {
     background-color: #29b8bb;
     color: white;
     line-height: 29px;
@@ -11,3 +11,47 @@
     width: 100%;
   }
   
+
+  h4 {
+    text-align: center;
+    font-size: 16px;
+    color: #a5a09c;
+    line-height: 0;
+  }
+
+  .existng-parent-container{
+    padding-bottom: 11px;
+  }
+
+  .existng-parent-container button {
+    background-color: #29b8bb;
+    color: white;
+    line-height: 29px;
+    margin-left: 20px;
+  }
+
+  .existng-parent-container .from-group {
+display: flex;  
+align-items: center;    
+}
+
+.existng-parent-container .from-group mat-form-field{
+    flex: 1;
+}
+
+.spliter-container{
+    float: left;
+    text-align: center;
+    width: 100%;
+    margin-top: -30px;
+    margin-bottom: 25px;
+}
+
+
+.spliter-container span{
+    font-size: 16px;
+    font-weight: 600;
+    background: white;
+    padding: 7px;
+    color: #29b8bb;
+}
