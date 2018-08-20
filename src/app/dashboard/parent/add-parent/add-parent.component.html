@@ -52,7 +52,7 @@
     <mat-form-field *ngIf="parent.Password != null">
         <span matPrefix>
             <i class="fa fa-key" aria-hidden="true"></i> &nbsp;</span>
-        <input matInput disabled name="Password" [(ngModel)]="parent.Password" placeholder="Parent Password">
+        <input matInput name="Password" [(ngModel)]="parent.Password" placeholder="Parent Password" required>
     </mat-form-field>
 
     <mat-form-field>

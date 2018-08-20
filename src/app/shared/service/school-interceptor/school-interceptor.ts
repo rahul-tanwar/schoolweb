@@ -15,7 +15,7 @@ export class SchoolInterceptor implements HttpInterceptor {
     }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const userService = this.injector.get(UserService);
-        if (!request.url.includes('http://schoolapi.anaghaenterprises.in/token')) {
+        if (!request.url.includes('http://18.222.251.49/kidojoapi/token')) {
             request = request.clone({
                 setHeaders: {
                     Authorization: `Bearer ${userService.currentUser.access_token}`

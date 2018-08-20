@@ -22,7 +22,7 @@ export class UserServiceApi extends BaseServiceApi {
             .set('username', user['UserName'])
             .set('password', user['password'])
             .set('grant_type', 'password');
-        return this.httpClient.post('http://schoolapi.anaghaenterprises.in/token',
+        return this.httpClient.post('http://18.222.251.49/kidojoapi/token',
             this.httpParams)
             .pipe(catchError(this.handleError));
     }

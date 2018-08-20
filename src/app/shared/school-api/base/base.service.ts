@@ -8,7 +8,7 @@ export class BaseServiceApi {
 
     protected token: any;
 
-    protected baseUrl = 'http://schoolapi.anaghaenterprises.in/api/';
+    protected baseUrl = 'http://18.222.251.49/kidojoapi/api/';
 
     protected httpParams: HttpParams;
 
