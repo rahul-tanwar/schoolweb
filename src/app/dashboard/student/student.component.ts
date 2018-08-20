@@ -64,7 +64,6 @@ export class StudentComponent extends BaseComponent implements OnInit {
         this.services.studentService.getStudentsBySchoolId();
         this.services.studentService.studentData.subscribe((result) => {
             if (!!result) {
-                debugger;
                 this.dataSource1 = new MatTableDataSource<Student>(result.reverse());
                 this.dataSource1.paginator = this.paginator;
                 this.studentList = result;
