@@ -55,7 +55,7 @@ export class StudentApiService extends BaseServiceApi {
     public getAllStudentBySchool(schoolInfoId: string): Observable<jsObject> {
         this.httpParams = new HttpParams()
             .set('schoolInfoId', schoolInfoId);
-        return this.httpClient.get<object>(this.baseUrl + 'student/getallstudentbyschoolinfoid', {
+        return this.httpClient.get<object>(this.baseUrl + 'student/getallstudentbyschoolinfoid-admin', {
             params: this.httpParams
         })
             .pipe(catchError(this.handleError));
